@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+.title-container {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.title-container .title{
+	margin-left: 100px;
+	margin-right: 100px;
+	font-size: 20px;
+}
+.title-container .writebutton{
+	font-size: 18px;
+	color:white;
+	border: 0 solid white;
+	background-color: #FFB3A7;
+	padding: 6px;
+}
+.title-container .backbutton{
+	font-size: 22px;
+	color: #333333;
+	border: 0 solid white;
+	background-color: white;
+}
+.tip-container{
+	text-align: center;
+	padding:20px;
+	margin: 30px 33% 0 33%;
+	background-color: #FDEEDC;
+}
+.tip-container .tip{
+	font-size: 18px;
+	color: #FFB3A7;
+	font-weight: 600;
+}
+.tip-container .tip2{
+	font-size: 15px;
+	color: #333333;
+}
+.upload-container{
+	text-align: center;
+}
+.upload-container #uploadbutton{
+	width: 448px;
+	height: 448px;
+	border: none;
+	background-color: transparent;
+	/* 추가 스타일링 */
+	background-color: #D8D8D8;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1.5vw;
+	margin-bottom: 1vw;
+	margin-right: 5px;
+	font-size: 32px;
+}
+.diary-name .diary-date{
+	border: none;
+	width: 42%;
+	font-size:18px;
+	outline: none;
+	color: lightgray;
+}
+.diary-name .diary-date::checked{
+	color: #FFB3A7;
+}
+.sectionline{
+	margin-left: 28.5%;
+	margin-right: 28.5%;
+	border-bottom: 1px solid lightgray;
+}
+.sectionline2{
+	margin-left: 28.5%;
+	margin-right: 28.5%;
+	border-bottom: 12px solid lightgray;
+}
+
+.diary-name .diary-info{
+	resize: none;
+	border: none;
+	font-size: 14px;
+	outline: none;
+}
+.hashtagname{
+	border: none;
+	border-bottom:1px solid lightgray;
+	font-size: 14px;
+	width: 35%;
+	height: 20px;
+	outline: none;
+}
+.hashtagadd{
+	border: none;
+	background-color: #FDEEDC;
+	color: #FFB3A7;
+	padding: 5px 20px 5px 20px;
+	margin-left: 1%;
+}
+
+.hashtag-tags{
+	margin-top: 3px;
+}
+
+.hashtag-tags .hashtag-tag{
+	border: none;
+	margin: 1px;
+	color: white;
+	background-color: #FFB3A7;
+	border-radius: 5px;
+	padding:3px;
+	font-size: 14px;
+}
+
+.recipes-ch{
+	border: none;
+	background-color: #FDEEDC;
+	width: 45%;
+	height: 35px;
+	font-size: 20px;
+}
+
+
+    /* 팝업 창 스타일 */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+        z-index: 1; /* 팝업 창을 다른 요소 위에 표시 */
+    }
+
+    .popup-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }

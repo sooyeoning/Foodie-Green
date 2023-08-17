@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+h2 {
+	margin-bottom: 3vw;
+	text-align: center;
+	font-size: 26px;
+}
+
+.searchdiv {
+	text-align: center;
+}
+
+#search {
+	width: 360px; font-size : 1.4vw;
+	color: gray;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid #D8D8D8;
+	font-size: 1.4vw;
+}
+
+#searchbutton {
+	border: none;
+}
+
+.tag-container {
+	margin-top: 1vw;
+}
+
+.tag-container input {
+	margin: 1px;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	background-color: #FFB3A7;
+	color: white;
+}
+
+.input-container {
+	text-align: center;
+}
+
+.input-container input {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+#recentContent {
+	display: flex;
+	overflow: hidden;
+}
+
+#popularContent {
+	display: flex;
+}
+
+#contentContainer button {
+	width: 33%;
+	height: 240px;
+	border: none;
+	background-color: transparent;
+	/* 추가 스타일링 */
+	background-color: #D8D8D8;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1.5vw;
+	margin-bottom: 1vw;
+	margin-right: 5px;
+}
+
+.mydiary-container {
+	margin-top: 30px;
+	padding: 20px;
+	background-color: #D8D8D8;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+}
+
+.mydiary-container .diary-filter {
+	margin-left: 75%;
+	padding: 7px 22px 7px 22px;
+	background-color: white;
+	border: 1px solid white;
+	border-radius: 20px;
+}
+
+.mydiary-container .mydiary-title {
+	font-size: 1.4vw;
+}
+
+/*플로팅 버튼 수정X========*/
+.floating-button {
+	display: flex;
+	position: fixed;
+	right: 10px;
+	bottom: 15px;
+	z-index: 998;
+}
+
+/*플로팅 버튼 아이콘 공용 스타일 수정X========*/
+.recipes-btn::before {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+}
+
+.recipes-btn {
+	color: white;
+	font-size: 1.3em;
+	text-decoration: none;
+	border: none;
+	background-color: #FFB3A7;
+}
+
+/*플로팅 버튼 스타일========*/
+.move-recipes {
+	float: left;
+	display: flex;
+	position: relative;
+	width: 100px;
+	height: 45px;
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
+	margin-left: 5px;
+	/*사용자 설정 파트*/
+	font-weight: 700;
+	background-color: #FFB3A7;
+}
+
+.write-dropdown {
+	text-align: center;
+	position: absolute;
+	bottom: calc(100% +5px);
+	left: 0;
+	display: none;
+	background-color: #FFB3A7;
+	transform: translateY(-100%);
+	width: 100px;
+	height: 40px;
+	overflow-y: auto;
+	z-index: 999;
+	margin-left: 5px;
+}
+
+.write-dropdown a {
+	color: white;
+	text-decoration: none;
+}
+
+.write-dropdown.active {
+	display: block; /* 활성화 시 보이게 함 */
+}
