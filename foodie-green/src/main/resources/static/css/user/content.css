@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+font-family: 'GangwonEdu_OTFBoldA';
+}
+
+body{
+	margin: 0;
+}
+
+.menu{
+	font-size: 30px;
+	height: 60px;
+}
+.login_background{
+	min-height: calc(100vh - 60px);
+	background-image: url("/img/user/market.png");
+	background-size: cover;
+	display: center;
+	position: relative;
+}
+
+.login_buttons{
+	max-width: 30vw;
+	text-align: center;
+	/* 수직 중앙 정렬하기 */
+ 	position: absolute;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+}
+.login_email{
+	border-width: 3px;
+	border-radius: 10px;
+	border: 2px solid white;
+	width: 222px;
+	height: 55px;
+	background-color: transparent; /*배경 투명*/
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 3vh;
+	font-size: 20px;
+	
+}
+.login_title{
+	color: #FFB3A7;
+	font-size: 25px;
+	margin: 0 auto;	
+}
+.signin_title{
+	color: #FFB3A7;
+	font-size: 25px;
+	text-align: center;
+}
+.login_title_email{
+	color: white;
+	font-size: 25px;
+	margin: 1vh auto 2vh;	
+}
+.login_subtitle{
+	color: white;
+	font-size: 20px;
+	text-align: center;	
+}
+
+.signin{
+	font-size: 20px;
+	color: white;
+	margin-top: 3vh;
+}
+.signin_a{
+	font-size: 20px;
+	color: #FFB3A7;
+	margin-top: 3vh;
+}
+#signinForm, .center{
+	/* 수직 중앙 정렬하기 */
+	display: grid;
+    justify-content: center;
+    align-content: center;   
+}
+#input, .input{
+	width: 30vw;
+	height: 8vh;
+	border-radius: 10px;
+	border: 1px solid #FFB3A7;
+	font-size: 20px;
+	padding-left: 3%;
+	margin: 0 auto 2vh;
+}
+#loginInput{
+	width: 30vw;
+	height: 8vh;
+	border-radius: 10px;
+	border: 1px solid #FFB3A7;
+	font-size: 20px;
+	padding-left: 3%;
+	margin: 0 auto 2vh;
+	background-color: transparent;
+	
+}
+.loginInput input::placeholder {
+  color: white;
+}
+.signinbtn{
+	width: 8vw;
+	height: 5vh;
+	float: right;
+	border-radius: 10px;
+	border: 1px solid #FFB3A7;
+	background-color: #FFB3A7;
+	color: white;
+}
+.loginbtn, .findIdbtn, .findPwbtn{
+	width: 31vw;
+	height: 8vh;
+	border-radius: 10px;
+	font-size: 20px;
+	border: 2px solid #FFB3A7;
+	background-color: #FFB3A7;
+	color: white;
+	margin-top: 2vh;
+	margin-bottom: 6vh;
+}
+
+.emailbtn, .pwbtn{
+	background-color: transparent ;
+    border: none ;
+	width: 31vw;
+	display:contents; 
+	color: white;
+	font-size: 20px;
+}
+
+.font20{
+	font-size: 20px;
+}
+.bottom0{
+	margin-bottom: 0;
+}
+.top1vh{
+	margin-top: 1vh;
+}
+.pointcolor{
+	color: orange;
+}
+.font15{
+	font-size: 15px;
+}
