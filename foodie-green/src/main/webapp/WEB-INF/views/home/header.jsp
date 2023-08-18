@@ -24,7 +24,7 @@
 			<span></span>
 			<span></span>
 			<span></span>
-			<span style="float:right; "><a href="" style="color:black; font-weight:700;">로그인</a></span>
+			<span style="float:right; "><a href="/login" style="color:black; font-weight:700;">로그인</a></span>
 		</div>
 	</header>
 </body>

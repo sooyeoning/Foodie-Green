@@ -26,6 +26,8 @@
 
 </head>
 <body>
+<%@ include file="../home/header.jsp"%>
+
 	<div class="menu">메뉴</div>
 	<div class="login_background">
 	<div class="login_buttons">
@@ -91,6 +93,7 @@
 	    if (parts.length === 2) { return parts[1].split(';')[0]; }
 	  }*/
 	</script>
+<%@ include file="../home/footer.jsp"%>
 
 </body>
 </html>

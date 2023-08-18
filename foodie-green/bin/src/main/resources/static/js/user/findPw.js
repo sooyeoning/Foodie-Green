@@ -2,7 +2,7 @@
 $(document).on('click', '.findPwbtn', function() { 
   	  
   	  $.ajax({
-  	    url: "/emailAuth", 
+  	    url: "/pwAuth", 
   	    type: "POST",
   	    data: 
   	    {"email":  document.getElementById('email').value,

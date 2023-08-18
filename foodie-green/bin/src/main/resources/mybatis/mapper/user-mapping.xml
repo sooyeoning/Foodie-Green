@@ -23,15 +23,28 @@
 		where name=#{name} and phone=#{phone};
 	</select>
 	
+	<!-- 비밀번호 찾기 -->
 	<select id="findPw" parameterType="String" resultType="String">
 		select pw from user
 		where email=#{email} and phone=#{phone};
 	</select>
 	
-	<!-- 이메일 찾기(중복체크) -->
+	<!-- 로그인 -->
+	<select id="login_kakao" parameterType="String" resultType="UserDTO">
+		select*from user
+		where email=#{email};
+	</select>
+	
+	<!-- 이메일 중복체크 -->
 	<select id="checkEmail" parameterType="String" resultType="int">
 		select exists 
 		(select email from user where email=#{email});
+	</select>
+	
+	<!-- 닉네임 중복체크 -->
+	<select id="checkNickname" parameterType="String" resultType="int">
+		select exists 
+		(select nickname from user where nickname=#{nickname});
 	</select>
 	
 </mapper>

@@ -14,7 +14,9 @@
 
 </head>
 <body>
-	<div class="menu">메뉴</div>
+<%@ include file="../home/header.jsp"%>
+<br><br><br><br><br><br><br><br>
+
 	<div class="center">
 	<p class="login_title">이메일 찾기</p>
 	<p class="font20">이름</p>
@@ -23,5 +25,7 @@
 	<input type="text" class="input" name="phone" placeholder="휴대폰 번호를 입력하세요" id="phone">
 	<button type="submit" class="findIdbtn">이메일 찾기</button>
 	</div>
+	<%@ include file="../home/footer.jsp"%>
+	
 </body>
 </html>

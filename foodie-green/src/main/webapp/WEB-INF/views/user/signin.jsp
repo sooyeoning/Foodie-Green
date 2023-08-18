@@ -14,6 +14,8 @@
 </head>
 
 <body>
+<%@ include file="../home/header.jsp"%>
+<br>
 	<div class="menu">메뉴</div>
 	<p class="signin_title">회원가입</p>
 	<div id="signinForm">
@@ -49,6 +51,8 @@
 	 
 	<button type="button" class="signinbtn" >회원가입 완료</button>
 	</div>
+	<%@ include file="../home/footer.jsp"%>
+	
 </body>
 
   
