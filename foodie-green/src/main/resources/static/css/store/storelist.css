@@ -7,14 +7,18 @@
 }
 
 body {
-	margin-top: 20px;
+	 margin-top: 80px; 
 	text-align: center;
 	 font-family: 'GangwonEdu_OTFBoldA';
+	 /*  background-color: #FDEEDC;  */
+	 
+	 
 }
 
 .box-product-outer {
+	
 	margin-bottom: 5px;
-	padding-top: 15px;
+	padding-top: 80px;
 	padding-bottom: 15px;
 	width: 25%;
 	height: 100%;
@@ -42,7 +46,7 @@ body {
 .box-product .img-wrapper {
 	position: relative;
 	overflow: hidden;
-    
+    height:300px;
 }
 
 .box-product .img-wrapper>:first-child {
@@ -52,7 +56,7 @@ body {
 
 .box-product .img-wrapper>a>img {	
 	width: 100%;
-	height: 100%;
+	height: 300px;
 	object-fit:cover;
 }
 

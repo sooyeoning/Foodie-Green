@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/css/store/storelist.css">
 </head>
 <body>
-
+<%@ include file="../home/header.jsp"%>
 <div class="container">
 <div class="row">
 <div class="col-md-9">
@@ -54,5 +54,6 @@
 </div>
   </div>
   </div>
+  <%@ include file="../home/footer.jsp"%>
 </body>
 </html>

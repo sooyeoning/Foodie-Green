@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"recipes"})
+@ComponentScan(basePackages = {"recipes","home"})
 @ComponentScan(basePackages = {"store"})
 public class FoodieGreenApplication {
 

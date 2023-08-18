@@ -25,10 +25,6 @@ public class RecipesController {
 		return "recipes/recipes";
 	}
 
-	@GetMapping("/")
-	public String main() {
-		return "main";
-	}
 
 	@GetMapping("fgrecipes")
 	public String fgrecipes() {
@@ -69,7 +65,7 @@ public class RecipesController {
 	private String saveImage(MultipartFile file) {
 	    try {
 	        // 저장할 디렉터리 경로
-	        String uploadDir = "/Users/shin-yeongyun/git/Foodie-Green/foodie-green/src/main/resources/static/img/recipes";
+	        String uploadDir = "c:/kdt/upload/";
 	        
 	        // 파일의 원래 이름
 	        String originalFileName = file.getOriginalFilename();
