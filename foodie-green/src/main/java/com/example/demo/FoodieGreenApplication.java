@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "user")
+@ComponentScan(basePackages = {"recipes"})
 @MapperScan(basePackages = "user")
 public class FoodieGreenApplication {
 

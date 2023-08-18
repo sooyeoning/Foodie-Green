@@ -55,6 +55,7 @@
         naver_id_login.init_naver_id_login();
         </script>
         -->
+        
 	<!-- 카카오톡 로그인 버튼 노출 영역 -->
 	<script type="text/javascript">
 	function loginWithKakao() {
@@ -65,7 +66,7 @@
 	  }
 
 	  // 아래는 데모를 위한 UI 코드입니다.
-	  displayToken()
+	  /*displayToken()
 
 	  function displayToken() {
 	    var token = getCookie('authorize-access-token');
@@ -88,7 +89,7 @@
 	  function getCookie(name) {
 	    var parts = document.cookie.split(name + '=');
 	    if (parts.length === 2) { return parts[1].split(';')[0]; }
-	  }
+	  }*/
 	</script>
 
 </body>

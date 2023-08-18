@@ -17,7 +17,8 @@
 	<div class="menu">메뉴</div>
 	<div class="center">
 	<p class="login_title">비밀번호 찾기</p>
-	<p class="font20">이메일</p>
+	<p class="font20 bottom0">이메일</p>
+	<p class="font15 top1vh pointcolor">비밀번호 인증 메일이 가는 주소입니다.</p>
 	<input type="text" placeholder="회원가입시 등록하신 이메일을 입력해주세요" id="email" class="input">
 	<p class="font20">휴대폰 번호</p>
 	<input type="text" class="input" placeholder="휴대폰 번호를 입력하세요" id="phone">

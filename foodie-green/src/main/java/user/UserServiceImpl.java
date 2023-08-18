@@ -33,6 +33,16 @@ public class UserServiceImpl implements UserService{
 	public int checkEmail(String email) {
 		return usermapper.checkEmail(email);
 	}
+
+	@Override
+	public UserDTO login_kakao(String email) {
+		return usermapper.login_kakao(email);
+	}
+
+	@Override
+	public int checkNickname(String nickname) {
+		return usermapper.checkNickname(nickname);
+	}
 	
 	
 

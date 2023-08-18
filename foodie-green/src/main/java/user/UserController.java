@@ -36,8 +36,7 @@ public class UserController {
 	}
 
 	@GetMapping("/login_kakao")
-	@ResponseBody
-	public void login_kakao(@RequestParam(required = false) String code) {
+	public String login_kakao(@RequestParam(required = false) String code,HttpSession session) {
 		try {
 			// URL에 포함된 code를 이용하여 액세스 토큰 발급
 			String accessToken = loginService.getKakaoAccessToken(code);
@@ -46,11 +45,34 @@ public class UserController {
 			// 액세스 토큰을 이용하여 카카오 서버에서 유저 정보(닉네임, 이메일) 받아오기
 			HashMap<String, Object> userInfo = loginService.getUserInfo(accessToken);
 			System.out.println("login Controller : " + userInfo);
-
+			System.out.println("login Controller : " + userInfo.get("nickname"));
+			System.out.println("login Controller : " + userInfo.get("email"));
+			System.out.println("login Controller : " + userInfo.get("email"));
+			
+			//이메일 중복체크
+			int checkEmail = userService.checkEmail(String.valueOf(userInfo.get("email")));
+			
+			String email = String.valueOf(userInfo.get("email"));
+			
+			UserDTO userdto = new UserDTO();
+			
+			if(checkEmail==0) {
+				String pw = "K" + loginService.tempPassword(10) + "!";
+				//임의 비밀번호 확인: System.out.println(pw);
+				userdto.email = String.valueOf(userInfo.get("email"));
+				userdto.name = String.valueOf(userInfo.get("nickname"));
+				userdto.nickname = String.valueOf(userInfo.get("nickname"));
+				userdto.pw = pw;
+				userService.signin(userdto);
+			} else {
+				userdto = userService.login_kakao(email);
+			}
+			session.setAttribute("user", userdto);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		return "/user/login";
 	}
 
 	@GetMapping("/callback")
@@ -63,7 +85,7 @@ public class UserController {
 		return "/user/signin";
 	}
 
-	@PostMapping("/signin")
+	@PostMapping("/signin_request")
 	@ResponseBody
 	public void signin(UserDTO userDTO) {
 		System.out.println(userDTO.toString());
@@ -114,8 +136,8 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/emailAuth", method = RequestMethod.POST)
-	public String emailAuth(String email, String phone) {
+	@RequestMapping(value = "/pwAuth", method = RequestMethod.POST)
+	public String pwAuth(String email, String phone) {
 		String response = "null";
 
 		if (userService.findPw(email, phone) == null) {
@@ -148,7 +170,7 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/signup/emailAuth", method = RequestMethod.POST)
+	@RequestMapping(value = "/emailAuth", method = RequestMethod.POST)
 	public String emailAuth(String email) {
 
 		Random random = new Random();
@@ -177,14 +199,26 @@ public class UserController {
 		return Integer.toString(checkNum);
 	}
 	
+	@RequestMapping(value = "/emailCheck", method = RequestMethod.POST)
 	@ResponseBody
-	@RequestMapping(value = "/signup/emailCheck", method = RequestMethod.POST)
 	public String emailCheck(String email) {
 		String response = "";
 		if(userService.checkEmail(email)==1) {
 			response = "이미 가입된 회원입니다.";
 		} else {
 			response = "가입 가능한 회원입니다.";
+		}
+		return response;
+	}
+	
+	@RequestMapping(value = "/nickCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String nickCheck(String nickname) {
+		String response = "";
+		if(userService.checkNickname(nickname)==1) {
+			response = "이미 사용중인 닉네임입니다.";
+		} else {
+			response = "사용 가능한 닉네임입니다.";
 		}
 		return response;
 	}

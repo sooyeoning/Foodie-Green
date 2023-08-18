@@ -7,7 +7,7 @@
 
 	<typeAliases>
 		<typeAlias type="user.UserDTO" alias="UserDTO" />
-	
+		<typeAlias type="recipes.DiaryDTO" alias="DiaryDTO" />
 	</typeAliases>
 
 </configuration>

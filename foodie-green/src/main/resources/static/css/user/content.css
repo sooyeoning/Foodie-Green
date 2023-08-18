@@ -110,14 +110,15 @@ body{
 .loginInput input::placeholder {
   color: white;
 }
-.signinbtn{
+.signinbtn, .nick_check, .email_check, .secretkey_check{
 	width: 8vw;
 	height: 5vh;
-	float: right;
 	border-radius: 10px;
 	border: 1px solid #FFB3A7;
 	background-color: #FFB3A7;
 	color: white;
+	justify-self: end; 
+	margin-right: -1vw;
 }
 .loginbtn, .findIdbtn, .findPwbtn{
 	width: 31vw;
