@@ -35,6 +35,12 @@ public class UserController {
 		return "/user/login";
 	}
 
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	@GetMapping("/login_kakao")
 	public String login_kakao(@RequestParam(required = false) String code,HttpSession session) {
 		try {
@@ -68,7 +74,8 @@ public class UserController {
 				userdto = userService.login_kakao(email);
 			}
 			session.setAttribute("user", userdto);
-			
+			session.setAttribute("login", "ok");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -98,18 +105,17 @@ public class UserController {
 	// 아이디 중복?
 	@PostMapping("/userlogin")
 	public String userLogin(@RequestParam String email, @RequestParam String pw, HttpSession session) {
-		String result = "null";
+		//String result = "null";
 		UserDTO userdto = userService.login(email, pw);
 		if (userdto != null) {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
 			// alert
-			result = "/user/login";
+			return "redirect:/";
 		} else {
 			// alert
-			result = "/user/signin";
+			return "/user/signin";
 		}
-		return result;
 	}
 
 	@GetMapping("/findId")

@@ -1,3 +1,4 @@
+<%@page import="user.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -24,7 +25,21 @@
 			<span></span>
 			<span></span>
 			<span></span>
+			<% 
+String login=null;
+String username =null;
+if((String)session.getAttribute("login")!=null){
+	login=(String)session.getAttribute("login");
+	UserDTO userdto = (UserDTO)session.getAttribute("user");
+	username = userdto.getName();
+}
+
+if (login==null){%>
 			<span style="float:right; "><a href="/login" style="color:black; font-weight:700;">로그인</a></span>
+		<%}else if (login!=null){ %>
+			<span style="float:right; "><a href="/mypage"><%=username %>님</a></span>
+			<span style="float:right; "><a href="/logout" style="color:black; font-weight:700;">로그아웃</a></span>
+		<% }%>
 		</div>
 	</header>
 </body>

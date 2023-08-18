@@ -62,7 +62,7 @@
 	<script type="text/javascript">
 	function loginWithKakao() {
 	    Kakao.Auth.authorize({
-	      redirectUri: 'http://localhost:8080/login_kakao',
+	      redirectUri: 'http://localhost:8888/login_kakao',
 	      scope: "account_email"
 	    });
 	  }
