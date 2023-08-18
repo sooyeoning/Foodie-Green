@@ -6,6 +6,7 @@
 	<!-- <settings> <setting name="logImpl" value="LOG4J"/> </settings> -->
 
 	<typeAliases>
+	<typeAlias type="home.HomeDTO" alias="HomeDTO" />
 	<typeAlias type="recipes.DiaryDTO" alias="DiaryDTO" />
 	<typeAlias type="store.StoreDTO" alias="Storedto" />
 	</typeAliases>
