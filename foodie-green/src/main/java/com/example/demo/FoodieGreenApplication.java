@@ -8,7 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = "user")
 @ComponentScan(basePackages = {"recipes"})
-@MapperScan(basePackages = "user")
+@ComponentScan(basePackages = {"store"})
+@MapperScan(basePackages = {"user"})
 public class FoodieGreenApplication {
 
 	public static void main(String[] args) {
