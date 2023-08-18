@@ -13,10 +13,11 @@
 <header>
 		<div class="menu">
 			<span><a href="/"><img src="/img/favicon.png" alt="로고 이미지" class="favicon"></a></span>
-			<span><a href="">우리의 미션</a></span>
-			<span><a href="">정기배송</a></span>
-			<span><a href="/store">싱싱마켓</a></span>
+			<span><a href="/store">야채가게</a></span>
 			<span><a href="/recipes">레시피</a></span>
+			<span><a href="">브랜드 소개</a></span>
+			<span><a href="/faq">고객센터</a></span>
+			
 			<span></span>
 			<span></span>
 			<span></span>
