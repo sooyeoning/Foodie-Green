@@ -11,22 +11,23 @@
 </head>
 <body>
 <%@ include file="../home/header.jsp"%>
-<div class="container">
+<br><br><br>
+<div class="container" >
 <div class="row">
 <div class="col-md-9">
-	<div class="title"><span>야채 가게</span></div>
+	<div class="title" style="margin-top:40px;"><span>야채 가게</span></div>
 	
 	<!-- 반복 -->
 	<c:forEach items="${getStorelist}" var="storelist">
 	<div class="col-sm-4 col-md-3 box-product-outer">
 	
-                <div class="tags">
+        <div class="box-product">
+            <div class="img-wrapper">
+                <div class="tags" >
                     <span class="label-tags"><span class="label label-danger">${storelist.badge }</span></span>
                     <!-- <span class="label-tags"><span class="label label-info">Featured</span></span>
                     <span class="label-tags"><span class="label label-warning">Polo</span></span> -->
                 </div>
-        <div class="box-product">
-            <div class="img-wrapper">
                 <a href="detail.html">
                     <img alt="Product" src=${storelist.imageurl} style="">
                 </a>

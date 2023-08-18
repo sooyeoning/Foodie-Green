@@ -12,7 +12,7 @@
 </head>
 <body>
 <header>
-		<div class="menu">
+		<div class="menu" style="position:relative;">
 			<span><a href=""><img src="favicon.png" alt="로고 이미지" class="favicon"></a></span>
 			<span><a href="">우리의 미션</a></span>
 			<span><a href="">정기배송</a></span>
