@@ -7,6 +7,9 @@
 
 	<typeAliases>
 	<typeAlias type="recipes.DiaryDTO" alias="DiaryDTO" />
+	<typeAlias type="store.StoreDTO" alias="Storedto" />
 	</typeAliases>
+
+	
 
 </configuration>
