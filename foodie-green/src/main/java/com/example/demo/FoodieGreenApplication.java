@@ -6,9 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "user")
-@ComponentScan(basePackages = {"recipes"})
-@ComponentScan(basePackages = {"store"})
+@ComponentScan(basePackages = {"recipes","home","user","store"})
 @MapperScan(basePackages = {"user"})
 public class FoodieGreenApplication {
 
