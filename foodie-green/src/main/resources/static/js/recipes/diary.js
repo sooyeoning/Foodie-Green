@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
 	const floatingButton = document.querySelector('.floating-button');
 	const dropdownLayer = document.querySelector('.write-dropdown');
@@ -7,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		dropdownLayer.classList.toggle('active');
 	});
 
-	// 문서의 어느 곳이든 클릭 시 드롭다운 레이어 닫기
 	document.addEventListener('click', function(event) {
 		if (!floatingButton.contains(event.target)) {
 			dropdownLayer.classList.remove('active');
@@ -16,26 +16,84 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	const recentButton = document.getElementById("recentButton");
 	const popularButton = document.getElementById("popularButton");
-	//const contentContainer = document.getElementById("contentContainer");
-	//const recentContent = document.getElementById("recentContent");
-	//const popularContent = document.getElementById("popularContent");
+
+	var loading = false;
+
+	function loadDiaries(order) {
+		if (loading) return;
+		loading = true;
+
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "getDiaries?order=" + order, true);
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+				var diaries = JSON.parse(xhr.responseText);
+				var contentDiv = order === 'recent' ? document.getElementById('recentContent') : document.getElementById('popularContent');
+				contentDiv.innerHTML = '';
+
+				diaries.forEach(function(diary) {
+					var diaryDiv = document.createElement('div');
+					diaryDiv.className = 'diary-item';
+
+					var thumbnail = document.createElement('img');
+					thumbnail.src = diary.photo;
+					diaryDiv.appendChild(thumbnail);
+
+					var contents = document.createElement('p');
+					contents.textContent = diary.contents;
+					diaryDiv.appendChild(contents);
+
+					var likeButton = document.createElement('button');
+					likeButton.textContent = '좋아요';
+					diaryDiv.appendChild(likeButton);
+
+					var likeCount = document.createElement('span');
+					likeCount.textContent = diary.likeCount + '개의 좋아요';
+					diaryDiv.appendChild(likeCount);
+
+					contentDiv.appendChild(diaryDiv);
+				});
+				loading = false;
+			}
+		};
+
+		xhr.send();
+	}
+
+	window.addEventListener('scroll', function() {
+		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) { // 스크롤이 페이지 하단에 근접하면
+			var order = document.getElementById('popularContent').style.display === "block" ? 'popular' : 'recent';
+			loadMoreDiaries(order); // 추가 내용 로딩
+		}
+	});
+
+	function toggleButtons() {
+		recentButton.style.display = recentButton.style.display === "none" ? "block" : "none";
+		popularButton.style.display = popularButton.style.display === "none" ? "block" : "none";
+	}
 
 	recentButton.addEventListener("click", function() {
-		recentButton.style.display = "none";
-		popularButton.style.display = "inline-block";
-		//recentContent.style.display = "flex";
-		//popularContent.style.display = "none";
+		loadDiaries('recent');
+		document.getElementById('recentContent').style.display = "flex";
+		document.getElementById('popularContent').style.display = "none";
+		toggleButtons();
 	});
 
 	popularButton.addEventListener("click", function() {
-		popularButton.style.display = "none";
-		recentButton.style.display = "inline-block";
-		//popularContent.style.display = "flex";
-		//recentContent.style.display = "none";
+		loadDiaries('popular');
+		document.getElementById('recentContent').style.display = "none";
+		document.getElementById('popularContent').style.display = "flex";
+		toggleButtons();
 	});
-	    // 최신순 버튼만 표시하고 인기순 버튼은 숨기기
-    recentButton.style.display = "inline-block";
-    popularButton.style.display = "none";
-    //recentContent.style.display = "flex";
-    //popularContent.style.display = "none";
+
+	// 최초로 최신순 버튼을 보이게 하고 인기순 버튼을 숨깁니다.
+	recentButton.style.display = "block";
+	popularButton.style.display = "none";
+	document.getElementById('recentContent').style.display = "flex";
+	document.getElementById('popularContent').style.display = "none";
+
+
+	loadDiaries('recent');
 });

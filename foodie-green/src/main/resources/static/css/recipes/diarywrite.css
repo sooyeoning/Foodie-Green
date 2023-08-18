@@ -118,6 +118,25 @@
 	height: 35px;
 	font-size: 20px;
 }
+.upload-container {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    margin-top: 30px; /* 위쪽 간격 30px */
+    margin-bottom: 30px;
+}
+    .upload-box {
+        width: 400px;
+        height: 400px;
+        border: 2px dashed #FFB3A7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-size: cover; /* 미리보기 이미지를 박스 크기에 맞게 조정*/
+    }
+    #photo-upload {
+        display: none;
+    }
 
 
     /* 팝업 창 스타일 */

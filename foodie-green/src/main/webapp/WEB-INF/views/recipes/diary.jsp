@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,20 +54,31 @@
 		<input class="diary-filter" type="button" value="인기순" id="popularButton">
 	</div>
 
-	<div id="contentContainer">
-		<div id="recentContent" class="content">
-		<button id="recipes-button2" onclick="location.href='diarydetail'"></button>
-		<button id="recipes-button2"></button>
-		<button id="recipes-button2"></button>
-		<button id="recipes-button2"></button><br>
-		</div>
-		<div id="popularContent" class="content" style="display: none;">
-		<button id="recipes-button2"></button>
-		<button id="recipes-button2"></button>
-		<button id="recipes-button2"></button>
-		<button id="recipes-button2"></button>
-		</div>
+<div id="contentContainer">
+	<div id="recentContent" class="content">
+		<!-- 서버에서 불러온 최신순 식단일기 목록을 여기에 표시합니다. -->
+		<c:forEach var="diary" items="${recentDiaries}">
+			<div class="diary-item">
+				<img src="${diary.photo}" alt="Diary Image">
+				<h3>${diary.title}</h3>
+				<p>${diary.contents}</p>
+				<!-- 필요한 경우 더 많은 일기 내용을 여기에 추가하세요. -->
+			</div>
+		</c:forEach>
 	</div>
+	<div id="popularContent" class="content" style="display: none;">
+		<!-- 서버에서 불러온 인기순 식단일기 목록을 여기에 표시합니다. -->
+		<c:forEach var="diary" items="${popularDiaries}">
+			<div class="diary-item">
+				<img src="${diary.photo}" alt="Diary Image">
+				<h3>${diary.title}</h3>
+				<p>${diary.contents}</p>
+				<!-- 필요한 경우 더 많은 일기 내용을 여기에 추가하세요. -->
+			</div>
+		</c:forEach>
+	</div>
+</div>
+
 
 	<div class="floating-button-wrapper">
 		<div class="floating-button">

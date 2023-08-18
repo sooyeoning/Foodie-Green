@@ -11,7 +11,8 @@ h2 {
 }
 
 #search {
-	width: 360px; font-size : 1.4vw;
+	width: 360px;
+	font-size: 1.4vw;
 	color: gray;
 	border: none;
 	outline: none;
@@ -46,29 +47,29 @@ h2 {
 	border-radius: 5px;
 }
 
-#recentContent {
-	display: flex;
-	overflow: hidden;
+#contentContainer {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-#popularContent {
-	display: flex;
+.content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+   /*  justify-content: space-between; */
 }
 
-#contentContainer button {
-	width: 33%;
-	height: 240px;
-	border: none;
-	background-color: transparent;
-	/* 추가 스타일링 */
-	background-color: #D8D8D8;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 1.5vw;
-	margin-bottom: 1vw;
-	margin-right: 5px;
+.diary-item {
+    width: 30%; /* 4개씩 한 행에 배치 */
+    margin: 12px;
+    /* 추가 스타일링은 필요에 따라 설정하세요 */
 }
+.diary-item img {
+    width: 100%; /* 원하는 너비로 설정 */
+    height: auto; /* 높이는 원본 비율을 유지 */
+    max-width: 100%; /* 컨테이너 너비를 넘지 않도록 설정 */
+}
+
 
 .mydiary-container {
 	margin-top: 30px;
@@ -76,8 +77,13 @@ h2 {
 	background-color: #D8D8D8;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-
+.diary-buttons {
+    display: flex;
+}
 .mydiary-container .diary-filter {
 	margin-left: 75%;
 	padding: 7px 22px 7px 22px;

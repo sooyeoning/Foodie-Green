@@ -1,6 +1,7 @@
 package recipes;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class DiaryDTO {
@@ -8,7 +9,10 @@ public class DiaryDTO {
 	int id;
 	int diaryid;
 	String title, contents;
-	String writer,writing, photo,recipes;
+	String writer,writing,recipes;
+	String photo;
+	MultipartFile file;
+	
 	public DiaryDTO() {
 
 	}
@@ -25,6 +29,15 @@ public class DiaryDTO {
 		this.photo = photo;
 		this.recipes = recipes;
 	}
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	public int getId() {
 		return id;
 	}

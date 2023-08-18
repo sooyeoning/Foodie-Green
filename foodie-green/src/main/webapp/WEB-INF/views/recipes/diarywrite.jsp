@@ -18,14 +18,17 @@
 		</nav>
 	</header>
 	<div class="title-container">
-		<form id="diary-form" method="post" action="diarywrite">
+		<form id="diary-form" method="post" action="diarywrite" enctype="multipart/form-data">
 			<input class="backbutton" type="button" value="<"> <span class="title">식단일기 작성</span> <input class="writebutton" type="submit" value="완료">
 			<div class="tip-container">
 				<span class="tip">업로드 완료 시 적립금 NP</span><br> <span class="tip2">*반복적이거나 성의 없는 콘텐츠는 관리자에 의해 <br> 콘텐츠 삭제 후 적립금이 반환 될 수 있습니다.</span>
 			</div>
-			<div class="upload-container">
-				<button id="uploadbutton"name="photo">+<br>대표 이미지 업로드</button>
-			</div>
+			
+    <div class="upload-container">
+        <div id="upload-box" class="upload-box" onclick="openImagePicker()">+ 이미지 업로드</div>
+        <input id="photo-upload" name="photo" id="photo" type="file" onchange="previewImage()">
+    </div>
+    
 			<div class="recipes-info">
 				<div class="diary-name">
 					<input name="title" class="diary-date" type="date">
@@ -44,7 +47,7 @@
 				<input type="hidden" name="hashtags">
 				-->
 			</div>
-			<div class="recipesch-container">참고한 레시피</div>
+ 			<div class="recipesch-container">참고한 레시피</div>
 			<input class="recipes-ch" type="button" value="선택">
 			<div id="recipe-popup" class="popup">
 				<div class="popup-content">
@@ -64,5 +67,29 @@
 	<footer class="footer">
 		<p>&copy; 2023 Your Company. All rights reserved.</p>
 	</footer>
+	
+<script>
+function previewImage() {
+    const photoUpload = document.getElementById('photo-upload');
+    const uploadBox = document.getElementById('upload-box');
+    const file = photoUpload.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            uploadBox.style.backgroundImage = 'url(' + e.target.result + ')';
+            uploadBox.innerHTML = ""; // "+ 이미지 업로드" 텍스트 삭제
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function openImagePicker() {
+    const photoUpload = document.getElementById('photo-upload');
+    photoUpload.click();
+}
+</script>
 </body>
 </html>
