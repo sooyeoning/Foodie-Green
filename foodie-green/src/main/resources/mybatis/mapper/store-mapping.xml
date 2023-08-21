@@ -8,5 +8,9 @@
 	select * from foodlist order by id asc
 </select>
 
+<select id="getDetail" resultType="StoreDTO">
+	select * from foodlist where id= #{id}
+</select>
+
 </mapper>
 

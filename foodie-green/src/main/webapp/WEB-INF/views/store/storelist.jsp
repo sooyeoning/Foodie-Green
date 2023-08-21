@@ -28,11 +28,11 @@
                     <!-- <span class="label-tags"><span class="label label-info">Featured</span></span>
                     <span class="label-tags"><span class="label label-warning">Polo</span></span> -->
                 </div>
-                <a href="detail.html">
+                <a href="detail?id=${storelist.id}">
                     <img alt="Product" src=${storelist.imageurl} style="">
                 </a>
                 <div class="option">
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add to Cart">구매하기<i class="ace-icon fa fa-shopping-cart"></i></a>
+                    <a href="detail?id=${storelist.id}" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add to Cart">구매하기<i class="ace-icon fa fa-shopping-cart"></i></a>
                     
                 </div>
             </div>
@@ -46,6 +46,7 @@
             </div>
         </div>
     </div>
+    
 	</c:forEach>
     
 
