@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
+body {
+	background-color: #FDEEDC;
+} 
+
 h2 {
+	padding-top: 130px;
 	margin-bottom: 3vw;
 	text-align: center;
 	font-size: 26px;
@@ -11,13 +16,14 @@ h2 {
 }
 
 #search {
+	font-family: 'GangwonEdu_OTFBoldA';
 	width: 360px;
-	font-size: 1.4vw;
 	color: gray;
 	border: none;
 	outline: none;
 	border-bottom: 1px solid #D8D8D8;
-	font-size: 1.4vw;
+	font-size: 1.1vw;
+	width: 360px;
 }
 
 #searchbutton {
@@ -29,6 +35,7 @@ h2 {
 }
 
 .tag-container input {
+	font-family: 'GangwonEdu_OTFBoldA';
 	margin: 1px;
 	color: white;
 	border: none;
@@ -48,48 +55,64 @@ h2 {
 }
 
 #contentContainer {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .content {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-   /*  justify-content: space-between; */
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: auto; /* 중앙 정렬을 위해 추가 */
+	margin-right: auto; /* 중앙 정렬을 위해 추가 */
+	padding: 0 10px 0 60px; /* 좌우 패딩을 추가하여 여백 조정 */
 }
 
 .diary-item {
-    width: 30%; /* 4개씩 한 행에 배치 */
-    margin: 12px;
-    /* 추가 스타일링은 필요에 따라 설정하세요 */
-}
-.diary-item img {
-    width: 100%; /* 원하는 너비로 설정 */
-    height: auto; /* 높이는 원본 비율을 유지 */
-    max-width: 100%; /* 컨테이너 너비를 넘지 않도록 설정 */
+	width: 30%; /* 4개씩 한 행에 배치 */
+	margin: 12px;
+	/* 추가 스타일링은 필요에 따라 설정하세요 */
 }
 
+.diary-item img {
+	width: 100%; /* 원하는 너비로 설정 */
+	height: 350px; /* 높이는 원본 비율을 유지 */
+	max-width: 100%; /* 컨테이너 너비를 넘지 않도록 설정 */
+}
+
+.diary-item p { /* diary-item 내의 텍스트에 적용할 선택자를 적절히 변경할 수 있음 */
+	display: -webkit-box; /* 이 값을 사용하려면 필요합니다 */
+	-webkit-line-clamp: 2; /* 2줄로 제한 */
+	-webkit-box-orient: vertical; /* 필수 값입니다 */
+	overflow: hidden; /* 말줄임 처리를 위해 필요합니다 */
+	text-overflow: ellipsis; /* 말줄임 처리를 위해 필요합니다 */
+	color: black;
+}
 
 .mydiary-container {
 	margin-top: 30px;
-	padding: 20px;
-	background-color: #D8D8D8;
+	padding: 17px;
+	background-color: #e7dac9;
+	border: 0 solid white;
+	border-radius: 20px;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
 	display: flex;
-    align-items: center;
-    justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
 }
+
 .diary-buttons {
-    display: flex;
+	display: flex;
 }
+
 .mydiary-container .diary-filter {
 	margin-left: 75%;
 	padding: 7px 22px 7px 22px;
 	background-color: white;
 	border: 1px solid white;
 	border-radius: 20px;
+	font-family: 'GangwonEdu_OTFBoldA';
 }
 
 .mydiary-container .mydiary-title {
@@ -118,6 +141,7 @@ h2 {
 	text-decoration: none;
 	border: none;
 	background-color: #FFB3A7;
+	font-family: 'GangwonEdu_OTFBoldA';
 }
 
 /*플로팅 버튼 스타일========*/
@@ -134,6 +158,7 @@ h2 {
 	/*사용자 설정 파트*/
 	font-weight: 700;
 	background-color: #FFB3A7;
+	font-family: 'GangwonEdu_OTFBoldA';
 }
 
 .write-dropdown {
@@ -149,6 +174,9 @@ h2 {
 	overflow-y: auto;
 	z-index: 999;
 	margin-left: 5px;
+	padding: 10px;
+	margin-top: 20px;
+	font-family: 'GangwonEdu_OTFBoldA';
 }
 
 .write-dropdown a {

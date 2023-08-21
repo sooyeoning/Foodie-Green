@@ -16,4 +16,10 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.getStorelist();
 	}
 
+	@Override
+	public StoreDTO getDetail(int id) {
+		// TODO Auto-generated method stub
+		return storeDAO.getDetail(id);
+	}
+
 }

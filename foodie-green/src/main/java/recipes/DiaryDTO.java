@@ -12,12 +12,13 @@ public class DiaryDTO {
 	String writer,writing,recipes;
 	String photo;
 	MultipartFile file;
+	int likecnt;
 	
 	public DiaryDTO() {
 
 	}
 	
-	public DiaryDTO(int id, int diaryid, String title, String contents, String writer, String writing, String photo,
+	public DiaryDTO(int id,int likecnt, int diaryid, String title, String contents, String writer, String writing, String photo,
 			String recipes) {
 		super();
 		this.id = id;
@@ -28,6 +29,7 @@ public class DiaryDTO {
 		this.writing = writing;
 		this.photo = photo;
 		this.recipes = recipes;
+		this.likecnt = likecnt;
 	}
 	
 	public MultipartFile getFile() {
@@ -87,5 +89,14 @@ public class DiaryDTO {
 		this.recipes = recipes;
 	}
 
+	public int getLikecnt() {
+		return likecnt;
+	}
+
+	public void setLikecnt(int likecnt) {
+		this.likecnt = likecnt;
+	}
+
+	
 
 }

@@ -11,13 +11,42 @@ public class StoreDTO {
 	public String price;
 	public String badge;
 	public String imageurl;
+	public String imageurl1;
+	public String imageurl2;
+	public String imageurl3;
+	public String feature;
+	
+	public String getImageurl1() {
+		return imageurl1;
+	}
+	public void setImageurl1(String imageurl1) {
+		this.imageurl1 = imageurl1;
+	}
+	public String getImageurl2() {
+		return imageurl2;
+	}
+	public void setImageurl2(String imageurl2) {
+		this.imageurl2 = imageurl2;
+	}
+	public String getImageurl3() {
+		return imageurl3;
+	}
+	public void setImageurl3(String imageurl3) {
+		this.imageurl3 = imageurl3;
+	}
+	public String getFeature() {
+		return feature;
+	}
+	public void setFeature(String feature) {
+		this.feature = feature;
+	}
+	public String beforeprice;
 	public String getBeforeprice() {
 		return beforeprice;
 	}
 	public void setBeforeprice(String beforeprice) {
 		this.beforeprice = beforeprice;
 	}
-	public String beforeprice;
 	
 	public int getId() {
 		return id;

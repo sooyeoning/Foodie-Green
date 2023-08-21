@@ -1,58 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html> 
 <head>
-<link rel="stylesheet" href="/css/recipes/imsiheaderfooter.css">
 <link rel="stylesheet" href="/css/recipes/diarydetail.css">
-<script defer="defer" src="js/recipes/diary.js"></script>
+<script defer="defer" src="/js/recipes/diarydetail.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<header class="header">
-		<nav class="navbar">
-			<ul class="nav-list">
-				<li><a href="/">Home</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-
-			</ul>
-		</nav>
+<script>
+    var isLoggedIn = "${sessionScope.login}" == 'ok';
+    var diary_id = ${diary.id}; // JSP에서 diary_id 값을 가져옴
+</script>
+	<!-- header -->
+	<header style="margin-top: -22px;">
+		<%@ include file="../home/header.jsp"%>
 	</header>
 
-	<h2>연균의 식단일기</h2>
+	<h2>${diary.writer}의 식단일기</h2>
 
 	<div class="img-sum">
-		<img alt="이미지" src="img/recipes/imsi.png">
+		<img alt="이미지" src="${diary.photo }">
 	</div>
 
 	<div class=detail-container>
 
-		<div class="detail-title">
-			<span class="title-date">2023년 8월 15일 식단</span> <input
-				class="title-like" type="button" value="좋아요"> <input
-				class="title-like" type="button" value="신고하기">
-		</div>
+<div class="detail-title">
+    <span class="title-date">${diary.title}</span>
+    <div class="title-actions">
+        <input class="title-like like-button" type="button" value="좋아요">
+        <input class="title-like" type="button" value="신고하기">
+    </div>
+</div>
+
 
 		<div class="detail-content">
 			<div class="detail-user">
-				<span style="font-size: 14px;">연균</span><br> <span
-					style="font-size: 12px;">2023.08.15</span><br>
+				<span style="font-size: 14px;">${diary.writer }</span><br> <span
+					style="font-size: 12px;">${diary.writing }</span><br>
 			</div>
 
 			<div class="contents">
 
-				<span>내용들</span> <br>
+				<span style="font-size:18px;">${diary.contents}</span> <br>
 			</div>
 
-			<div class="detail-tag">
+<!-- 			<div class="detail-tag">
 				<input type="button" value="가지"> <input type="button"
 					value="토마토">
-			</div>
+			</div> -->
 
-			<p>좋아요 N</p>
+			<span style="font-size:18px;">좋아요 ${diary.likecnt}</span>
 		</div>
-		<p class=selectline></p>
 	</div>
 	
 	
@@ -70,8 +71,9 @@
 
 
 
-	<footer class="footer">
-		<p>&copy; 2023 Your Company. All rights reserved.</p>
+	<!-- footer -->
+	<footer style="margin-top:10%;">
+	<%@ include file="../home/footer.jsp"%>	
 	</footer>
 </body>
 </html>

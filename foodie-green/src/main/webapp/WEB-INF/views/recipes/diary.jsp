@@ -1,28 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/recipes/imsiheaderfooter.css">
-<link rel="stylesheet" href="/css/recipes/diary.css">
-<script defer="defer" src="js/recipes/diary.js"></script>
+<link rel="stylesheet" href="/css/recipes/diary.css ">
+<script defer="defer" src="/js/recipes/diary.js"></script>
 <title>recipes</title>
 </head>
 <body>
-	<header class="header">
-		<nav class="navbar">
-			<ul class="nav-list">
-				<li><a href="/">Home</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-
-			</ul>
-		</nav>
+	<!-- header -->
+	<header style="margin-top: -22px;">
+		<%@ include file="../home/header.jsp"%>
 	</header>
+
 
 	<h2>구독자 식단일기</h2>
 
@@ -48,36 +43,44 @@
 		</div>
 	</div>
 	<div class="mydiary-container">
-		<input type="checkbox">
-		 <span class="mydiary-title">내 식단일기만 보기</span> 
-		<input class="diary-filter" type="button" value="최신순" id="recentButton"> 
-		<input class="diary-filter" type="button" value="인기순" id="popularButton">
+		<input type="checkbox"> <span class="mydiary-title">내
+			식단일기만 보기</span> <input class="diary-filter" type="button" value="최신순"
+			id="recentButton"> <input class="diary-filter" type="button"
+			value="인기순" id="popularButton">
 	</div>
 
-<div id="contentContainer">
-	<div id="recentContent" class="content">
-		<!-- 서버에서 불러온 최신순 식단일기 목록을 여기에 표시합니다. -->
-		<c:forEach var="diary" items="${recentDiaries}">
-			<div class="diary-item">
-				<img src="${diary.photo}" alt="Diary Image">
-				<h3>${diary.title}</h3>
-				<p>${diary.contents}</p>
-				<!-- 필요한 경우 더 많은 일기 내용을 여기에 추가하세요. -->
-			</div>
-		</c:forEach>
+	<div id="contentContainer">
+		<div id="recentContent" class="content">
+			<!-- 서버에서 불러온 최신순 식단일기 목록을 여기에 표시합니다. -->
+			<c:forEach var="diary" items="${recentDiaries}">
+				<div class="diary-item">
+					<a href="/diarydetail/${diary.id}"> <!-- 해당 게시글의 상세 페이지로 링크 -->
+						<img src="${diary.photo}" alt="Diary Image">
+					</a> <span style="margin:0px; padding:0px;">${diary.writer}</sapn><br><p>${diary.writing}</p>
+					<a href="/diarydetail/${diary.id}"> <!-- 해당 게시글의 상세 페이지로 링크 -->
+						<p>${diary.contents}</p>
+					</a>
+						<p style="text-align: right;">좋아요 ${diary.likecnt}</p>
+					<!-- 필요한 경우 더 많은 일기 내용을 여기에 추가하세요. -->
+				</div>
+			</c:forEach>
+		</div>
+		<div id="popularContent" class="content" style="display: none;">
+			<!-- 서버에서 불러온 인기순 식단일기 목록을 여기에 표시합니다. -->
+			<c:forEach var="diary" items="${popularDiaries}">
+				<div class="diary-item">
+					<a href="/diarydetail/${diary.id}"> <!-- 해당 게시글의 상세 페이지로 링크 -->
+						<img src="${diary.photo}" alt="Diary Image">
+					</a> <span>${diary.writer}</span><br> <span>${diary.writing}</span>
+					<a href="/diarydetail/${diary.id}"> <!-- 해당 게시글의 상세 페이지로 링크 -->
+						<p>${diary.contents}</p>
+					</a>
+					<p style="text-align: right;">좋아요 ${diary.likecnt}</p>
+					<!-- 필요한 경우 더 많은 일기 내용을 여기에 추가하세요. -->
+				</div>
+			</c:forEach>
+		</div>
 	</div>
-	<div id="popularContent" class="content" style="display: none;">
-		<!-- 서버에서 불러온 인기순 식단일기 목록을 여기에 표시합니다. -->
-		<c:forEach var="diary" items="${popularDiaries}">
-			<div class="diary-item">
-				<img src="${diary.photo}" alt="Diary Image">
-				<h3>${diary.title}</h3>
-				<p>${diary.contents}</p>
-				<!-- 필요한 경우 더 많은 일기 내용을 여기에 추가하세요. -->
-			</div>
-		</c:forEach>
-	</div>
-</div>
 
 
 	<div class="floating-button-wrapper">
@@ -92,8 +95,7 @@
 	</div>
 
 
-	<footer class="footer">
-		<p>&copy; 2023 Your Company. All rights reserved.</p>
-	</footer>
+	<!-- footer -->
+	<%@ include file="../home/footer.jsp"%>
 </body>
 </html>
