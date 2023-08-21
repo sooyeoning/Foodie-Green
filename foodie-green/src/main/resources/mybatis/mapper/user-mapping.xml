@@ -12,19 +12,19 @@
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="login" parameterType="String" resultType="UserDTO">
+	<select id="login" parameterType="HashMap" resultType="UserDTO">
 		select*from user
 		where email=#{email} and pw=#{pw}
 	</select>
 	
 	<!-- 이메일 찾기 -->
-	<select id="findId" parameterType="String" resultType="String">
+	<select id="findId" parameterType="HashMap" resultType="String">
 		select email from user
 		where name=#{name} and phone=#{phone};
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
-	<select id="findPw" parameterType="String" resultType="String">
+	<select id="findPw" parameterType="HashMap" resultType="String">
 		select pw from user
 		where email=#{email} and phone=#{phone};
 	</select>
@@ -47,4 +47,15 @@
 		(select nickname from user where nickname=#{nickname});
 	</select>
 	
+	<!-- 회원정보 수정 -->
+	<update id="editUser" parameterType="UserDTO">
+		update user 
+		set nickname=#{nickname}, pw=#{pw}, phone=#{phone}
+		where email=#{email};
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+	delete from user
+	where email=#{email};
+	</delete>
 </mapper>

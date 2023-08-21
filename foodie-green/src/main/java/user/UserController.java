@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -104,9 +105,13 @@ public class UserController {
 	// https://amagrammer91.tistory.com/106, https://dololak.tistory.com/630
 	// 아이디 중복?
 	@PostMapping("/userlogin")
-	public String userLogin(@RequestParam String email, @RequestParam String pw, HttpSession session) {
+	public String userLogin(@Param("email") String email, @Param("pw") String pw, HttpSession session) {
 		//String result = "null";
-		UserDTO userdto = userService.login(email, pw);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("email", email);
+		map.put("pw", pw);
+		
+		UserDTO userdto = userService.login(map);
 		if (userdto != null) {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
@@ -116,6 +121,7 @@ public class UserController {
 			// alert
 			return "/user/signin";
 		}
+		
 	}
 
 	@GetMapping("/findId")
@@ -128,9 +134,13 @@ public class UserController {
 	public String findId(@RequestBody Map<String, String> params) {
 		String phone = params.get("phone");
 		String name = params.get("name");
+		HashMap<String, String> map = new HashMap<>();
+		map.put("phone", phone);
+		map.put("name", name);
+
 		String response = "입력하신 이름, 번호에 해당하는 이메일이 없습니다.";
-		if (userService.findId(name, phone) != null) {
-			response = "해당 이메일 주소: " + userService.findId(name, phone);
+		if (userService.findId(map) != null) {
+			response = "해당 이메일 주소: " + userService.findId(map);
 			System.out.println(response);
 		}
 		return response;
@@ -145,11 +155,14 @@ public class UserController {
 	@RequestMapping(value = "/pwAuth", method = RequestMethod.POST)
 	public String pwAuth(String email, String phone) {
 		String response = "null";
+		HashMap<String, String> map = new HashMap<>();
+		map.put("email", email);
+		map.put("phone", phone);
 
-		if (userService.findPw(email, phone) == null) {
+		if (userService.findPw(map) == null) {
 			response = "회원가입시 기입했던 이메일, 핸드폰 번호 다시 한번 확인하여 기입 바랍니다.";
 		} else {
-			String pw = userService.findPw(email, phone);
+			String pw = userService.findPw(map);
 
 			String setFrom = "foodiengreen@gmail.com";
 			String toMail = email;
@@ -228,6 +241,33 @@ public class UserController {
 		}
 		return response;
 	}
+	
+	@GetMapping("/mypage")
+	public String mypage(HttpSession session) {		
+		return "/user/mypage";
+	}
+	
+	@GetMapping("/mypage/delete")
+	@ResponseBody
+	public void deleteUser(HttpSession session) {
+		UserDTO user =(UserDTO)session.getAttribute("user");
+		String email = user.getEmail();
+		userService.deleteUser(email);
+		session.invalidate();
+	}
+	
+	@GetMapping("/mypage/edit")
+	public String editUser() {
+		return "/user/mypage";
+	}
+	
+	@PostMapping("/mypage/edit")
+	@ResponseBody
+	public void editUser(UserDTO userdto, HttpSession session) {
+		userService.editUser(userdto);
+		session.setAttribute("user", userdto);
+	}
+	
 	/**
 	 * 카카오 로그인 API [GET] /app/login/kakao
 	 * 

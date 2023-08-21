@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>네이버로그인</title>
+<title>로그인</title>
 
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
@@ -28,10 +28,11 @@
 <body>
 <%@ include file="../home/header.jsp"%>
 
-	<div class="menu">메뉴</div>
 	<div class="login_background">
 	<div class="login_buttons">
+	
 	<p class="login_title">로그인/회원가입</p>
+	
 	<p class="login_subtitle">Foodie&Green</p>
 	<p class="login_subtitle">우리 서비스는 친환경 채소로 당신의 건강을 책임집니다</p><br>
 	<div class="result">
@@ -41,6 +42,7 @@
 	</a><br>
 	<button class="login_email">이메일로 계속하기</button>
 	</div>
+	
 	<p class="signin">아직 회원이 아니신가요? <a href="/signin" class="signin_a"> 회원가입</a></p>
 	</div>
 	</div>
@@ -67,31 +69,7 @@
 	    });
 	  }
 
-	  // 아래는 데모를 위한 UI 코드입니다.
-	  /*displayToken()
-
-	  function displayToken() {
-	    var token = getCookie('authorize-access-token');
-
-	    if(token) {
-	      Kakao.Auth.setAccessToken(token);
-	      Kakao.Auth.getStatusInfo()
-	        .then(function(res) {
-	          if (res.status === 'connected') {
-	            document.getElementById('token-result').innerText
-	              = 'login success, token: ' + Kakao.Auth.getAccessToken();
-	          }
-	        })
-	        .catch(function(err) {
-	          Kakao.Auth.setAccessToken(null);
-	        });
-	    }
-	  }
-
-	  function getCookie(name) {
-	    var parts = document.cookie.split(name + '=');
-	    if (parts.length === 2) { return parts[1].split(';')[0]; }
-	  }*/
+	  
 	</script>
 <%@ include file="../home/footer.jsp"%>
 

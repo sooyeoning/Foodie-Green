@@ -28,7 +28,7 @@
 			<% 
 String login=null;
 String username =null;
-if((String)session.getAttribute("login")!=null){
+if((String)session.getAttribute("login")!=null && (UserDTO)session.getAttribute("user")!=null){
 	login=(String)session.getAttribute("login");
 	UserDTO userdto = (UserDTO)session.getAttribute("user");
 	username = userdto.getName();

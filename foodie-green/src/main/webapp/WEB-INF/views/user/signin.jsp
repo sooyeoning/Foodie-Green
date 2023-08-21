@@ -15,9 +15,8 @@
 
 <body>
 <%@ include file="../home/header.jsp"%>
-<br>
-	<div class="menu">메뉴</div>
-	<p class="signin_title">회원가입</p>
+
+	<p class="signin_title paddingtop120">회원가입</p>
 	<div id="signinForm">
 	<p class="font20 bottom0">이름</p>	
 	<div class="font15 top1vh pointcolor" id="name_msg"> </div>
@@ -32,13 +31,13 @@
 	<div class="font15 top1vh pointcolor " id="email_msg"></div>
 	<input type="email" class="input" placeholder="이메일을 입력해주세요" id="email" >
 	<button class="email_check" onclick="email_check();">이메일 중복확인</button>
-	
-	<!--<p class="font20 bottom0">이메일 인증번호 받기</p>
+	<!--
+	<p class="font20 bottom0">이메일 인증번호 받기</p>
 	<input type="text" class="input" placeholder="인증번호를 입력해주세요" id="secretkey" >
 	<button class="secretkey_check" onclick="secretkey_check();">인증번호 받기</button>
 	<div class="font15 top1vh pointcolor" id="secretkey_msg"></div>
 	
-	<button class="email_auth_btn">인증번호 요청</button>
+	<button class="email_auth_btn">인증번호 확인</button>
 	<input type="text" placeholder="인증번호 입력" id="email_auth_key"> -->
 	
 	<p class="font20 bottom0">비밀번호</p>

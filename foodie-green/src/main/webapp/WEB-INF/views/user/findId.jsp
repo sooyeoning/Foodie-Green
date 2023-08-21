@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>이메일 찾기</title>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/user/findId.js"></script>
@@ -15,9 +15,8 @@
 </head>
 <body>
 <%@ include file="../home/header.jsp"%>
-<br><br><br><br><br><br><br><br>
 
-	<div class="center">
+	<div class="center paddingtop120">
 	<p class="login_title">이메일 찾기</p>
 	<p class="font20">이름</p>
 	<input type="text" class="input" name="name" placeholder="이름을 입력해주세요" id="name">

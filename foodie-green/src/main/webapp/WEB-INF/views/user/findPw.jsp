@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>비밀번호 찾기</title>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/user/findPw.js"></script>
@@ -15,9 +15,8 @@
 </head>
 <body>
 <%@ include file="../home/header.jsp"%>
-<br><br><br><br><br><br><br><br>
 
-	<div class="center">
+	<div class="center paddingtop120">
 	<p class="login_title">비밀번호 찾기</p>
 	<p class="font20 bottom0">이메일</p>
 	<p class="font15 top1vh pointcolor">비밀번호 인증 메일이 가는 주소입니다.</p>

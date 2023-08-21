@@ -11,10 +11,21 @@
 font-family: 'GangwonEdu_OTFBoldA';
 }
 
-body{
-	margin: 0;
+.paddingtop120{
+	padding-top: 120px;
 }
-
+input[class=emailwhite]::placeholder{
+	color: white; 
+}
+input[class=pwwhite]::placeholder{
+	color: white; 	
+}
+   input[class=emailwhite]{
+       color: white;
+      }
+       input[class=pwwhite]{
+       color: white;
+      }
 .menu{
 	font-size: 30px;
 	height: 60px;
@@ -55,7 +66,7 @@ body{
 	font-size: 25px;
 	margin: 0 auto;	
 }
-.signin_title{
+.signin_title, .edit_title{
 	color: #FFB3A7;
 	font-size: 25px;
 	text-align: center;
@@ -110,7 +121,7 @@ body{
 .loginInput input::placeholder {
   color: white;
 }
-.signinbtn, .nick_check, .email_check, .secretkey_check{
+.signinbtn, .nick_check, .email_check, .secretkey_check, .editbtn, .deletebtn{
 	width: 8vw;
 	height: 5vh;
 	border-radius: 10px;
@@ -120,6 +131,7 @@ body{
 	justify-self: end; 
 	margin-right: -1vw;
 }
+
 .loginbtn, .findIdbtn, .findPwbtn{
 	width: 31vw;
 	height: 8vh;
@@ -155,4 +167,10 @@ body{
 }
 .font15{
 	font-size: 15px;
+}
+.float_left{
+	float: left;
+}
+.marginleft15{
+	margin-left: 12%;
 }
