@@ -1,6 +1,7 @@
 package user;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void deleteUser(String email) {
 		usermapper.deleteUser(email);
+	}
+
+	@Override
+	public  List<UserDiaryDTO> getDiary(String writer) {
+		return usermapper.getDiary(writer);
 	}
 	
 	

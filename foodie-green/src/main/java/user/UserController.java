@@ -1,6 +1,7 @@
 package user;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -268,6 +269,7 @@ public class UserController {
 		session.setAttribute("user", userdto);
 	}
 	
+
 	/**
 	 * 카카오 로그인 API [GET] /app/login/kakao
 	 * 

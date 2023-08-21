@@ -58,4 +58,12 @@
 	delete from user
 	where email=#{email};
 	</delete>
+	
+	<!-- 글쓴 내역 불러오기 -->
+	<select id="getDiary" parameterType="String" resultType="UserDiaryDTO">
+	select id,title, contents, recipes, writer, writing, likecnt, photo, 
+	(select count(*) from diary where writer=#{count} ) count
+	from diary d 
+	where writer=#{writer};
+	</select>
 </mapper>

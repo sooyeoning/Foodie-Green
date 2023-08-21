@@ -48,7 +48,7 @@
 	<div class="font15 top1vh pointcolor " id="phone_msg"></div>
 	<input type="text" class="input" placeholder="휴대폰 번호를 입력하세요" id="phone">
 	 
-	<button type="button" class="signinbtn" >회원가입 완료</button>
+	<button type="button" class="signinbtn bottom10" >회원가입 완료</button>
 	</div>
 	<%@ include file="../home/footer.jsp"%>
 	

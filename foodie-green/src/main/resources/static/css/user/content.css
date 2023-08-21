@@ -1,36 +1,67 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'GangwonEdu_OTFBoldA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
-*{
-font-family: 'GangwonEdu_OTFBoldA';
+* {
+	font-family: 'GangwonEdu_OTFBoldA';
 }
 
-.paddingtop120{
+/*bootstrap*/
+.nav-link {
+	color: black;
+}
+
+.nav-pills {
+	--bs-nav-pills-border-radius: var(--bs-border-radius);
+	--bs-nav-pills-link-active-color: #fff;
+	--bs-nav-pills-link-active-bg: #FFB3A7;
+}
+
+:root, [data-bs-theme=light] {
+	--bs-link-hover-color: #FFB3A7;
+}
+
+.paddingleft10 {
+	padding-left: 10vw;
+}
+
+.marginleft10 {
+	margin-left: 10vw;
+}
+
+.paddingtop120 {
 	padding-top: 120px;
 }
-input[class=emailwhite]::placeholder{
-	color: white; 
+
+input[class=emailwhite]::placeholder {
+	color: white;
 }
-input[class=pwwhite]::placeholder{
-	color: white; 	
+
+input[class=pwwhite]::placeholder {
+	color: white;
 }
-   input[class=emailwhite]{
-       color: white;
-      }
-       input[class=pwwhite]{
-       color: white;
-      }
-.menu{
+
+input[class=emailwhite] {
+	color: white;
+}
+
+input[class=pwwhite] {
+	color: white;
+}
+
+.menu {
 	font-size: 30px;
 	height: 60px;
 }
-.login_background{
+
+.login_background {
 	min-height: calc(100vh - 60px);
 	background-image: url("/img/user/market.png");
 	background-size: cover;
@@ -38,16 +69,17 @@ input[class=pwwhite]::placeholder{
 	position: relative;
 }
 
-.login_buttons{
+.login_buttons {
 	max-width: 30vw;
 	text-align: center;
 	/* 수직 중앙 정렬하기 */
- 	position: absolute;
-    top: 50%;
-    left: 50%;
-  	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
-.login_email{
+
+.login_email {
 	border-width: 3px;
 	border-radius: 10px;
 	border: 2px solid white;
@@ -59,46 +91,57 @@ input[class=pwwhite]::placeholder{
 	font-weight: bold;
 	margin-top: 3vh;
 	font-size: 20px;
-	
 }
-.login_title{
+
+.login_title {
 	color: #FFB3A7;
 	font-size: 25px;
-	margin: 0 auto;	
+	margin: 0 auto;
 }
-.signin_title, .edit_title{
+
+.signin_title {
 	color: #FFB3A7;
 	font-size: 25px;
 	text-align: center;
 }
-.login_title_email{
-	color: white;
+
+.edit_title, .delete_title {
+	color: #FFB3A7;
 	font-size: 25px;
-	margin: 1vh auto 2vh;	
-}
-.login_subtitle{
-	color: white;
-	font-size: 20px;
-	text-align: center;	
 }
 
-.signin{
+.login_title_email {
+	color: white;
+	font-size: 25px;
+	margin: 1vh auto 2vh;
+}
+
+.login_subtitle {
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
+.signin {
 	font-size: 20px;
 	color: white;
 	margin-top: 3vh;
 }
-.signin_a{
+
+.signin_a {
 	font-size: 20px;
 	color: #FFB3A7;
 	margin-top: 3vh;
 }
-#signinForm, .center{
+
+#signinForm, .center {
 	/* 수직 중앙 정렬하기 */
 	display: grid;
-    justify-content: center;
-    align-content: center;   
+	justify-content: center;
+	align-content: center;
 }
-#input, .input{
+
+#input, .input {
 	width: 30vw;
 	height: 8vh;
 	border-radius: 10px;
@@ -107,7 +150,8 @@ input[class=pwwhite]::placeholder{
 	padding-left: 3%;
 	margin: 0 auto 2vh;
 }
-#loginInput{
+
+#loginInput {
 	width: 30vw;
 	height: 8vh;
 	border-radius: 10px;
@@ -116,23 +160,25 @@ input[class=pwwhite]::placeholder{
 	padding-left: 3%;
 	margin: 0 auto 2vh;
 	background-color: transparent;
-	
 }
+
 .loginInput input::placeholder {
-  color: white;
+	color: white;
 }
-.signinbtn, .nick_check, .email_check, .secretkey_check, .editbtn, .deletebtn{
+
+.signinbtn, .nick_check, .email_check, .secretkey_check, .editbtn,
+	.deletebtn {
 	width: 8vw;
 	height: 5vh;
 	border-radius: 10px;
 	border: 1px solid #FFB3A7;
 	background-color: #FFB3A7;
 	color: white;
-	justify-self: end; 
+	justify-self: end;
 	margin-right: -1vw;
 }
 
-.loginbtn, .findIdbtn, .findPwbtn{
+.loginbtn, .findIdbtn, .findPwbtn {
 	width: 31vw;
 	height: 8vh;
 	border-radius: 10px;
@@ -144,33 +190,47 @@ input[class=pwwhite]::placeholder{
 	margin-bottom: 6vh;
 }
 
-.emailbtn, .pwbtn{
-	background-color: transparent ;
-    border: none ;
+.emailbtn, .pwbtn {
+	background-color: transparent;
+	border: none;
 	width: 31vw;
-	display:contents; 
+	display: contents;
 	color: white;
 	font-size: 20px;
 }
 
-.font20{
+.font20 {
 	font-size: 20px;
 }
-.bottom0{
+
+.font40 {
+	font-size: 40px;
+}
+
+.bottom0 {
 	margin-bottom: 0;
 }
-.top1vh{
+
+.bottom10 {
+	margin-bottom: 10vh;
+}
+
+.top1vh {
 	margin-top: 1vh;
 }
-.pointcolor{
+
+.pointcolor {
 	color: orange;
 }
-.font15{
+
+.font15 {
 	font-size: 15px;
 }
-.float_left{
+
+.float_left {
 	float: left;
 }
-.marginleft15{
+
+.marginleft12 {
 	margin-left: 12%;
 }
