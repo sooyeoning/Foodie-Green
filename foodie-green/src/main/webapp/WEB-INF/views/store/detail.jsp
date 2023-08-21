@@ -10,9 +10,9 @@
 <link rel="stylesheet" href="/css/store/detail.css">
 <script defer="defer" src="js/store/detail.js"></script>
 </head>
-<body>
+<body >
 <%@ include file="../home/header.jsp"%>
-
+<span style="padding-top:40px;"></span>
 <div class = "card-wrapper">
   <div class = "card">
     <!-- card left -->
