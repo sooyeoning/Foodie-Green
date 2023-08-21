@@ -23,6 +23,8 @@
 		ORDER BY likecnt DESC
 	</select>
 
-
+    <select id="getDiaryById" resultType="DiaryDTO">
+        SELECT * FROM diary WHERE id = #{id}
+    </select>
 </mapper>
 

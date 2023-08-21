@@ -26,5 +26,10 @@ public class DiaryDAOImpl implements DiaryDAO {
 	public List<DiaryDTO> getPopularDiaries() {
 		return sqlSession.selectList("getPopularDiaries");
 	}
+
+	@Override
+	public DiaryDTO getDiaryById(int id) {
+		return sqlSession.selectOne("getDiaryById",id);
+	}
 	
 }

@@ -2,26 +2,23 @@
 <!DOCTYPE html>
 <html> 
 <head>
-<link rel="stylesheet" href="/css/recipes/imsiheaderfooter.css">
+
 <link rel="stylesheet" href="/css/recipes/diarywrite.css">
 <script defer="defer" src="js/recipes/diarywrite.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<header class="header">
-		<nav class="navbar">
-			<ul class="nav-list">
-				<li><a href="/">Home</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-			</ul>
-		</nav>
+	<!-- header -->
+	<header style="margin-top: -22px;">
+		<%@ include file="../home/header.jsp"%>
 	</header>
 	<div class="title-container">
 		<form id="diary-form" method="post" action="diarywrite" enctype="multipart/form-data">
 			<input class="backbutton" type="button" value="<"> <span class="title">식단일기 작성</span> <input class="writebutton" type="submit" value="완료">
 			<div class="tip-container">
-				<span class="tip">업로드 완료 시 적립금 NP</span><br> <span class="tip2">*반복적이거나 성의 없는 콘텐츠는 관리자에 의해 <br> 콘텐츠 삭제 후 적립금이 반환 될 수 있습니다.</span>
+				<span class="tip">업로드 완료 시 적립금 NP</span><br> <span class="tip2">*반복적이거나 성의 없는 콘텐츠는 관리자에 의해<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				콘텐츠 삭제 후 적립금이 반환 될 수 있습니다.</span>
 			</div>
 			
     <div class="upload-container">
@@ -64,9 +61,8 @@
 			<input type="hidden" name="recipes">
 		</form>
 	</div>
-	<footer class="footer">
-		<p>&copy; 2023 Your Company. All rights reserved.</p>
-	</footer>
+	<!-- footer -->
+	<%@ include file="../home/footer.jsp"%>
 	
 <script>
 function previewImage() {

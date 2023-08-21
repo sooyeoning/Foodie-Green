@@ -1,33 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/recipes/imsiheaderfooter.css">
 <link rel="stylesheet" href="/css/recipes/recipes.css">
 <script defer="defer" src="js/recipes/recipes.js"></script>
 <title>recipes</title>
 </head>
 <body>
-	<header class="header">
-		<nav class="navbar">
-			<ul class="nav-list">
-				<li><a href="/">Home</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-				<!-- Add more menu items here -->
-			</ul>
-		</nav>
+	<!-- header -->
+	<header style="margin-top: -22px;">
+		<%@ include file="../home/header.jsp"%>
 	</header>
 
 	<h2 style="">오늘의 채소 요리는?</h2>
 	<div class="input-container">
-		<a href="fgrecipes">푸드앤그린 레시피</a>
-		<a href="diary">식단일기</a>
-		<a href="recipeswrite">북마크</a>
-	<!-- 	<a href="recipeswrite">레시피 페이퍼</a> -->
+		<a href="fgrecipes">푸드앤그린 레시피</a> <a href="diary">식단일기</a> <a
+			href="recipeswrite">북마크</a>
+		<!-- 	<a href="recipeswrite">레시피 페이퍼</a> -->
 	</div>
 	<br>
 	<div class="searchdiv">
@@ -52,12 +46,21 @@
 	</div>
 	<div class="recipes-container">
 		<div>
-			<a href="/" >푸디앤그린 레시피 N ></a><br>
+			<a href="/">푸디앤그린 레시피 N ></a><br>
 			<div class="recipes-buttons">
-				<button id="recipes-button"></button>
-				<button id="recipes-button"></button>
+				<c:forEach var="recipe" items="${recipes}" begin="0" end="1">
+					<div class="recipe-item">
+						<a href="recipesdetail/${recipe.id}"> <img
+							alt="이미지" src="${recipe.photo}">
+							<div class="recipe-name">${recipe.recipe_name}</div>
+						</a>
+						<div class="recipe-category">${recipe.category}</div>
+						<div class="recipe-subcategory">${recipe.sub_category}</div>
+					</div>
+				</c:forEach>
 			</div>
-			<div>
+
+<!-- 			<div>
 				<a href="/">HOT 인기 레시피 ></a><br>
 				<div class="recipes-buttons">
 					<button id="recipes-button2"></button>
@@ -65,9 +68,9 @@
 					<button id="recipes-button2"></button>
 					<button id="recipes-button2"></button>
 				</div>
-			</div>
+			</div> -->
 
-			<div>
+<!-- 			<div>
 				<a href="/">내 채소 맞춤 레시피 ></a><br>
 				<div class="recipes-buttons">
 					<button id="recipes-button2"></button>
@@ -75,15 +78,21 @@
 					<button id="recipes-button2"></button>
 					<button id="recipes-button2"></button>
 				</div>
-			</div>
+			</div> -->
 
 			<div>
 				<a href="/">최신 레시피 N ></a><br>
 				<div class="recipes-buttons">
-					<button id="recipes-button3"></button>
-					<button id="recipes-button3"></button>
-					<button id="recipes-button3"></button>
-					<button id="recipes-button3"></button>
+				<c:forEach var="recipe" items="${recipes}" begin="0" end="3">
+					<div class="new-recipe-item">
+						<a href="recipesdetail/${recipe.id}"> <img
+							alt="이미지" src="${recipe.photo}">
+							<div class="new-recipe-name">${recipe.recipe_name}</div>
+						</a>
+						<div class="recipe-category">${recipe.category}</div>
+						<div class="recipe-subcategory">${recipe.sub_category}</div>
+					</div>
+				</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -94,15 +103,11 @@
 				<button class="recipes-btn">+업로드</button>
 			</span>
 			<div class="write-dropdown">
-				<a href="recipeswrite">레시피</a><br>
-				 <a href="diarywrite">식단일기</a>
+				<a href="recipeswrite">레시피</a><br> <a href="diarywrite">식단일기</a>
 			</div>
 		</div>
 	</div>
-
-
-	<footer class="footer">
-		<p>&copy; 2023 Your Company. All rights reserved.</p>
-	</footer>
+	<!-- footer -->
+	<%@ include file="../home/footer.jsp"%>
 </body>
 </html>

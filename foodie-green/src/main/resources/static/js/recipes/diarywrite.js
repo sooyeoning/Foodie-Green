@@ -28,7 +28,7 @@ document.querySelector("#diary-form").addEventListener("submit", function (event
             if (xhr.status === 200) {
                 var isSaved = confirm("식단일기가 저장되었습니다.");
                 if (isSaved) {
-                    window.location.href = "diarydetail"; // URL을 diarydetail.jsp로 변경
+                    window.location.href = "diary"; // URL을 diarydetail.jsp로 변경
                 }
             } else {
                 alert("식단일기 저장에 실패하였습니다.");

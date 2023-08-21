@@ -1,6 +1,11 @@
 @charset "UTF-8";
+ 
+body {
+	background-color: #FDEEDC;
+}
 
 h2 {
+	padding-top: 130px;
 	margin-bottom: 3vw;
 	text-align: center;
 	font-size: 26px;
@@ -10,16 +15,24 @@ h2 {
 	text-align: center;
 }
 
+.img-sum img {
+	width: 450px;
+	height: 400px;
+	object-fit: cover;
+}
+
 .detail-title {
 	margin-top: 50px;
 	margin-left: 4%;
 	margin-right: 4%;
 	border-bottom: 1px solid lightgray;
 	margin-bottom: 30px;
+	display: flex; /* Flexbox를 사용하도록 설정 */
+	justify-content: space-between; /* 좌우 사이에 공간을 배분 */
+	align-items: center; /* 세로 중앙 정렬 */
 }
 
 .detail-title .title-date {
-	margin-right: 65%;
 	font-size: 2vw;
 	font-weight: 900;
 }
@@ -30,19 +43,22 @@ h2 {
 	background-color: #FFB3A7;
 	padding: 5px;
 	margin-bottom: 5px;
+	font-family: 'GangwonEdu_OTFBoldA';
 }
-.detail-content{
+
+.detail-content {
 	margin-left: 4%;
 }
 
-.detail-content .detail-user{
-	margin-bottom: 30px;
-}
-.detail-content .contents{
+.detail-content .detail-user {
 	margin-bottom: 30px;
 }
 
-.selectline{
+.detail-content .contents {
+	margin-bottom: 30px;
+}
+
+.selectline {
 	border: 8px solid #f9fafb;
 	margin-left: 4%;
 	margin-right: 4%;
@@ -79,9 +95,8 @@ h2 {
 	text-decoration: none;
 	border: none;
 	background-color: #FFB3A7;
+	font-family: 'GangwonEdu_OTFBoldA';
 }
-
-
 
 /*플로팅 버튼 스타일========*/
 .move-recipes {

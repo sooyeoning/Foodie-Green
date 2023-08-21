@@ -6,5 +6,6 @@ public interface DiaryDAO {
 	void saveDiary(DiaryDTO dto);
 	List<DiaryDTO> getRecentDiaries();
 	List<DiaryDTO> getPopularDiaries();
+	DiaryDTO getDiaryById(int id);
 	
 }

@@ -1,6 +1,10 @@
 @charset "UTF-8";
-
+ 
+body{
+	background-color:#FDEEDC;
+}
 .title-container {
+	padding-top: 130px;
 	text-align: center;
 	margin-bottom: 20px;
 }
@@ -8,6 +12,7 @@
 	margin-left: 100px;
 	margin-right: 100px;
 	font-size: 20px;
+	
 }
 .title-container .writebutton{
 	font-size: 18px;
@@ -21,16 +26,17 @@
 	color: #333333;
 	border: 0 solid white;
 	background-color: white;
+	background-color:#FDEEDC;
 }
 .tip-container{
 	text-align: center;
 	padding:20px;
 	margin: 30px 33% 0 33%;
-	background-color: #FDEEDC;
+	background-color: #FFB3A7;
 }
 .tip-container .tip{
 	font-size: 18px;
-	color: #FFB3A7;
+	color: #FDEEDC;
 	font-weight: 600;
 }
 .tip-container .tip2{
@@ -54,12 +60,23 @@
 	margin-right: 5px;
 	font-size: 32px;
 }
+.diary-name .diary-info{
+	resize: none;
+	border: none;
+	font-size: 14px;
+	outline: none;
+	background-color:#FDEEDC;
+	width: 42%; /* 너비를 diary-date와 동일하게 설정 */
+	height: 300px; /* 원하는 높이로 설정 */
+}
+
 .diary-name .diary-date{
 	border: none;
 	width: 42%;
 	font-size:18px;
 	outline: none;
 	color: lightgray;
+	background-color:#FDEEDC;
 }
 .diary-name .diary-date::checked{
 	color: #FFB3A7;
@@ -80,6 +97,7 @@
 	border: none;
 	font-size: 14px;
 	outline: none;
+	background-color:#FDEEDC;
 }
 .hashtagname{
 	border: none;

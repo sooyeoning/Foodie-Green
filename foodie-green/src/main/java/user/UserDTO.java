@@ -6,15 +6,26 @@ public class UserDTO {
 	String email; 
 	String pw;
 	String phone;
+	int id;
 	
 	public UserDTO() {}
 	
-	public UserDTO(String name, String nickname, String email, String pw, String phone) {		
+	public UserDTO(int id,String name, String nickname, String email, String pw, String phone) {
+		this.id = id;
 		this.name = name;
 		this.nickname = nickname;
 		this.email = email;
 		this.pw = pw;
 		this.phone = phone;
+	}
+
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNickname() {
