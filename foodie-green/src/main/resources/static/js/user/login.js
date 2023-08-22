@@ -6,7 +6,7 @@ $(document).ready(function() {
 	<form method="post" id="signinForm" action="/userlogin">
 	<input type="text" name="email" placeholder="이메일을 입력해주세요" id="loginemail" class="emailwhite">
 	<div class="pw_eyes">
-  	<input type="password" id="loginpw" class="pwwhite" placeholder="비밀번호를 입력해주세요.">
+  	<input type="password" name="pw" id="loginpw" class="pwwhite" placeholder="비밀번호를 입력해주세요.">
   	<div class="eyes">
   		<i class="fas fa-eye" style="color: #ffb3a7;"></i>
  	 </div>
