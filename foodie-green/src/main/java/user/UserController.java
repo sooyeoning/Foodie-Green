@@ -64,7 +64,7 @@ public class UserController {
 			UserDTO userdto = new UserDTO();
 			
 			if(checkEmail==0) {
-				String pw = "K" + loginService.tempPassword(10) + "!";
+				String pw = "K1" + loginService.tempPassword(10) + "!";
 				//임의 비밀번호 확인: System.out.println(pw);
 				userdto.email = String.valueOf(userInfo.get("email"));
 				userdto.name = String.valueOf(userInfo.get("nickname"));
@@ -80,7 +80,7 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "/user/login";
+		return "/user/mypage";
 	}
 
 	@GetMapping("/callback")

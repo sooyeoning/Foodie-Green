@@ -85,16 +85,16 @@ function edit_check() {
 	if ($.trim(nickname) == "") {
 		$('#nickname_msg').html("필수 입력 항목입니다.");
 		return false;
-	} else if (!regExp_pw.test(pw)) {
+	} else if (!nickCheck ) {
+		alert("닉네임 입력 후 중복확인해주세요.")
+		return false;
+	}else if (!regExp_pw.test(pw)) {
 		$('#pw_msg').html("영문+숫자+특수문자로 이루어진 6~15자리 비밀번호를 입력해주세요.");
 		return false;
 	} else if (!regExp_phone.test(phone)) {
 		$('#phone_msg').html("01x-xxxx-xxxx 형식으로 입력해주세요");
 		return false;
-	} else if (!nickCheck ) {
-		alert("닉네임 입력 후 중복확인해주세요.")
-		return false;
-	}else {
+	} else {
 		event_pass();
 	}
 }
