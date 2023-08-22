@@ -3,7 +3,10 @@
 html {
   box-sizing: border-box;
 }
-
+a {
+	font-size: 30px;
+	text-decoration: none;
+}
 *,
 *:before,
 *:after {
