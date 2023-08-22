@@ -27,9 +27,24 @@ public class DiaryDAOImpl implements DiaryDAO {
 		return sqlSession.selectList("getPopularDiaries");
 	}
 
+
+	@Override
+	public String getWriterbyDiaryId(int diary_id) {
+		return sqlSession.selectOne("getWriterbyDiaryId",diary_id);
+	}
+
+	@Override
+	public int deleteDiary(int diary_id) {
+		return sqlSession.delete("deleteDiary", diary_id);
+	}
 	@Override
 	public DiaryDTO getDiaryById(int id) {
 		return sqlSession.selectOne("getDiaryById",id);
+	}
+
+	@Override
+	public int updateDiary(DiaryDTO diary) {
+		return sqlSession.update("updateDiary",diary);
 	}
 	
 }

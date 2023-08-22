@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class RecipeController {
@@ -20,6 +21,11 @@ public class RecipeController {
 
 		model.addAttribute("recipes", recipes);
 		return "recipes/recipes";
+	}
+	@GetMapping("/api/recipes")
+	@ResponseBody
+	public List<RecipesDTO> getRecipesJson() {
+	    return service.getAllRecipes();
 	}
 	
 	@GetMapping("recipesdetail/{id}")
