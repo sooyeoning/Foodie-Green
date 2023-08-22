@@ -133,8 +133,7 @@
 					<div class="app__text app__text--1">
 						<div class="app__text-line app__text-line--4">신선한 채소 레시피</div>
 						<div class="app__text-line app__text-line--3">풋마늘 겉절이</div>
-						<div class="app__text-line app__text-line--2">저렴하게 신선한 아침식사
-							만들기</div>
+						<div class="app__text-line app__text-line--2"><a href="http://localhost:8888/recipesdetail/1">바로가기</a></div>
 						<div class="app__text-line app__text-line--1">
 							<img
 								src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/537051/opus-attachment.png"
@@ -145,8 +144,7 @@
 					<div class="app__text app__text--2">
 						<div class="app__text-line app__text-line--4">쉽고 간단한 어린이 간식</div>
 						<div class="app__text-line app__text-line--3">토마토 매실절임</div>
-						<div class="app__text-line app__text-line--2">건강하고 달콤한 간식
-							만들기</div>
+						<div class="app__text-line app__text-line--2"><a href="http://localhost:8888/recipesdetail/3">바로가기</a></div>
 						<div class="app__text-line app__text-line--1">
 							<img
 								src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/537051/opus-attachment.png"
