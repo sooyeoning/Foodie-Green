@@ -71,7 +71,7 @@
 				<button class="recipes-btn">+업로드</button>
 			</span>
 			<div class="write-dropdown">
-				<a href="recipeswrite">레시피</a><br> <a href="diarywrite">식단일기</a>
+				<a href="recipeswrite">레시피</a><br> <a href="/diarywrite">식단일기</a>
 			</div>
 		</div>
 	</div>

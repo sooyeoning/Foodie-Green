@@ -9,7 +9,7 @@ var nickCheck = false;
  
 $(document).ready(function() {
 
-	$('.editbtn').click(function() {
+	$('.editbtn_r').click(function() {
 		edit_check();
 	})
 
