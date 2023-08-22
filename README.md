@@ -33,16 +33,14 @@ Communication Tools :
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">  
 ### 📌 주요 기능
 #
-로그인 -  
-회원가입 -  
-마이페이지 -  
-메인페이지 -  
+#### 로그인 -  
+#### 회원가입 -  
+#### 마이페이지 -  
+#### 메인페이지 -  
   
 ![안녕하세요](https://github.com/gamepro6390/Foodie-Green/assets/125335424/6f791c98-7211-49dd-b97f-6e1e3a3a443c)
-
-레시피 게시판 -  
-식단일기 게시판 -  
+#### 식단일기 게시판 -  
   
 ![안녕하세요 (1)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/df6fb9e9-ebcd-4a4f-a0d3-fe0dc1d4b284)
-상품페이지 -  
+#### 상품페이지 -  
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
