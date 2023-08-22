@@ -12,7 +12,7 @@
 		(#{id}, #{diaryid}, #{title}, #{contents}, #{writer}, now(),
 		#{recipes}, #{photo})
 	</insert>
-	
+
 	<select id="getRecentDiaries" resultType="DiaryDTO">
 		SELECT * FROM diary
 		ORDER BY writing DESC
@@ -23,8 +23,24 @@
 		ORDER BY likecnt DESC
 	</select>
 
-    <select id="getDiaryById" resultType="DiaryDTO">
-        SELECT * FROM diary WHERE id = #{id}
-    </select>
+
+	<select id="getWriterbyDiaryId" resultType="string"
+		parameterType="int">
+		SELECT writer FROM diary WHERE id = #{diary_id}
+	</select>
+
+	<delete id="deleteDiary" parameterType="int">
+		DELETE FROM diary WHERE
+		id = #{diary_id}
+	</delete>
+	<select id="getDiaryById" resultType="DiaryDTO">
+		SELECT * FROM diary WHERE id = #{id}
+	</select>
+
+	<update id="updateDiary">
+		UPDATE diary
+		SET title = #{title}, contents = #{contents},photo = #{photo} WHERE
+		id = #{id}
+	</update>
 </mapper>
 

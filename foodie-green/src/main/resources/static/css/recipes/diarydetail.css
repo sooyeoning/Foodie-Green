@@ -46,6 +46,23 @@ h2 {
 	font-family: 'GangwonEdu_OTFBoldA';
 }
 
+.detail-title #delete-button {
+	border: none;
+	color: white;
+	background-color: #FFB3A7;
+	padding: 5px;
+	margin-bottom: 5px;
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+.detail-title #edit-button {
+	border: none;
+	color: white;
+	background-color: #FFB3A7;
+	padding: 5px;
+	margin-bottom: 5px;
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
 .detail-content {
 	margin-left: 4%;
 }

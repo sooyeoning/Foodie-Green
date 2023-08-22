@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DiaryServiceImpl implements DiaryService {
@@ -28,10 +29,6 @@ public class DiaryServiceImpl implements DiaryService {
 		return dao.getPopularDiaries();
 	}
 
-	@Override
-	public DiaryDTO getDiaryById(int id) {
-		return dao.getDiaryById(id);
-	}
 
 	@Override
 	public boolean toggleLike(int user_id, int diary_id) {
@@ -47,6 +44,25 @@ public class DiaryServiceImpl implements DiaryService {
 	        ldao.addLike(likes);
 	        return true; // 좋아요 선택
 	    }
+	}
+
+	@Transactional
+	@Override
+	public boolean deleteDiary(int diary_id, String loggedInUserNickname) {
+		String writer = dao.getWriterbyDiaryId(diary_id);
+		if(writer.equals(loggedInUserNickname)) {
+			return dao.deleteDiary(diary_id) > 0;
+		}
+		return false;
+	}
+
+	@Override
+	public DiaryDTO getDiaryById(int id) {
+		return dao.getDiaryById(id);
+	}
+	@Override
+	public int updateDiary(DiaryDTO diary) {
+		return dao.updateDiary(diary);
 	}
 
 	

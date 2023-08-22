@@ -4,7 +4,7 @@
 <head>
 
 <link rel="stylesheet" href="/css/recipes/diarywrite.css">
-<script defer="defer" src="js/recipes/diarywrite.js"></script>
+<script defer="defer" src="/js/recipes/editdiary.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -14,7 +14,8 @@
 		<%@ include file="../home/header.jsp"%>
 	</header>
 	<div class="title-container">
-		<form id="diary-form" method="post" action="diarywrite" enctype="multipart/form-data">
+		<form id="diary-form" method="post" action="/updateDiary/${diary.id}" enctype="multipart/form-data">
+		<input type="hidden" name="diary_id" value="${diary.id}">
 			<input class="backbutton" type="button" value="<"> <span class="title">식단일기 작성</span> <input class="writebutton" type="submit" value="완료">
 			<div class="tip-container">
 				<span class="tip">업로드 완료 시 적립금 NP</span><br> <span class="tip2">*반복적이거나 성의 없는 콘텐츠는 관리자에 의해<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -23,14 +24,14 @@
 			
     <div class="upload-container">
         <div id="upload-box" class="upload-box" onclick="openImagePicker()">+ 이미지 업로드</div>
-        <input id="photo-upload" name="photo" id="photo" type="file" onchange="previewImage()">
+        <input id="photo-upload" name="photo" id="photo" type="file" onchange="previewImage()" value="${diary.photo}">
     </div>
     
 			<div class="recipes-info">
 				<div class="diary-name">
-					<input name="title" class="diary-date" type="date">
+					<input name="title" class="diary-date" type="date" value="${diary.title}">
 					<p class="sectionline"></p>
-					<textarea name="contents" class="diary-info" rows="7" cols="50" placeholder="자신의 식단을 간단히 소개해주세요."></textarea>
+					<textarea name="contents" class="diary-info" rows="7" cols="50" placeholder="자신의 식단을 간단히 소개해주세요.">${diary.contents}</textarea>
 				</div>
 				<div class="recipes-detail">
 					<p class="sectionline"></p>

@@ -71,7 +71,7 @@
 				<div class="diary-item">
 					<a href="/diarydetail/${diary.id}"> <!-- 해당 게시글의 상세 페이지로 링크 -->
 						<img src="${diary.photo}" alt="Diary Image">
-					</a> <span>${diary.writer}</span><br> <span>${diary.writing}</span>
+					</a> <span style="margin:0px; padding:0px;" >${diary.writer}</span><br> <p>${diary.writing}</p>
 					<a href="/diarydetail/${diary.id}"> <!-- 해당 게시글의 상세 페이지로 링크 -->
 						<p>${diary.contents}</p>
 					</a>

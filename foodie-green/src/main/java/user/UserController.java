@@ -115,6 +115,7 @@ public class UserController {
 		if (userdto != null) {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
+			session.setAttribute("nickname", userdto.nickname);
 			// alert
 			return "redirect:/";
 		} else {

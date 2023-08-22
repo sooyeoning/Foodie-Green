@@ -19,8 +19,8 @@
 
 	<h2 style="">오늘의 채소 요리는?</h2>
 	<div class="input-container">
-		<a href="fgrecipes">푸드앤그린 레시피</a> <a href="diary">식단일기</a> <a
-			href="recipeswrite">북마크</a>
+		<a href="fgrecipes">푸드앤그린 레시피</a> <a href="diary">식단일기</a> 
+		<a href="mypage">북마크</a>
 		<!-- 	<a href="recipeswrite">레시피 페이퍼</a> -->
 	</div>
 	<br>

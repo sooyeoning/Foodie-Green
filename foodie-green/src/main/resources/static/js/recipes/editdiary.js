@@ -7,7 +7,8 @@ document.querySelector("#diary-form").addEventListener("submit", function(event)
 	var contents = document.getElementsByName("contents")[0]?.value;
 	var recipes = document.getElementsByName("recipes")[0]?.value;
 	var photo = document.getElementsByName("photo")[0]?.files[0]; // 파일을 받는 경우
-
+var formAction = document.getElementById("diary-form").action;
+console.log("Form Action URL:", formAction);
 if (!title) {
 		alert('날짜를 먼저 입력해주세요.');
 		return;
@@ -27,14 +28,14 @@ if (!title) {
 
 	// AJAX 요청 생성
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "diarywrite", true);
+	xhr.open("POST", document.getElementById("diary-form").action, true);
 
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			if (xhr.status === 200) {
 				var isSaved = confirm("식단일기가 저장되었습니다.");
 				if (isSaved) {
-					window.location.href = "diary"; // URL을 diarydetail.jsp로 변경
+					window.location.href = "/diary"; // URL을 diarydetail.jsp로 변경
 				}
 			} else {
 				alert("식단일기 저장에 실패하였습니다.");
