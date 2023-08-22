@@ -76,7 +76,7 @@ public class UserController {
 			}
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
-
+			session.setAttribute("nickname", userdto.nickname);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

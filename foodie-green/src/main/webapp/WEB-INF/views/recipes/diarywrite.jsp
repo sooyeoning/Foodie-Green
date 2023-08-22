@@ -10,7 +10,7 @@
 </head>
 <body>
 	<!-- header -->
-	<header style="margin-top: -22px;">
+	<header>
 		<%@ include file="../home/header.jsp"%>
 	</header>
 	<div class="title-container">

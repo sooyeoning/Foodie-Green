@@ -11,6 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	console.log('loggedInUserNickname:', loggedInUserNickname);
 	console.log('writer:', writer);
 
+		// 기존 코드
+		floatingButton.addEventListener('click', function() {
+			/* event.stopPropagation(); */
+			dropdownLayer.classList.toggle('active');
+		});
+		document.addEventListener('click', function(event) {
+			if (!floatingButton.contains(event.target)) {
+				dropdownLayer.classList.remove('active');
+			}
+		});
+
 
 	// 로그인한 사용자와 글 작성자가 동일한 경우 삭제 버튼 표시
 	if (isLoggedIn && loggedInUserNickname === writer) {
@@ -78,16 +89,5 @@ document.addEventListener('DOMContentLoaded', function() {
 			.catch(error => {
 				console.error('An error occurred:', error);
 			});
-
-		// 기존 코드
-		floatingButton.addEventListener('click', function(event) {
-			event.stopPropagation();
-			dropdownLayer.classList.toggle('active');
-		});
-		document.addEventListener('click', function(event) {
-			if (!floatingButton.contains(event.target)) {
-				dropdownLayer.classList.remove('active');
-			}
-		});
 	});
 });
