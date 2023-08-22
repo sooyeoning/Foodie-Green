@@ -37,6 +37,9 @@ Communication Tools :
 회원가입 -  
 마이페이지 -  
 메인페이지 -  
+  
+![안녕하세요](https://github.com/gamepro6390/Foodie-Green/assets/125335424/6f791c98-7211-49dd-b97f-6e1e3a3a443c)
+
 레시피 게시판 -  
 식단일기 게시판 -  
 야채가게 -  
