@@ -39,8 +39,19 @@ Communication Tools :
 #### 메인페이지 -  
   
 ![안녕하세요](https://github.com/gamepro6390/Foodie-Green/assets/125335424/6f791c98-7211-49dd-b97f-6e1e3a3a443c)
-#### 식단일기 게시판 -  
-  
+#### 식단일기  
+**게시글 조회**  
+식단일기 : 사용자 본인만의 일기로써 써나가며 식단을 조절하고 다른 사용자에게 공유함으로써 공감대 형성  
+**글 작성**  
+이미지 등록 및 정보 입력 가능  
+**글 상세 조회**  
+타이틀,좋아요 수,댓글 수,작성자,작성날짜 조회
+사용자마다 같은 게시글은 한번만 좋아요 가능(한번 더 누를 경우 좋아요 취소)    
+**사용자 본인 글일 경우**  
+글 수정,글 삭제 버튼 추가로 조회 가능
+글 수정시, 썸네일,내용 모두 수정 가능  
+글 삭제시, 게시글 리스트에서 확인 가능
+
 ![안녕하세요 (1)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/df6fb9e9-ebcd-4a4f-a0d3-fe0dc1d4b284)
 #### 상품페이지 -  
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
