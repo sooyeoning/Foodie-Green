@@ -44,5 +44,5 @@ Communication Tools :
 식단일기 게시판 -  
   
 ![안녕하세요 (1)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/df6fb9e9-ebcd-4a4f-a0d3-fe0dc1d4b284)
-상품페이지 -  
+상품페이지 -  
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
