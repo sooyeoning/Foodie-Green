@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +13,8 @@
 <link href="/css/user/content.css" rel="stylesheet" type="text/css"/>
 
 </head>
-
 <body>
-<%@ include file="../home/header.jsp"%>
-
+<%@ include file="../home/header.jsp" %>
 	<p class="signin_title paddingtop120">회원가입</p>
 	<div id="signinForm">
 	<p class="font20 bottom0">이름</p>	

@@ -31,7 +31,7 @@
 	<div class="login_background">
 	<div class="login_buttons">
 	
-	<p class="login_title">로그인/회원가입</p>
+	<p class="login_title paddingtop120">로그인/회원가입</p>
 	
 	<p class="login_subtitle">Foodie&Green</p>
 	<p class="login_subtitle">우리 서비스는 친환경 채소로 당신의 건강을 책임집니다</p><br>
@@ -65,7 +65,7 @@
 	function loginWithKakao() {
 	    Kakao.Auth.authorize({
 	      redirectUri: 'http://localhost:8888/login_kakao',
-	      scope: "account_email"
+	      scope: "account_email profile_nickname"
 	    });
 	  }
 

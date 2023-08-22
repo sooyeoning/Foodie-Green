@@ -16,8 +16,8 @@
 <body>
 <%@ include file="../home/header.jsp"%>
 
-	<div class="center paddingtop120">
-	<p class="login_title">이메일 찾기</p>
+	<div class="center paddingtop120" >
+	<p class="title">이메일 찾기</p>
 	<p class="font20">이름</p>
 	<input type="text" class="input" name="name" placeholder="이름을 입력해주세요" id="name">
 	<p class="font20">휴대폰 번호</p>

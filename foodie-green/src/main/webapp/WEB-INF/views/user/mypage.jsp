@@ -36,7 +36,7 @@
 	String phone = userdto.getPhone();
 	String pw = userdto.getPw();
 	%>
-	<div class="d-flex align-items-start paddingtop120">
+	<div class="d-flex align-items-start paddingtop120 height70">
 	 <!-- 메뉴바 목록 -->
          <div class="d-flex align-items-start marginleft12">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -56,8 +56,11 @@
               readonly="readonly">
             <p class="font20 bottom0">닉네임</p>
             <div class="font15 top1vh pointcolor" id="nickname_msg"></div>
+            <div class="p_relative">
             <input type="text" class="input" value=<%=nickname%> id="nickname"><br>
-            <button class="nick_check" onclick="nick_check();">닉네임 중복확인</button>
+            <button class="nick_check_r" onclick="nick_check();">중복확인</button>
+            </div>
+            <br><br>
             <p class="font20 bottom0">이메일</p>
             <input type="email" class="input" value=<%=email%> id="email"
               readonly="readonly">
@@ -67,7 +70,7 @@
             <p class="font20 bottom0">휴대폰 번호</p>
             <div class="font15 top1vh pointcolor " id="phone_msg"></div>
             <input type="text" class="input" value=<%=phone%> id="phone"><br>
-            <button type="button" class="editbtn bottom10">수정 완료</button>
+            <button type="button" class="editbtn_r bottom10">수정 완료</button>
           </div>
           <div class="tab-pane fade" id="v-pills-purchasedItems" role="tabpanel" aria-labelledby="v-pills-purchasedItems-tab">서비스 제공 예정입니다.</div>
           <div class="tab-pane fade" id="v-pills-wishItems" role="tabpanel" aria-labelledby="v-pills-wishItems-tab">서비스 제공 예정입니다.</div>
@@ -78,7 +81,7 @@
             <p class="font20">1. 탈퇴 시, 구독 정보와 회원 정보, 보유 쿠폰 등 모든 정보가 영구적으로 삭제되며 복구가 불가능합니다.</p>
             <p class="font20" style="color:red;">2. 탈퇴 후 6개월간 동일한 계정으로 재가입이 불가능합니다.</p>
             <p class="font20">정말 탈퇴를 진행하시겠습니까?</p>
-            <button class="deletebtn">탈퇴하기</button></div>
+            <button class="deletebtn_r">탈퇴하기</button></div>
         
 	<!-- 메뉴바 끝 -->
 	</div></div></div>

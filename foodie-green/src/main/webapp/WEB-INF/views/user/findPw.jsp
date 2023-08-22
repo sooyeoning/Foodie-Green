@@ -17,7 +17,7 @@
 <%@ include file="../home/header.jsp"%>
 
 	<div class="center paddingtop120">
-	<p class="login_title">비밀번호 찾기</p>
+	<p class="title">비밀번호 찾기</p>
 	<p class="font20 bottom0">이메일</p>
 	<p class="font15 top1vh pointcolor">비밀번호 인증 메일이 가는 주소입니다.</p>
 	<input type="text" placeholder="회원가입시 등록하신 이메일을 입력해주세요" id="email" class="input">

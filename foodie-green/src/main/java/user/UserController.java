@@ -55,7 +55,6 @@ public class UserController {
 			System.out.println("login Controller : " + userInfo);
 			System.out.println("login Controller : " + userInfo.get("nickname"));
 			System.out.println("login Controller : " + userInfo.get("email"));
-			System.out.println("login Controller : " + userInfo.get("email"));
 			
 			//이메일 중복체크
 			int checkEmail = userService.checkEmail(String.valueOf(userInfo.get("email")));

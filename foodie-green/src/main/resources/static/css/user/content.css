@@ -12,7 +12,12 @@
 * {
 	font-family: 'GangwonEdu_OTFBoldA';
 }
-
+header{
+	padding-top: 10px;
+}
+body{
+	 background-color:#FDEEDC; 
+}
 /*bootstrap*/
 .nav-link {
 	color: black;
@@ -98,15 +103,23 @@ input[class=pwwhite] {
 	font-size: 25px;
 	margin: 0 auto;
 }
+.title {
+	font-size: 25px;
+	margin: 0 auto;
+}
+.p_relative{
+	position: relative;
+}
+.height70{
+	min-height: 70vh;
+}
 
 .signin_title {
-	color: #FFB3A7;
 	font-size: 25px;
 	text-align: center;
 }
 
 .edit_title, .delete_title {
-	color: #FFB3A7;
 	font-size: 25px;
 }
 
@@ -165,7 +178,13 @@ input[class=pwwhite] {
 .loginInput input::placeholder {
 	color: white;
 }
-
+.position_inherit{
+	position: inherit;
+}
+/*header top 0px*/
+header{
+	top: 0px;
+}
 .signinbtn, .nick_check, .email_check, .secretkey_check, .editbtn,
 	.deletebtn {
 	width: 8vw;
@@ -176,6 +195,15 @@ input[class=pwwhite] {
 	color: white;
 	justify-self: end;
 	margin-right: -1vw;
+}
+.nick_check_r, .editbtn_r, .deletebtn_r{
+	width: 8vw;
+	height: 5vh;
+	border-radius: 10px;
+	border: 1px solid #FFB3A7;
+	background-color: #FFB3A7;
+	color: white;
+	float: right; 
 }
 
 .loginbtn, .findIdbtn, .findPwbtn {
