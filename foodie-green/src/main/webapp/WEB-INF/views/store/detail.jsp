@@ -9,10 +9,13 @@
 <script src="/js/jquery-3.6.4.min.js"></script>
 <link rel="stylesheet" href="/css/store/detail.css">
 <script defer="defer" src="js/store/detail.js"></script>
+<script defer="defer" src="js/store/detail2.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js" type="text/javascript"></script>
 </head>
 <body >
 <%@ include file="../home/header.jsp"%>
-<span style="padding-top:40px;"></span>
+<span style="padding-top:20px;"></span>
 <div class = "card-wrapper">
   <div class = "card">
     <!-- card left -->
@@ -74,7 +77,7 @@
 
       <div class = "purchase-info">
         <input type = "number" min = "0" value = "1">
-        <button type = "button" class = "btn">
+        <button type = "button" class = "btn" id="money-btn">
           <p>즉시 구매하기</p> <i class = "fas fa-shopping-cart"></i>
         </button>
         <button type = "button" class = "btn"><p>장바구니 담기</p></button>
@@ -101,10 +104,17 @@
     </div>
   </div>
 </div>
+
+
+
 <div style="width:66%; text-align:center; margin:0 auto;">
 <h2>상세 정보</h2>
 <img src=img/store/${getDetail.id}.png>
 </div>
+
+
+
+
  <%@ include file="../home/footer.jsp"%>
 </body>
 </html>
