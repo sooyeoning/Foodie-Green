@@ -6,7 +6,7 @@
 
 ### 🧑‍🤝‍🧑 멤버 구성
 #
-팀장 : [신장훈](https://github.com/gamepro6390) - 마켓 페이지,결제 서비스  
+팀장 : [신장훈](https://github.com/gamepro6390) - (제품 리스트,제품 상세) 페이지,결제 서비스  
 팀원 : [신연균](https://github.com/SHIN-YEONGYUN) - 레시피 게시판(CRUD),식단일기 게시판(CRUD),북마크  
 팀원 : [김수연](https://github.com/sooyeoning) - 로그인,회원가입,ID 찾기,PW 찾기,마이페이지  
 팀원 : [김도현](https://github.com/DoHyunDaniel) - 메인페이지,고객센터  
@@ -33,11 +33,14 @@ Communication Tools :
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">  
 ### 📌 주요 기능
 #
-로그인 -  
-회원가입 -  
-마이페이지 -  
-메인페이지 -  
-레시피 게시판 -  
-식단일기 게시판 -  
-야채가게 -  
+#### 로그인 -  
+#### 회원가입 -  
+#### 마이페이지 -  
+#### 메인페이지 -  
+  
+![안녕하세요](https://github.com/gamepro6390/Foodie-Green/assets/125335424/6f791c98-7211-49dd-b97f-6e1e3a3a443c)
+#### 식단일기 게시판 -  
+  
+![안녕하세요 (1)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/df6fb9e9-ebcd-4a4f-a0d3-fe0dc1d4b284)
+#### 상품페이지 -  
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
