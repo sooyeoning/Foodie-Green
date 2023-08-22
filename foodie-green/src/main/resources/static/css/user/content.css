@@ -164,7 +164,7 @@ input[class=pwwhite] {
 	margin: 0 auto 2vh;
 }
 
-#loginInput {
+#loginemail, #loginpw {
 	width: 30vw;
 	height: 8vh;
 	border-radius: 10px;
@@ -261,4 +261,19 @@ header{
 
 .marginleft12 {
 	margin-left: 12%;
+}
+.pw_eyes {
+  position: relative;
+}
+
+.eyes {
+  position: absolute;
+  top: 0;
+  bottom: 15px;
+  right: 10px;
+  margin: auto 2px;
+  height: 30px;
+  width: 30px;
+  font-size: 25px;
+  cursor: pointer;
 }

@@ -1,15 +1,9 @@
-/*1 각 입력값 null 체크
-  2 모든 입력값이 null이 아닐때 회원가입
-  3 email: 중복체크 + 유효성검증(이메일인증번호전달)
-  4 닉네임 중복체크
-  
- 
-*/
+
 var nickCheck = false;
  
 $(document).ready(function() {
 
-	$('.editbtn').click(function() {
+	$('.editbtn_r').click(function() {
 		edit_check();
 	})
 

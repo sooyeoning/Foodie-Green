@@ -23,6 +23,7 @@
 
 <script src="/js/user/login.js"></script>
 <link href="/css/user/content.css" rel="stylesheet" type="text/css"/>
+<script src="https://kit.fontawesome.com/f4eb3ac0e1.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
