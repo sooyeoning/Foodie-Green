@@ -26,7 +26,7 @@
 
 					<ul id="categories" class="category-list"><!-- 
 						<li id="faq-item-1"><h3>전체보기</h3></li> -->
-						<a href="/faq/01"><li id="faq-item-2"><h3>구독</h3></li></a>
+						<a href="/faq"><li id="faq-item-2"><h3>구독</h3></li></a>
 						<a href="/faq/02"><li id="faq-item-3"><h3>레시피</h3></li></a>
 						<a href="/faq/03"><li id="faq-item-4"><h3>정보 변경</h3></li></a>
 						<a href="/faq/04"><li id="faq-item-5"><h3>결제</h3></li></a>
