@@ -22,10 +22,6 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/faq")
-	public String faq() {
-		return "/home/faq"; 
-	}
-	@RequestMapping("/faq/01")
 	public String faq01() {
 		return "/home/faqs/faq01"; 
 	}
