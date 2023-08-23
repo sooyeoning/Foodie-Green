@@ -30,7 +30,11 @@ DB : <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&log
 Communication Tools : 
 <img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
 <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">  
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/ERDCLOUD-16A5F3?style=for-the-badge&logo=logoColor=white">  
+  
+<img width="1128" alt="스크린샷 2023-08-23 오전 10 01 10" src="https://github.com/gamepro6390/Foodie-Green/assets/125335424/445e883d-5cdd-4ee7-b5c4-047d686a47b3">
+
 ### 📌 주요 기능
 #
 #### 회원가입 & 로그인 & 마이페이지  
