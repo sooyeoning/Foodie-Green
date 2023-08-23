@@ -34,6 +34,8 @@ Communication Tools :
 ### 📌 주요 기능
 #
 #### 회원가입 & 로그인 & 마이페이지  
+  
+![안녕하세요 (2)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/8e0700f5-7ae2-4e0a-9fb6-9754c34e5a0c)
 - **회원가입**  
   - 정규식 검사: 이메일(형식: xxx@xxx.xxx), 비밀번호(형식: 숫자+영문자+특수문자 포함 6~15자리), 휴대폰 번호(형식: 010-xxxx-xxxx)  
   - 중복 검사: 닉네임, 이메일  
