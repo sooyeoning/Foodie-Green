@@ -18,7 +18,7 @@
 	<!-- body -->
 	<!-- main 부분 -->
 	<main>
-		<div class="container" style="height:200px; padding-top:100px; display:flex; justify-content:center">
+		<div class="container" style="height:100px; padding-top:100px; display:flex; justify-content:center">
 			<div class="faq-section">
 				<div>
 					<h1>자주 묻는 질문</h1>
