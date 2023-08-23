@@ -60,6 +60,10 @@
 			</div> -->
 
 			<span style="font-size: 18px;">좋아요 ${diary.likecnt}</span>
+			<br>
+			<br>
+			<span style="font-size: 16px;">참고한 레시피</span><br>
+			<span> ${diary.recipes}</span>
 		</div>
 	</div>
 
