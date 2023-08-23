@@ -1,8 +1,17 @@
 @charset "UTF-8";
 
+a{
+	text-decoration: none;
+}
+a:visited{
+	text-decoration: none;
+	color: black;
+}
+
 .container {
-	height: 700px;
+	height: 500px;
 	background-color: rgb(244, 243, 242);
+	max-height: 500px;
 }
 
 .faq-section {
@@ -77,8 +86,8 @@ li {
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 10px;
-	border-top: 1px solid #777;
-	border-bottom: 1px solid #777;
+	border-top: 2px solid rgb(226, 226, 226);
+	border-bottom: 2px solid rgb(226, 226, 226);
 	margin: 15px 0;
 	height: 4em;
 }
@@ -126,10 +135,12 @@ li {
 	flex: 1;
 	/* 추가 스타일링 */
 	box-sizing: border-box;
-	border-right: solid;
 
 }
-
+.post-number img{
+	width:30px;
+	height:auto;
+}
 
 
 .right-section {
