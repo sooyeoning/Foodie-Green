@@ -70,6 +70,7 @@ Communication Tools :
 - **회원 탈퇴**  
   - 회원 탈퇴  
 
+![안녕하세요](https://github.com/gamepro6390/Foodie-Green/assets/125335424/9e565e97-944b-4110-ace0-3f04770418fe)  
   
 #### 식단일기  
 - **게시글 조회**  
