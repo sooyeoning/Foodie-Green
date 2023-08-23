@@ -23,13 +23,13 @@
 				<div>
 					<h1>자주 묻는 질문</h1>
 				</div>
-				<div class="search-container">
+<!-- 				<div class="search-container">
 					<form action="#">
 						<input class="search-input" type="text" id="search" name="search"
 							placeholder="여기에 검색어를 입력하세요">
 						<button class="search-btn" type="submit">검색</button>
 					</form>
-				</div>
+				</div> -->
 
 			</div>
 
