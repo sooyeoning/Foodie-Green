@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="/css/home/main4.css">
 <link rel="stylesheet" href="/css/home/main5.css">
 <link rel="stylesheet" href="/css/home/main6.css">
+<link rel="stylesheet" href="/css/home/main7.css">
 </head>
 
 <body>
@@ -26,17 +27,17 @@
 			<div class="slider">
 				<div class="slide_viewer">
 					<div class="slide_group">
-						<div class="slide">
-							<img src="/img/main-fruit01.jpg" alt="이미지슬라이드1">
+						<div class="slide" id="section01-slide01">
+							<a href=""><img src="/img/home/section1-pic01.jpg" alt="이미지슬라이드1"></a>
 						</div>
 						<div class="slide">
-							<img src="/img/main-fruit02.jpg" alt="이미지슬라이드2">
+							<a href="http://localhost:8888/detail?id=1"><img src="/img/home/section1-pic02.jpg" alt="이미지슬라이드2"></a>
 						</div>
 						<div class="slide">
-							<img src="/img/main-fruit03.jpg" alt="이미지슬라이드3">
+							<a href="/vision"><img src="/img/home/section1-pic03.jpg" alt="이미지슬라이드3"></a>
 						</div>
 						<div class="slide">
-							<img src="/img/main-fruit04.jpg" alt="이미지슬라이드4">
+							<a href="http://localhost:8888/recipesdetail/1"><img src="/img/home/section1-pic04.jpg" alt="이미지슬라이드4"></a>
 						</div>
 					</div>
 				</div>
@@ -85,10 +86,117 @@
 				src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		</div>
 
+		<div style="height: 40px; background-color: #FDEEDC"></div>
+		<!-- section 5 -->
+		<div id="body" style="height: 800px; background-color: #FDEEDC;">
+			<div class="slider2">
+				<h1>소중하고 특별한 레시피를 남겨주세요!</h1>
+				<br> <br>
+				<div class="slide-track">
+					<div class="slide2">
+						<img src="/img/home/section5-pic01.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic02.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic03.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic04.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic05.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic06.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic07.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic15.jpg" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic17.jpeg" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic19.jpeg" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic20.jpeg" height="250" width="250"
+							alt="" />
+					</div>
+				</div>
+				<div class="slide-track2">
+					<div class="slide2">
+						<img src="/img/home/section5-pic08.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic09.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic10.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic11.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic12.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic13.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic14.webp" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic16.jpeg" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic18.jpeg" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic21.jpeg" height="250" width="250"
+							alt="" />
+					</div>
+					<div class="slide2">
+						<img src="/img/home/section5-pic22.jpeg" height="250" width="250"
+							alt="" />
+					</div>
+				</div>
+				<br> <a href="/recipes"><div
+						class="slide2-button-container">
+						<div class="slide2-button">
+							<h3 style="color: white">레시피 남기러 가기</h3>
+						</div>
+					</div></a>
+			</div>
+		</div>
 
 
 		<!-- section 2 -->
-		<div id="body" style="height: 500px; background-color: #FDEEDC;">
+		<div id="body"
+			style="height: 500px; padding-top: 100px; background-color: #FDEEDC;">
 			<div class="section2-container">
 				<div class="box">
 					<img src="/img/section2-pic01.png">
@@ -133,7 +241,9 @@
 					<div class="app__text app__text--1">
 						<div class="app__text-line app__text-line--4">신선한 채소 레시피</div>
 						<div class="app__text-line app__text-line--3">풋마늘 겉절이</div>
-						<div class="app__text-line app__text-line--2"><a href="http://localhost:8888/recipesdetail/1">바로가기</a></div>
+						<div class="app__text-line app__text-line--2">
+							<a href="http://localhost:8888/recipesdetail/1">바로가기</a>
+						</div>
 						<div class="app__text-line app__text-line--1">
 							<img
 								src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/537051/opus-attachment.png"
@@ -144,7 +254,9 @@
 					<div class="app__text app__text--2">
 						<div class="app__text-line app__text-line--4">쉽고 간단한 어린이 간식</div>
 						<div class="app__text-line app__text-line--3">토마토 매실절임</div>
-						<div class="app__text-line app__text-line--2"><a href="http://localhost:8888/recipesdetail/3">바로가기</a></div>
+						<div class="app__text-line app__text-line--2">
+							<a href="http://localhost:8888/recipesdetail/3">바로가기</a>
+						</div>
 						<div class="app__text-line app__text-line--1">
 							<img
 								src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/537051/opus-attachment.png"
@@ -173,16 +285,17 @@
 
 				<div class="section4-box2">
 					<div class="section4-smallBox">
-					<img src="/img/section4-pic01.png"></div>
-					<h2 style="color: orange;">미리 구출 품목을 확인해요</h2>
+						<img src="/img/section4-pic01.png">
+					</div>
+					<h2 style="color: orange;">미리 이번 주 상품을 확인해요</h2>
 					<br>
 					<h4>매주 알림톡을 통해</h4>
 					<br>
-					<h4>이번 주 구출된 품목을 알려드려요.</h4>
+					<h4>이번 주 입고된 채소를 알려드려요.</h4>
 				</div>
 				<div class="section4-box2">
 					<div class="section4-smallBox">
-					<img src="/img/section4-pic02.png">
+						<img src="/img/section4-pic02.jpg">
 					</div>
 					<h2 style="color: orange;">품목 구성은 내 마음대로</h2>
 					<br>

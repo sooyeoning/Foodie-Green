@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/home/main.css">
-
 </head>
 <body>
 <header>
@@ -17,7 +16,7 @@
 			<span><a href="/"><img src="/img/favicon.png" alt="로고 이미지" class="favicon"></a></span>
 			<span><a href="/store">야채가게</a></span>
 			<span><a href="/recipes">레시피</a></span>
-			<span><a href="">브랜드 소개</a></span>
+			<span><a href="/vision">브랜드 소개</a></span>
 			<span><a href="/faq">고객센터</a></span>
 			
 			<span></span>

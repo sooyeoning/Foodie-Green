@@ -44,7 +44,7 @@
 				<a href="FAQ01">
 					<div class="FAQ01">문의하기</div>
 				</a>
-				<a href="FAQ02">
+				<a href="/faq">
 					<div class="FAQ02">자주 묻는 질문</div>
 				</a>
 			</div>
