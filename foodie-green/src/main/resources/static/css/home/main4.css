@@ -3,10 +3,11 @@
 html {
   box-sizing: border-box;
 }
-a {
+.app__text-line.app__text-line--2 a {
 	font-size: 30px;
 	text-decoration: none;
 }
+
 *,
 *:before,
 *:after {

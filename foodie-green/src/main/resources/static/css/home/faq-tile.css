@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.tile-container {
+    display: flex;
+}
+
+.left-tile {
+    flex: 1; /* 왼쪽 타일이 오른쪽 타일보다 더 넓도록 설정 */
+    padding-left: 40px;
+}
+
+.right-tile {
+	padding-right:20px;
+    flex: 2;
+}

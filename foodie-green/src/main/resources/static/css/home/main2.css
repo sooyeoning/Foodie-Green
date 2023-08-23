@@ -41,9 +41,6 @@ padding-top: 80px;
   background-image: url("/img/fruits04.jpg");
 }
 .container section:nth-child(5) .image {
-  background-image: url(https://images.unsplash.com/photo-1460804198264-011ca89eaa43?iq=100&fm=jpg&w=1000);
-}
-.container section:nth-child(6) .image {
   background-image: url(https://images.unsplash.com/photo-1463123081488-789f998ac9c4?iq=100&fm=jpg&w=1000);
 }
 .container section .image {

@@ -18,11 +18,19 @@ h6,
 span,
 strong,
 em,
-a {
+a,
+li {
 	font-family: 'GangwonEdu_OTFBoldA';
 	text-decoration: none;
 	font-weight: normal;
 	font-style: normal;
+}
+
+a{
+	font-size:16px;
+}
+a:hover{
+	text-decoration: none;
 }
 
 body {
