@@ -26,7 +26,7 @@
 				<div class="right-section">
 					<div class="post-list">
 						<div class="post-number">1</div>
-						<div class="post-title">다른 기기로 로그인했을 때 로그아웃 기능을 제공하나요?</div>
+						<div class="post-title">어떤 품목들을 받게 되나요?</div>
 						<div class="expand-button">
 							<img class="dropdown" src="/img/home/dropdown.png"
 								onclick="toggleContent(1)">
@@ -35,13 +35,17 @@
 					</div>
 					<div id="content-1" class="expanded-content">
 
-						<p>태블릿에서 '다른 기기와 함께 사용'하여 로그인 한 경우 로그아웃 기능을 제공합니다. “설정 > 개인/보안
-							> 로그아웃” 에서 로그아웃할 수 있습니다.</p>
+						<p>모양, 중량, 판로 부족 등의 사연으로 갈 곳을 잃은 친환경 농산물들을 위주로 꾸려집니다. 모양이나 중량으로 버려질 위기의 못난이 농산물, 급식 중단으로 판로를 잃은 농산물 등 구출 긴급도를 따져 소싱합니다.
+
+무농약·유기농 농법만으로는 수확량 보전 및 품질 유지가 어려운 과일 등의 품목에서는 친환경 농법이 아닌 농산물을 구출하는 경우도 있습니다. 이 경우, 기본 박스 구성에는 포함되지 않으며 ‘채소박스 품목 바꾸기’를 통해 직접 추가하실 때에만 배송됩니다.
+
+<br>✅ 모든 채소들은 모두 무농약·유기농 인증을 받은 제철 친환경 채소들입니다.
+<br>✅ 사연은 제각각이지만, 꼼꼼하게 선별해 맛과 신선도에는 문제가 없는 채소·과일들로만 꾸려집니다. 불필요한 유통 과정을 줄여 발송 직전 수확해 가장 신선하게 보내드려요.</p>
 					</div>
 
 					<div class="post-list">
 						<div class="post-number">2</div>
-						<div class="post-title">위치정보 이용에 동의하지 않으면 어떻게 되나요?</div>
+						<div class="post-title">어떤 품목들이 올 지 미리 알 수 있나요?</div>
 						<div class="expand-button">
 							<img class="dropdown" src="/img/home/dropdown.png"
 								onclick="toggleContent(2)">
@@ -50,20 +54,13 @@
 					<div id="content-2" class="expanded-content">
 
 						<p>
-							1. 위치정보 이용에 동의하시려면?<br> <br> 위트 가입 시 동의 하시거나, 위트의 위치기반
-							서비스를 시작할 때 위치정보 수집 및 이용동의 약관이 보여집니다. 검색결과 중 '지도' 기능을 사용하시거나, 검색결과
-							중 현재위치 중심의 결과를 보고자 하실 때 (예. 우리동네 날씨) 위치정보이용동의를 하실 수 있습니다.<br>
-							<br> 2. 위치정보 이용 동의를 해제하시려면?<br> <br> 1) '더보기[...]'
-							탭에서 우측상단 설정[톱니바퀴 모양의 아이콘 이미지]을 눌러 들어갑니다. 2) '개인/보안 >개인정보 관리' 내에서
-							위치정보 이용 동의를 해제하시면 됩니다. 위치정보 이용 동의를 해제하시면 위트는 수집된 위치정보 관련 기록을
-							파기합니다.
+발송 전 매주 월요일 4시 이번 주의 구출 품목과 추천 레시피를 문자로 보내드립니다. 미리 다음 주의 식단을 구상하실 수 있습니다.
 						</p>
 					</div>
 
 					<div class="post-list">
 						<div class="post-number">3</div>
-						<div class="post-title">최근 검색 기능에 표시된 내용을 삭제하고 더이상 사용하고 싶지
-							않아요. 어떻게 하나요?</div>
+						<div class="post-title">품목 구성을 바꿀 수 있나요?</div>
 						<div class="expand-button">
 							<img class="dropdown" src="/img/home/dropdown.png"
 								onclick="toggleContent(3)">
@@ -71,14 +68,11 @@
 					</div>
 					<div id="content-3" class="expanded-content">
 						<p>
-							최근 검색 목록에 노출된 정보는 [X] 버튼을 눌러 삭제할 수 있습니다.<br> <br> 만약 더
-							이상 검색한 키워드를 최근 검색 영역에 남기고 싶지 않다면, 최근검색어 목록 우측 상단의 "자동저장끄기" 버튼을
-							누르면 최근검색어를 저장하지 않게 됩니다. <br> <br> 최근검색어를 저장하고 싶다면
-							"자동저장켜기" 버튼을 누르면 다시 최근 검색 목록을 보실 수 있습니다.
+[채소박스 품목 바꾸기]를 통해 구성을 변경할 수 있습니다. 이번 주 구출된 품목 중 이미 집에 많이 있거나 선호하지 않는 품목이 있다면 제외하고 다른 품목을 담아보세요. 고객님이 담고 최종 확정한 구성대로 결제 및 배송이 진행됩니다.
 						</p>
 					</div>
 
-					<div class="post-list">
+<!-- 					<div class="post-list">
 						<div class="post-number">4</div>
 						<div class="post-title">커뮤니티 탭과 여행지 추천 탭의 검색결과가 왜 다른가요?</div>
 						<div class="expand-button">
@@ -110,7 +104,7 @@
 							안드로이드 태블릿 위트의 언어 설정은, 사용자가 OS에서 설정한 언어 설정을 따라 노출됩니다.<br> <br>
 							휴대폰과 안드로이드 태블릿의 언어가 다르게 설정되어 있는 경우 각각 다르게 표시되는 것이 정상입니다.
 						</p>
-					</div>
+					</div> -->
 
 				</div>
 			</div>
