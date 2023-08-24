@@ -2,7 +2,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 	const floatingButton = document.querySelector('.floating-button');
 	const dropdownLayer = document.querySelector('.write-dropdown');
-
+	const diaryWriteButton = document.querySelector('a[href="/diarywrite"]');
+	const recipesWriteButton = document.querySelector('a[href="/recipeswrite"]');
+	const recentButton = document.getElementById("recentButton");
+	const popularButton = document.getElementById("popularButton");
 	floatingButton.addEventListener('click', function(event) {
 		event.stopPropagation(); // 클릭 이벤트가 상위 요소로 전파되지 않도록 차단
 		dropdownLayer.classList.toggle('active');
@@ -13,10 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			dropdownLayer.classList.remove('active');
 		}
 	});
-
-	const recentButton = document.getElementById("recentButton");
-	const popularButton = document.getElementById("popularButton");
-
+		function redirectToLoginIfNotLoggedIn(event) {
+		if (!isLoggedIn) {
+			alert('로그인이 필요한 기능입니다.');
+			window.location.href = '/login';
+			event.preventDefault();  // 기본 이벤트 방지 (href로 이동 방지)
+		}
+	}
+	diaryWriteButton.addEventListener('click', redirectToLoginIfNotLoggedIn);
+	recipesWriteButton.addEventListener('click', redirectToLoginIfNotLoggedIn);
 	var loading = false;
 
 	function loadDiaries(order) {

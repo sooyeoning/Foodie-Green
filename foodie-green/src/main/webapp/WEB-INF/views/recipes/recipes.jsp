@@ -12,6 +12,11 @@
 <title>recipes</title>
 </head>
 <body>
+	<script>
+		var isLoggedIn = "${sessionScope.login}" == 'ok'; 
+	</script>
+
+
 	<!-- header -->
 	<header style="margin-top: -22px;">
 		<%@ include file="../home/header.jsp"%>
@@ -103,7 +108,7 @@
 				<button class="recipes-btn">+업로드</button>
 			</span>
 			<div class="write-dropdown">
-				<a href="recipeswrite">레시피</a><br> <a href="diarywrite">식단일기</a>
+				<a href="/recipeswrite">레시피</a><br> <a href="/diarywrite">식단일기</a>
 			</div>
 		</div>
 	</div>

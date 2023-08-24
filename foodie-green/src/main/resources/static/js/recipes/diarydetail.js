@@ -5,23 +5,34 @@ document.addEventListener('DOMContentLoaded', function() {
 	const likeButton = document.querySelector('.like-button');
 	const deleteButton = document.getElementById('delete-button');
 	const editButton = document.getElementById('edit-button');
-
+	const diaryWriteButton = document.querySelector('a[href="/diarywrite"]');
+	const recipesWriteButton = document.querySelector('a[href="/recipeswrite"]');
 
 	console.log('isLoggedIn:', isLoggedIn);
 	console.log('loggedInUserNickname:', loggedInUserNickname);
 	console.log('writer:', writer);
 
-		// 기존 코드
-		floatingButton.addEventListener('click', function() {
-			/* event.stopPropagation(); */
-			dropdownLayer.classList.toggle('active');
-		});
-		document.addEventListener('click', function(event) {
-			if (!floatingButton.contains(event.target)) {
-				dropdownLayer.classList.remove('active');
-			}
-		});
+	// 기존 코드
+	floatingButton.addEventListener('click', function() {
+		/* event.stopPropagation(); */
+		dropdownLayer.classList.toggle('active');
+	});
+	document.addEventListener('click', function(event) {
+		if (!floatingButton.contains(event.target)) {
+			dropdownLayer.classList.remove('active');
+		}
+	});
 
+	function redirectToLoginIfNotLoggedIn(event) {
+		if (!isLoggedIn) {
+			alert('로그인이 필요한 기능입니다.');
+			window.location.href = '/login';
+			event.preventDefault();  // 기본 이벤트 방지 (href로 이동 방지)
+		}
+	}
+
+	diaryWriteButton.addEventListener('click', redirectToLoginIfNotLoggedIn);
+	recipesWriteButton.addEventListener('click', redirectToLoginIfNotLoggedIn); 
 
 	// 로그인한 사용자와 글 작성자가 동일한 경우 삭제 버튼 표시
 	if (isLoggedIn && loggedInUserNickname === writer) {
