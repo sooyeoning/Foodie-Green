@@ -111,7 +111,7 @@
 <h2>상세 정보</h2>
 <img src=img/store/${getDetail.id}.png>
 </div>
-
+<%@ include file="../store/topbutton.jsp"%>
 
 
 

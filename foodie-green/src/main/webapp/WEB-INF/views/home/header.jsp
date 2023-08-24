@@ -17,7 +17,7 @@
 			<span><a href="/store">야채가게</a></span>
 			<span><a href="/recipes">레시피</a></span>
 			<span><a href="/vision">브랜드 소개</a></span>
-			<span><a href="/faq">고객센터</a></span>
+			<span><a href="/faq">FAQ</a></span>
 			
 			<span></span>
 			<span></span>
