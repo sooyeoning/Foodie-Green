@@ -89,12 +89,12 @@ Communication Tools :
 ![안녕하세요 (1)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/df6fb9e9-ebcd-4a4f-a0d3-fe0dc1d4b284)
 #### 야채가게
 - **상품 리스트**
-  -판매하는 상품에 대한 리스트
-  -상품의 특징, 가격, 이름 등 리스트 형태의 제품 나열  
+  - 판매하는 상품에 대한 리스트
+  - 상품의 특징, 가격, 이름 등 리스트 형태의 제품 나열  
 - **상품 별 페이지**
-  -상품에 대한 정보
-  -상세 제품 설명 정보
-  -결제 버튼
+  - 상품에 대한 정보
+  - 상세 제품 설명 정보
+  - 결제 버튼
 - **결제 화면**
-  -PORTONE(구 IAMPORT)API를 사용하여 결제 페이지 구현
+  - PORTONE(구 IAMPORT)API를 사용하여 결제 페이지 구현
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
