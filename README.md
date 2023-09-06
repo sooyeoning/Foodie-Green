@@ -1,7 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=Foodie-Green&fontSize=90)
 
 ### 🖥️ 프로젝트 소개
-#### 주제: 채소 마켓  
+#### 주제: 환경을 생각하는 못난이 채소 마켓  
 
 품질은 똑같지만, 모양이 안 이쁘다는 이유로 판매되지 않는 친환경 농산물을 판매합니다.  
 농산물을 먹기 좋을만큼, 소량으로 포장 후 레시피페이퍼와 함께 신선한 농산물을 배송합니다.  
