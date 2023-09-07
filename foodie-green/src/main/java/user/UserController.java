@@ -1,5 +1,6 @@
 package user;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpSession;
+import recipes.DiaryDTO;
 
 @Controller
 public class UserController {
@@ -70,6 +72,7 @@ public class UserController {
 				userdto.name = String.valueOf(userInfo.get("nickname"));
 				userdto.nickname = String.valueOf(userInfo.get("nickname"));
 				userdto.pw = pw;
+				userdto.logintype = "kakao";
 				userService.signin(userdto);
 			} else {
 				userdto = userService.login_kakao(email);
@@ -77,6 +80,8 @@ public class UserController {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
 			session.setAttribute("nickname", userdto.nickname);
+			session.setAttribute("kakaoKey", accessToken);
+			System.out.println("kakaoKey: "+accessToken);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -116,6 +121,7 @@ public class UserController {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
 			session.setAttribute("nickname", userdto.nickname);
+
 			// alert
 			return "redirect:/";
 		} else {
@@ -233,9 +239,17 @@ public class UserController {
 	
 	@RequestMapping(value = "/nickCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public String nickCheck(String nickname) {
+	public String nickCheck(@RequestParam Map<String, Object> map) {
 		String response = "";
-		if(userService.checkNickname(nickname)==1) {
+		String nickname = (String)map.get("nickname");
+		String email = (String)map.get("email");
+		//System.out.println(nickname + ","+email);
+		
+		HashMap<String, String> param = new HashMap<>();
+		param.put("nickname", nickname);
+		param.put("email", email);
+		
+		if(userService.checkNickname(nickname)==1 && userService.checkPrevNickname(param)==0) {//닉네임사용중+다른사람이 사용중(0)
 			response = "이미 사용중인 닉네임입니다.";
 		} else {
 			response = "사용 가능한 닉네임입니다.";
@@ -269,7 +283,32 @@ public class UserController {
 		session.setAttribute("user", userdto);
 	}
 	
-
+	@PostMapping("/mypage/userDiary")
+	@ResponseBody
+	public List<UserDiaryDTO> getUserDiary(HttpSession session) {
+		UserDTO user =(UserDTO)session.getAttribute("user");
+		return userService.getDiary(user.nickname);
+	}
+	
+	@PostMapping("/mypage/likes")
+	@ResponseBody
+	public ArrayList<DiaryDTO> getUserLikes(HttpSession session) {
+		//System.out.println("post매핑");		
+		UserDTO user =(UserDTO)session.getAttribute("user");
+		List<Integer> likedlist = userService.getUserLikes(user.id);
+		//System.out.println("for문 전");
+		for(int i=0; i<likedlist.size(); i++) {
+			System.out.println(likedlist.get(i));
+		}
+		ArrayList<DiaryDTO> list = new ArrayList<>();
+		for(int id: likedlist) {
+			System.out.println(id);
+			
+			DiaryDTO diarydto = userService.getLikedDiaryInfo(id);
+			list.add(diarydto);
+		}
+		return list;
+	}
 	/**
 	 * 카카오 로그인 API [GET] /app/login/kakao
 	 * 

@@ -7,8 +7,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="signin" parameterType="UserDTO">
-		INSERT INTO user(name,nickname,email,pw,phone)
-		values(#{name},#{nickname},#{email},#{pw},#{phone})
+		INSERT INTO user(name,nickname,email,pw,phone,logintype)
+		values(#{name},#{nickname},#{email},#{pw},#{phone},#{logintype})
 	</insert>
 	
 	<!-- 로그인 -->
@@ -47,6 +47,12 @@
 		(select nickname from user where nickname=#{nickname});
 	</select>
 	
+	<!-- 닉네임 중복체크(해당 사용자인 경우) -->
+	<select id="checkPrevNickname" parameterType="HashMap" resultType="int">
+		select exists 
+		(select nickname from user where nickname=#{nickname} and email=#{email});
+	</select>
+	
 	<!-- 회원정보 수정 -->
 	<update id="editUser" parameterType="UserDTO">
 		update user 
@@ -65,5 +71,15 @@
 	(select count(*) from diary where writer=#{count} ) count
 	from diary d 
 	where writer=#{writer};
+	</select>
+	
+	<!-- 좋아요 내역 조회 -->
+	<select id="getUserLikes" parameterType="int" resultType="int">
+		select diary_id from likes where user_id=#{user_id};
+	</select>
+	
+	<!-- 좋아요(diary_id) - 게시글(id) 조회 -->
+	<select id="getLikedDiaryInfo" parameterType="int" resultType="DiaryDTO">
+	select*from diary where id=#{id};
 	</select>
 </mapper>

@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import recipes.DiaryDTO;
+
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -60,6 +62,21 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public  List<UserDiaryDTO> getDiary(String writer) {
 		return usermapper.getDiary(writer);
+	}
+
+	@Override
+	public List<Integer> getUserLikes(int user_id) {
+		return usermapper.getUserLikes(user_id);
+	}
+
+	@Override
+	public DiaryDTO getLikedDiaryInfo(int id) {
+		return usermapper.getLikedDiaryInfo(id);
+	}
+
+	@Override
+	public int checkPrevNickname(HashMap<String, String> map) {
+		return usermapper.checkPrevNickname(map);
 	}
 	
 	

@@ -1,15 +1,16 @@
 
 $(document).ready(function() {
 
-	$('#v-pills-userDiary-tab').click(function() {
+	$('#v-pills-userLikedPost-tab').click(function() {
 		$.ajax({
-			url: "/mypage/userDiary",
+			url: "/mypage/likes",
 			method: "post",
 			success: function(list) {
-				$('#diarylist').html('');
+				//alert("Success");
+				$('#likeddiarylist').html('');
 
 				for (var onediary of list) {
-					$('#diarylist').append(`<a href="/diarydetail/${onediary.id}"><div class="col">
+					$('#likeddiarylist').append(`<a href="/diarydetail/${onediary.id}"><div class="col">
           <div class="card shadow-sm">
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="`+ onediary.photo + `" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"></rect></svg>
             <div class="card-body">
@@ -30,6 +31,8 @@ $(document).ready(function() {
 
 			},
 			error: function() {
+			//	alert("error");
+
 			}
 		})
 	})

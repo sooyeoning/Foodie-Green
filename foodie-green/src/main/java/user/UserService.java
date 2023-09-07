@@ -3,6 +3,8 @@ package user;
 import java.util.HashMap;
 import java.util.List;
 
+import recipes.DiaryDTO;
+
 
 public interface UserService {
 	public void signin(UserDTO UserDTO);
@@ -13,9 +15,12 @@ public interface UserService {
 	public String findPw(HashMap<String, String> map);
 	public int checkEmail(String email);
 	public int checkNickname(String nickname);
+	public int checkPrevNickname(HashMap<String, String> map);
+
 	public void editUser(UserDTO userdto);
 	public void deleteUser(String email);
 
 	public List<UserDiaryDTO> getDiary(String writer);
-
+	public List<Integer> getUserLikes(int user_id);
+	public DiaryDTO getLikedDiaryInfo(int id);
 }

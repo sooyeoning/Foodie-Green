@@ -13,6 +13,8 @@ $(document).ready(function() {
 function nick_check() {
 	//var nick_check;
 	let nickname = document.getElementById('nickname').value;
+	let email = document.getElementById('email').value;
+
 	if ($.trim(nickname) == "") {
 		$('#nickname_msg').html("필수 입력 항목입니다.");
 		nickCheck=false;
@@ -21,7 +23,7 @@ function nick_check() {
 	$.ajax({
 		url: "/nickCheck",
 		method: "POST",
-		data: { "nickname": nickname },
+		data: { "nickname": nickname, "email": email },
 		async: false,
 		success: function(response) {
 			if (response == "이미 사용중인 닉네임입니다.") {

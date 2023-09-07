@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-	$('.deletebtn').click(function() {
+	$('.deletebtn_r').click(function() {
 		$.ajax({
 			url: "/mypage/delete",
 			method: "get",

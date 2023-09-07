@@ -7,19 +7,28 @@ public class UserDTO {
 	String pw;
 	String phone;
 	int id;
+	String logintype;
 	
+	public String getLogintype() {
+		return logintype;
+	}
+
+	public void setLogintype(String logintype) {
+		this.logintype = logintype;
+	}
+
 	public UserDTO() {}
 	
-	public UserDTO(int id,String name, String nickname, String email, String pw, String phone) {
-		this.id = id;
+	public UserDTO(String name, String nickname, String email, String pw, String phone, int id, String logintype) {
 		this.name = name;
 		this.nickname = nickname;
 		this.email = email;
 		this.pw = pw;
 		this.phone = phone;
+		this.id = id;
+		this.logintype = logintype;
 	}
 
-	
 	public int getId() {
 		return id;
 	}

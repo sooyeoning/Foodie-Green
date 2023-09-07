@@ -128,7 +128,8 @@ function event_pass() {
 			nickname: document.getElementById('nickname').value,
 			email: document.getElementById('email').value,
 			pw: document.getElementById('pw').value,
-			phone:document.getElementById('phone').value
+			phone:document.getElementById('phone').value,
+			logintype: document.getElementById('logintype').value
 		}, 
 		success: function(response) {
 			console.log("success response:", response);

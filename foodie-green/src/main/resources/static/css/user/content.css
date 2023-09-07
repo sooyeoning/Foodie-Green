@@ -33,8 +33,8 @@ body{
 	--bs-link-hover-color: #FFB3A7;
 }
 
-.paddingleft10 {
-	padding-left: 10vw;
+.paddingleft5 {
+	padding-left: 5vw;
 }
 
 .marginleft10 {
@@ -119,7 +119,7 @@ input[class=pwwhite] {
 	text-align: center;
 }
 
-.edit_title, .delete_title {
+.menu_title  {
 	font-size: 25px;
 }
 
@@ -276,4 +276,34 @@ header{
   width: 30px;
   font-size: 25px;
   cursor: pointer;
+}
+.width60{
+	width: 60vw;
+}
+
+/*마이페이지-식단일기*/
+.card-body {
+    flex: 3 3 auto;
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    color: var(--bs-card-color);
+}
+.card-text{
+	height: 20vh;
+    /*width: 15vw; */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /*영역 내의 컨텐츠의 최대 라인수*/
+    -webkit-box-orient: vertical; /*영역 박스의 내의 정렬을 수직*/
+    text-overflow: ellipsis;
+}
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+	border: 1px solid #FFB3A7;
+	background-color: #FDEEDC!important;
+}
+.justify-content-end {
+    justify-content: end!important;
+}
+/*마이페이지 박스*/
+.py-5 {
+    padding: 3rem!important;
 }
