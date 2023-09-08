@@ -78,6 +78,11 @@ public class UserServiceImpl implements UserService{
 	public int checkPrevNickname(HashMap<String, String> map) {
 		return usermapper.checkPrevNickname(map);
 	}
+
+	@Override
+	public UserDTO getUserInfo(String email) {
+		return usermapper.getUserInfo(email);
+	}
 	
 	
 

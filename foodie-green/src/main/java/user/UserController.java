@@ -280,7 +280,8 @@ public class UserController {
 	@ResponseBody
 	public void editUser(UserDTO userdto, HttpSession session) {
 		userService.editUser(userdto);
-		session.setAttribute("user", userdto);
+		UserDTO user= userService.getUserInfo(userdto.email);
+		session.setAttribute("user", user);
 	}
 	
 	@PostMapping("/mypage/userDiary")

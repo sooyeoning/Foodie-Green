@@ -23,6 +23,7 @@ public interface UserMapper {
 	public int checkPrevNickname(HashMap<String, String> map);
 
 	public void editUser(UserDTO userdto);
+	public UserDTO getUserInfo(String email);
 	public void deleteUser(String email);
 	
 	public List<UserDiaryDTO> getDiary(String writer);

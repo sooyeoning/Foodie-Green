@@ -60,6 +60,12 @@
 		where email=#{email};
 	</update>
 	
+	<!-- 로그인 -->
+	<select id="getUserInfo" parameterType="String" resultType="UserDTO">
+		select*from user
+		where email=#{email}
+	</select>
+	
 	<delete id="deleteUser" parameterType="String">
 	delete from user
 	where email=#{email};
