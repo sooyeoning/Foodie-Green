@@ -1,15 +1,20 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=Foodie-Green&fontSize=90)
 
 ### 🖥️ 프로젝트 소개
-#
-어글리어스란 곳을 참고하여 만든 채소 판매 사이트입니다.
+#### 주제: 환경을 생각하는 못난이 채소 마켓  
+
+품질은 똑같지만, 모양이 안 이쁘다는 이유로 판매되지 않는 친환경 농산물을 판매합니다.  
+농산물을 먹기 좋을만큼, 소량으로 포장 후 레시피페이퍼와 함께 신선한 농산물을 배송합니다.  
+푸디앤그린은 버려지는 농산물의 최소화를 지향합니다.
+
+
 
 ### 🧑‍🤝‍🧑 멤버 구성
 #
 팀장 : [신장훈](https://github.com/gamepro6390) - (제품 리스트,제품 상세) 페이지,결제 서비스  
 팀원 : [신연균](https://github.com/SHIN-YEONGYUN) - 레시피 게시판(CRUD),식단일기 게시판(CRUD),북마크  
 팀원 : [김수연](https://github.com/sooyeoning) - 로그인,회원가입,ID 찾기,PW 찾기,마이페이지  
-팀원 : [김도현](https://github.com/DoHyunDaniel) - 메인페이지,고객센터  
+팀원 : [김도현](https://github.com/DoHyunDaniel) - 메인홈페이지,브랜드 소개,고객센터  
 
 ### 🕰️ 개발기간
 #
@@ -30,9 +35,18 @@ DB : <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&log
 Communication Tools : 
 <img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
 <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">  
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/ERDCLOUD-16A5F3?style=for-the-badge&logo=logoColor=white">  
+  
+<img width="1128" alt="스크린샷 2023-08-23 오전 10 01 10" src="https://github.com/gamepro6390/Foodie-Green/assets/125335424/445e883d-5cdd-4ee7-b5c4-047d686a47b3">
+
 ### 📌 주요 기능
 #
+#### 메인페이지 
+![화면 캡처 2023-08-23 144339](https://github.com/gamepro6390/Foodie-Green/assets/109639714/50bd1c69-a740-40ca-bc1e-aead78c266f0)
+- 패럴랙스, 슬라이더 등의 css 기능들과 포토샵 등을 활용하여 광고 내용과 페이지 정보에 쉽게 접근할 수 있도록 함
+- 화면 하단에 챗봇 표시, 푸터는 자주 묻는 질문(FAQ페이지)와 직접 질문(챗봇으로 연결)이 가능하도록 함
+  
 #### 회원가입 & 로그인 & 마이페이지  
   
 ![안녕하세요 (2)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/8e0700f5-7ae2-4e0a-9fb6-9754c34e5a0c)
@@ -56,9 +70,8 @@ Communication Tools :
 - **회원 탈퇴**  
   - 회원 탈퇴  
 
-#### 메인페이지 -  
+![안녕하세요](https://github.com/gamepro6390/Foodie-Green/assets/125335424/9e565e97-944b-4110-ace0-3f04770418fe)  
   
-![안녕하세요](https://github.com/gamepro6390/Foodie-Green/assets/125335424/6f791c98-7211-49dd-b97f-6e1e3a3a443c)
 #### 식단일기  
 - **게시글 조회**  
   - 식단일기 : 사용자 본인만의 일기로써 써나가며 식단을 조절하고 다른 사용자에게 공유함으로써 공감대 형성  
@@ -73,5 +86,14 @@ Communication Tools :
   - 글 삭제시, 게시글 리스트에서 확인 가능
 
 ![안녕하세요 (1)](https://github.com/gamepro6390/Foodie-Green/assets/125335424/df6fb9e9-ebcd-4a4f-a0d3-fe0dc1d4b284)
-#### 상품페이지 -  
+#### 야채가게
+- **상품 리스트**
+  - 판매하는 상품에 대한 리스트
+  - 상품의 특징, 가격, 이름 등 리스트 형태의 제품 나열  
+- **상품 별 페이지**
+  - 상품에 대한 정보
+  - 상세 제품 설명 정보
+  - 결제 버튼
+- **결제 화면**
+  - PORTONE(구 IAMPORT)API를 사용하여 결제 페이지 구현
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)

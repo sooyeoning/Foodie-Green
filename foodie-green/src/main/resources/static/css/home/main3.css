@@ -108,6 +108,10 @@ a.slide_btn {
 	top: 0;
 }
 
+
+*{
+	font-family: 'GangwonEdu_OTFBoldA';
+}
 .next_btn {
 	bottom: 0;
 	margin: auto;

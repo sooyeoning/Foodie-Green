@@ -18,14 +18,14 @@
 <link rel="stylesheet" href="/css/home/main7.css">
 </head>
 
-<body>
+<body >
 	<!-- body -->
 	<!-- main 부분 -->
 	<main>
 		<!-- section 1 -->
 		<div id="body" style="height: 700px; background-color: #FDEEDC;">
 			<div class="slider">
-				<div class="slide_viewer">
+				<div class="slide_viewer" >
 					<div class="slide_group">
 						<div class="slide" id="section01-slide01">
 							<a href=""><img src="/img/home/section1-pic01.jpg" alt="이미지슬라이드1"></a>

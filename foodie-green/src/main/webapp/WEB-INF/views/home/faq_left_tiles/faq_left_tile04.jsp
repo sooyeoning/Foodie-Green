@@ -18,19 +18,21 @@
 	<!-- body -->
 	<!-- main 부분 -->
 	<main>
-		<div class="container" style="height:100px; padding-top:100px; display:flex; justify-content:center">
-			<div class="faq-section">
-				<div>
-					<h1>자주 묻는 질문</h1>
-				</div>
-<!-- 				<div class="search-container">
-					<form action="#">
-						<input class="search-input" type="text" id="search" name="search"
-							placeholder="여기에 검색어를 입력하세요">
-						<button class="search-btn" type="submit">검색</button>
-					</form>
-				</div> -->
+		<div class="container">
 
+			<div class="section-container">
+				<div class="left-section">
+					<!-- 왼쪽 섹션 -->
+
+					<ul id="categories" class="category-list"><!-- 
+						<li id="faq-item-1"><h3>전체보기</h3></li> -->
+						<a href="/faq"><li id="faq-item-2"><h3>구독</h3></li></a>
+						<a href="/faq/02"><li id="faq-item-3"><h3>레시피</h3></li></a>
+						<a href="/faq/03"><li id="faq-item-4"><h3>정보 변경</h3></li></a>
+						<a href="/faq/04"><li id="faq-item-5" style="background-color:#FFB3A7;"><h3>결제</h3></li></a>
+						<a href="/faq/05"><li id="faq-item-6"><h3>정지/미루기</h3></li></a>
+					</ul>
+				</div>
 			</div>
 
 		</div>
@@ -58,6 +60,20 @@ listItems.forEach(item => {
     });
 });
 }
+</script>
+<script>
+//왼쪽 타일의 li 요소들에 클릭 이벤트 리스너 추가
+const faqItems = document.querySelectorAll('.faq-list li');
+faqItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // 클릭한 항목의 ID를 추출합니다.
+        const faqItemId = this.id;
+        
+        // 오른쪽 타일에 해당 항목의 내용을 표시합니다.
+        loadContentToRightTile(faqItemId);
+    });
+});
+
 </script>
 </body>
 </html>

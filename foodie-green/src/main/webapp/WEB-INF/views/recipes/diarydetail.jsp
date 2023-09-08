@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +21,7 @@
 
 	<!-- header -->
 	<header style="margin-top: -22px;">
-		<%@ include file="../home/header.jsp"%>
+		<%@ include file="../home/header.jsp"%> 
 	</header>
 
 	<h2>${diary.writer}의식단일기</h2>
@@ -60,6 +60,10 @@
 			</div> -->
 
 			<span style="font-size: 18px;">좋아요 ${diary.likecnt}</span>
+			<br>
+			<br>
+			<span style="font-size: 16px;">참고한 레시피</span><br>
+			<span> ${diary.recipes}</span>
 		</div>
 	</div>
 
@@ -71,7 +75,7 @@
 				<button class="recipes-btn">+업로드</button>
 			</span>
 			<div class="write-dropdown">
-				<a href="recipeswrite">레시피</a><br> <a href="/diarywrite">식단일기</a>
+				<a href="/recipeswrite">레시피</a><br> <a href="/diarywrite">식단일기</a>
 			</div>
 		</div>
 	</div>

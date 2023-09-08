@@ -41,7 +41,7 @@
 			<div style="width: 200px;"></div>
 
 			<div class="footer-FAQ-box">
-				<a href="FAQ01">
+<a onclick="return scriptAction();">
 					<div class="FAQ01">문의하기</div>
 				</a>
 				<a href="/faq">
@@ -64,5 +64,25 @@
 		</div>
 
 	</footer>
+
+
+	<script>
+	     window.dyc = {
+	          "chatbotUid": "539be6bc007c4b4a"
+	     };
+	      function scriptAction() {
+	            dyc.actionClick({
+	                intentUid: "3d2d4ad3b14a8bc1",
+	                payload: {
+	                    key: "value"
+	                }
+	            });
+	
+	            return false;
+	        }
+	    </script>
+	    <script async src="https://cloudturing.chat/v1.0/chat.js"></script>
+
+
 </body>
 </html>

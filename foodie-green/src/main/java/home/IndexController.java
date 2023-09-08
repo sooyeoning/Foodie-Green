@@ -22,8 +22,24 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/faq")
-	public String faq() {
-		return "/home/faq"; 
+	public String faq01() {
+		return "/home/faqs/faq01"; 
+	}
+	@RequestMapping("/faq/02")
+	public String faq02() {
+		return "/home/faqs/faq02"; 
+	}
+	@RequestMapping("/faq/03")
+	public String faq03() {
+		return "/home/faqs/faq03"; 
+	}
+	@RequestMapping("/faq/04")
+	public String faq04() {
+		return "/home/faqs/faq04"; 
+	}
+	@RequestMapping("/faq/05")
+	public String faq05() {
+		return "/home/faqs/faq05"; 
 	}
 
 

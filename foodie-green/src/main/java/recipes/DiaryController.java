@@ -74,7 +74,7 @@ public class DiaryController {
 
 		try {
 			// 저장할 디렉터리 경로
-			String uploadDir = "/Users/shin-yeongyun/git/Foodie-Green/foodie-green/src/main/resources/static/img/recipes";
+			String uploadDir = "C:\\Users\\HUN-E\\git\\Foodie-Green1\\foodie-green\\src\\main\\resources\\static\\img\\recipes";
 			// "c:/kdt/upload/";
 			// "/Users/shin-yeongyun/git/Foodie-Green2/foodie-green/src/main/resources/static/img/recipes";
 			// 파일의 원래 이름

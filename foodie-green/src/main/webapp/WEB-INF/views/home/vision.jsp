@@ -16,6 +16,6 @@
 	<!-- body -->
 	<%@ include file="../home/body(vision).jsp"%>
 	<!-- footer -->
-	<%@ include file="../home/footer.jsp"%>
+	<%@ include file="../home/footer.jsp"%> 
 </body>
 </html>

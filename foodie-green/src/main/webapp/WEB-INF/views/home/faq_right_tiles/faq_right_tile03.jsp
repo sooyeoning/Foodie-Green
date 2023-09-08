@@ -25,8 +25,8 @@
 				<!-- 오른쪽 섹션 -->
 				<div class="right-section">
 					<div class="post-list">
-						<div class="post-number">1</div>
-						<div class="post-title">어떤 품목들을 받게 되나요?</div>
+						<div class="post-number"><img src="/img/home/lightbulb.png"></div>
+						<div class="post-title">배송지 주소는 어떻게 변경하나요?</div>
 						<div class="expand-button">
 							<img class="dropdown" src="/img/home/dropdown.png"
 								onclick="toggleContent(1)">
@@ -35,17 +35,15 @@
 					</div>
 					<div id="content-1" class="expanded-content">
 
-						<p>모양, 중량, 판로 부족 등의 사연으로 갈 곳을 잃은 친환경 농산물들을 위주로 꾸려집니다. 모양이나 중량으로 버려질 위기의 못난이 농산물, 급식 중단으로 판로를 잃은 농산물 등 구출 긴급도를 따져 소싱합니다.
+						<p>배송지 변경은 아래 경로를 통해 가능합니다.<br>
+[로그인 > 내 채소박스 > 구독 정보 관리 > 기본 설정 > 배송지]<br><br>
 
-무농약·유기농 농법만으로는 수확량 보전 및 품질 유지가 어려운 과일 등의 품목에서는 친환경 농법이 아닌 농산물을 구출하는 경우도 있습니다. 이 경우, 기본 박스 구성에는 포함되지 않으며 ‘채소박스 품목 바꾸기’를 통해 직접 추가하실 때에만 배송됩니다.
-
-<br>✅ 모든 채소들은 모두 무농약·유기농 인증을 받은 제철 친환경 채소들입니다.
-<br>✅ 사연은 제각각이지만, 꼼꼼하게 선별해 맛과 신선도에는 문제가 없는 채소·과일들로만 꾸려집니다. 불필요한 유통 과정을 줄여 발송 직전 수확해 가장 신선하게 보내드려요.</p>
+📍 단, 유의해주세요! 결제 후에는 출고 준비 상태가 되어 배송지를 수정할 수 없습니다.</p>
 					</div>
 
 					<div class="post-list">
-						<div class="post-number">2</div>
-						<div class="post-title">어떤 품목들이 올 지 미리 알 수 있나요?</div>
+						<div class="post-number"><img src="/img/home/lightbulb.png"></div>
+						<div class="post-title">배송메세지를 변경할 수 있나요?</div>
 						<div class="expand-button">
 							<img class="dropdown" src="/img/home/dropdown.png"
 								onclick="toggleContent(2)">
@@ -54,13 +52,14 @@
 					<div id="content-2" class="expanded-content">
 
 						<p>
-발송 전 매주 월요일 4시 이번 주의 구출 품목과 추천 레시피를 문자로 보내드립니다. 미리 다음 주의 식단을 구상하실 수 있습니다.
+배송메시지 변경은 아래 경로를 통해 가능합니다.<br>
+[로그인 > 내 채소박스 > 구독 정보 관리 > 기본 설정 > 배송지]
 						</p>
 					</div>
 
 					<div class="post-list">
-						<div class="post-number">3</div>
-						<div class="post-title">품목 구성을 바꿀 수 있나요?</div>
+						<div class="post-number"><img src="/img/home/lightbulb.png"></div>
+						<div class="post-title">이메일 주소를 잘못 입력했어요. 바꿀 수 있을까요?</div>
 						<div class="expand-button">
 							<img class="dropdown" src="/img/home/dropdown.png"
 								onclick="toggleContent(3)">
@@ -68,7 +67,8 @@
 					</div>
 					<div id="content-3" class="expanded-content">
 						<p>
-[채소박스 품목 바꾸기]를 통해 구성을 변경할 수 있습니다. 이번 주 구출된 품목 중 이미 집에 많이 있거나 선호하지 않는 품목이 있다면 제외하고 다른 품목을 담아보세요. 고객님이 담고 최종 확정한 구성대로 결제 및 배송이 진행됩니다.
+네, 물론입니다. 마이페이지에서 아래 경로를 통해 변경해주세요.<br>
+[로그인 > 마이페이지 하단 > 내 회원 정보]
 						</p>
 					</div>
 

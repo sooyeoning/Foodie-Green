@@ -1,6 +1,7 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,14 @@
 <title>recipes</title>
 </head>
 <body>
+	<script>
+		var isLoggedIn = "${sessionScope.login}" == 'ok'; 
+	</script>
+
+
 	<!-- header -->
 	<header style="margin-top: -22px;">
-		<%@ include file="../home/header.jsp"%>
+		<%@ include file="../home/header.jsp" %>
 	</header>
 
 	<h2 style="">오늘의 채소 요리는?</h2>
@@ -103,7 +109,7 @@
 				<button class="recipes-btn">+업로드</button>
 			</span>
 			<div class="write-dropdown">
-				<a href="recipeswrite">레시피</a><br> <a href="diarywrite">식단일기</a>
+				<a href="/recipeswrite">레시피</a><br> <a href="/diarywrite">식단일기</a>
 			</div>
 		</div>
 	</div>

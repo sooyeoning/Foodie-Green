@@ -25,6 +25,6 @@
 		</div>
 	</div>
 	<!-- footer -->
-	<%@ include file="../home/footer.jsp"%>
+	<%@   include file="../home/footer.jsp" %> 
 </body>
 </html>
