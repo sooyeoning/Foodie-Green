@@ -80,7 +80,7 @@
         <button type = "button" class = "btn" id="money-btn">
           <p>즉시 구매하기</p> <i class = "fas fa-shopping-cart"></i>
         </button>
-        <button type = "button" class = "btn"><p>장바구니 담기</p></button>
+        <button type = "button" class = "btn" ><a href="/cart"><p>장바구니 담기</p></a></button>
       </div>
 
       <div class = "social-links">
