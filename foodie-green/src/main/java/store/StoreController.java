@@ -31,4 +31,9 @@ public class StoreController {
 		mv.setViewName("/store/detail");
 		return mv;
 	}
+	
+	@RequestMapping("/cart")
+	public String cart() {
+		return "store/cart";
+	}
 }
