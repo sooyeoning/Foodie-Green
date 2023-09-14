@@ -79,7 +79,7 @@ function removeItem(removeButton)
 
 var IMP = window.IMP;
 IMP.init("imp07474545");
-$('#money-btn').click(function() {
+$('#money-btn').click(function() { 
 	IMP.request_pay({
     pg : 'html5_inicis',
     pay_method : 'card',
