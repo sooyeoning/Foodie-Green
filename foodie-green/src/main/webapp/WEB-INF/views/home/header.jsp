@@ -28,16 +28,16 @@
 			String login = null;
 			String username = null;
 			String logintype = null;
-			String kakaokey = null;
+			String accessToken = null;
 			if ((String) session.getAttribute("login") != null && (UserDTO) session.getAttribute("user") != null) {
 				login = (String) session.getAttribute("login");
 				UserDTO userdto = (UserDTO) session.getAttribute("user");
 				username = userdto.getName();
 				logintype = userdto.getLogintype();
 				System.out.println(logintype);
-				if (session.getAttribute("kakaoKey") != null) {
-					kakaokey = (String) session.getAttribute("kakaoKey");
-				}
+				if (session.getAttribute("accessToken") != null) {
+					accessToken = (String) session.getAttribute("accessToken");
+				 }
 			}
 
 			if (login == null) {
@@ -66,6 +66,10 @@
 	</header>
 
 	<script type="text/javascript">
+	<%-- function kakaoLogin(){
+		Kakao.Auth.setAccessToken(<%=session.getAttribute("kakaoKey")%>);
+	} --%>
+	
 	function kakaoLogout(){
 		Kakao.Auth.logout()
 		  .then(function(response) {
@@ -75,7 +79,7 @@
 		    console.log('Not logged in.');
 		  });
 		
-		//window.location.href = "/logout";
+		window.location.href = "/logout";
 	}
 	
 	</script>

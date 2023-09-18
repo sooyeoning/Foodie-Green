@@ -8,7 +8,29 @@ public class UserDTO {
 	String phone;
 	int id;
 	String logintype;
+	String kakaoId;
 	
+	public UserDTO(String name, String nickname, String email, String pw, String phone, int id, String logintype,
+			String kakaoId) {
+		super();
+		this.name = name;
+		this.nickname = nickname;
+		this.email = email;
+		this.pw = pw;
+		this.phone = phone;
+		this.id = id;
+		this.logintype = logintype;
+		this.kakaoId = kakaoId;
+	}
+
+	public String getKakaoId() {
+		return kakaoId;
+	}
+
+	public void setKakaoId(String kakaoId) {
+		this.kakaoId = kakaoId;
+	}
+
 	public String getLogintype() {
 		return logintype;
 	}
@@ -19,16 +41,6 @@ public class UserDTO {
 
 	public UserDTO() {}
 	
-	public UserDTO(String name, String nickname, String email, String pw, String phone, int id, String logintype) {
-		this.name = name;
-		this.nickname = nickname;
-		this.email = email;
-		this.pw = pw;
-		this.phone = phone;
-		this.id = id;
-		this.logintype = logintype;
-	}
-
 	public int getId() {
 		return id;
 	}

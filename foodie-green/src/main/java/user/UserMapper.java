@@ -26,7 +26,7 @@ public interface UserMapper {
 	public UserDTO getUserInfo(String email);
 	public void deleteUser(String email);
 	
-	public List<UserDiaryDTO> getDiary(String writer);
+	public List<UserDiaryDTO> getDiary(String email);
 	public List<Integer> getUserLikes(int user_id);
 	public DiaryDTO getLikedDiaryInfo(int id);
 }

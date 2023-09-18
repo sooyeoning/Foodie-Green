@@ -60,8 +60,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public  List<UserDiaryDTO> getDiary(String writer) {
-		return usermapper.getDiary(writer);
+	public  List<UserDiaryDTO> getDiary(String email) {
+		return usermapper.getDiary(email);
 	}
 
 	@Override

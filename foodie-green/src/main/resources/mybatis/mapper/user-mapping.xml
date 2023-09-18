@@ -7,8 +7,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="signin" parameterType="UserDTO">
-		INSERT INTO user(name,nickname,email,pw,phone,logintype)
-		values(#{name},#{nickname},#{email},#{pw},#{phone},#{logintype})
+		INSERT INTO user(name,nickname,email,pw,phone,logintype, kakaoId)
+		values(#{name},#{nickname},#{email},#{pw},#{phone},#{logintype},#{kakaoId})
 	</insert>
 	
 	<!-- 로그인 -->
@@ -73,10 +73,10 @@
 	
 	<!-- 글쓴 내역 불러오기 -->
 	<select id="getDiary" parameterType="String" resultType="UserDiaryDTO">
-	select id,title, contents, recipes, writer, writing, likecnt, photo, 
-	(select count(*) from diary where writer=#{count} ) count
-	from diary d 
-	where writer=#{writer};
+	select d.id,title, contents, recipes, writer, writing, likecnt, photo, email
+	from diary d join user u
+	on u.nickname = d.writer
+	where email=#{email};
 	</select>
 	
 	<!-- 좋아요 내역 조회 -->

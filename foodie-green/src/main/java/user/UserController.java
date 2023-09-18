@@ -40,8 +40,9 @@ public class UserController {
 	}
 
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session) {		
 		session.invalidate();
+		
 		return "redirect:/";
 	}
 	
@@ -73,6 +74,7 @@ public class UserController {
 				userdto.nickname = String.valueOf(userInfo.get("nickname"));
 				userdto.pw = pw;
 				userdto.logintype = "kakao";
+				userdto.kakaoId = String.valueOf(userInfo.get("kakaoId"));
 				userService.signin(userdto);
 			} else {
 				userdto = userService.login_kakao(email);
@@ -80,8 +82,8 @@ public class UserController {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
 			session.setAttribute("nickname", userdto.nickname);
-			session.setAttribute("kakaoKey", accessToken);
-			System.out.println("kakaoKey: "+accessToken);
+			session.setAttribute("accessToken", accessToken);
+			System.out.println("accessToken: "+accessToken);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -288,7 +290,11 @@ public class UserController {
 	@ResponseBody
 	public List<UserDiaryDTO> getUserDiary(HttpSession session) {
 		UserDTO user =(UserDTO)session.getAttribute("user");
-		return userService.getDiary(user.nickname);
+		List<UserDiaryDTO> list=userService.getDiary(user.email);
+		for(UserDiaryDTO one:list) {
+			System.out.println(one.contents);
+		}
+		return userService.getDiary(user.email);
 	}
 	
 	@PostMapping("/mypage/likes")

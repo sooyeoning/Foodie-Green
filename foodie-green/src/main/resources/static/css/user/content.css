@@ -288,13 +288,15 @@ header{
     color: var(--bs-card-color);
 }
 .card-text{
-	height: 20vh;
-    /*width: 15vw; */
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /*영역 내의 컨텐츠의 최대 라인수*/
-    -webkit-box-orient: vertical; /*영역 박스의 내의 정렬을 수직*/
-    text-overflow: ellipsis;
+    width: 15vw;
+    display: -webkit-box; /*여백 삽입과 같이 유연한 높이 증가를 위해 플렉스 박스형태로 변환*/
+    -webkit-line-clamp: 3;/*영역 내의 컨텐츠의 최대 라인수*/
+    -webkit-box-orient: vertical;/*영역 박스의 내의 정렬을 수직*/
+    overflow: hidden; /*넘치는 부분 감추기*/
+    text-overflow: ellipsis; /*숨긴 부분 처리하는 방식*/
+    word-break: break-all; /*잘라버릴 글자를 단어 단위로*/
 }
+
 .bg-body-tertiary {
     --bs-bg-opacity: 1;
 	border: 1px solid #FFB3A7;
