@@ -8,6 +8,7 @@ import java.util.Random;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -75,6 +76,7 @@ public class UserController {
 				userdto.pw = pw;
 				userdto.logintype = "kakao";
 				userdto.kakaoId = String.valueOf(userInfo.get("kakaoId"));
+				userdto.phone = "010-0000-0000";
 				userService.signin(userdto);
 			} else {
 				userdto = userService.login_kakao(email);
@@ -95,8 +97,13 @@ public class UserController {
 		return "/user/callback";
 	}
 
+	@GetMapping("/signin_email")
+	public String signin_email() {
+		return "/user/signin_email";
+	}
+	
 	@GetMapping("/signin")
-	public String signin() {
+	public String signin(@RequestParam("email") String email) {
 		return "/user/signin";
 	}
 
@@ -161,22 +168,41 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/pwAuth", method = RequestMethod.POST)
-	public String pwAuth(String email, String phone) {
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	public String findPw(String email, String phone) {
 		String response = "null";
 		HashMap<String, String> map = new HashMap<>();
 		map.put("email", email);
 		map.put("phone", phone);
 
+		response = userService.findPw(map);
+		return response;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/pwAuth", method = RequestMethod.POST)
+	public HashMap<String, Object> pwAuth(String email, String phone) {
+		String response = "null";
+		HashMap<String, String> map = new HashMap<>();
+		map.put("email", email);
+		map.put("phone", phone);
+
+		HashMap<String, Object> result = new HashMap<>();
+
 		if (userService.findPw(map) == null) {
 			response = "회원가입시 기입했던 이메일, 핸드폰 번호 다시 한번 확인하여 기입 바랍니다.";
+			result.put("response", response);
 		} else {
-			String pw = userService.findPw(map);
+			//String pw = userService.findPw(map);
+			Random random = new Random();
+			int checkNum = random.nextInt(888888) + 111111;
+			
+			result.put("secretkey", checkNum);
 
 			String setFrom = "foodiengreen@gmail.com";
 			String toMail = email;
 			String title = "비밀번호 인증 이메일 입니다.";
-			String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "비밀번호는 " + pw + "입니다.";
+			String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증번호는 " + checkNum + "입니다.";
 
 			try {
 
@@ -191,10 +217,12 @@ public class UserController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			response = "비밀번호가 입력하신 이메일 주소로 전달되었습니다.";
+			response = "인증번호가 입력하신 이메일 주소로 전달되었습니다.";
+			result.put("response", response);
+
 		}
 
-		return response;
+		return result;
 	}
 
 	@ResponseBody

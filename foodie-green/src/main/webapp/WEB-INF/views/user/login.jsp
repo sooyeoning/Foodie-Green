@@ -44,7 +44,7 @@
 	<button class="login_email">이메일로 계속하기</button>
 	</div>
 	
-	<p class="signin">아직 회원이 아니신가요? <a href="/signin" class="signin_a"> 회원가입</a></p>
+	<p class="signin">아직 회원이 아니신가요? <a href="/signin_email" class="signin_a"> 회원가입</a></p>
 	</div>
 	</div>
 
