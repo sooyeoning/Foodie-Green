@@ -13,6 +13,38 @@ $(document).ready(function() {
 		signin_check();
 	})
 
+	//JQuery 동적으로 생성된 버튼에 이벤트 달기
+	$(document).on("click", ".eyes", function() {
+
+		if ($("#pw").attr("type") == "password") {
+			$("#pw").attr("type", "text");
+			$(".pweye").attr('class', "fa-solid fa-eye-slash pweye-slash");
+		} else {
+			$("#pw").attr("type", "password");
+			$(".pweye-slash").attr('class', "fas fa-eye pweye");
+		}
+	});
+	
+	//JQuery 동적으로 생성된 버튼에 이벤트 달기
+	$(document).on("click", ".check_eyes", function() {
+
+		if ($("#checkpw").attr("type") == "password") {
+			$("#checkpw").attr("type", "text");
+			$(".checkpweye").attr('class', "fa-solid fa-eye-slash checkpweye-slash");
+		} else {
+			$("#checkpw").attr("type", "password");
+			$(".checkpweye-slash").attr('class', "fas fa-eye checkpweye");
+		}
+	});
+	
+	//전화번호 입력시 자동 - 입력
+	/*$("#phone").keyup(function(e){
+			const inputvalue = this.value;
+			const limit = this.value.length;
+			if(limit==3){ inputvalue.replace(inputvalue,inputvalue+'-'); }
+			
+			
+		});*/
 });
 
 //닉네임 중복확인 및 null값 체크 + 닉네임(중복확인 후 다시 변경시 오류)

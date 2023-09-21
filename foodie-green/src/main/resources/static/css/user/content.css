@@ -303,7 +303,7 @@ header{
   position: relative;
 }
 
-.eyes {
+.eyes, .check_eyes {
   position: absolute;
   top: 0;
   bottom: 15px;
