@@ -24,6 +24,9 @@ public class DiaryController {
 
 	@Autowired
 	DiaryService ds;
+	
+	@Autowired
+	CommentService cs;
 
 	@GetMapping("fgrecipes")
 	public String fgrecipes() {
@@ -101,7 +104,10 @@ public class DiaryController {
 	@GetMapping("diarydetail/{id}")
 	public String diarydetail(@PathVariable int id, Model model) {
 		DiaryDTO diary = ds.getDiaryById(id);
+		
+		List<CommentDTO> comments =cs.getCommentsByDiaryId(id);
 		model.addAttribute("diary", diary);
+		model.addAttribute("comments",comments);
 		return "recipes/diarydetail";
 	}
 

@@ -24,7 +24,7 @@
 		<%@ include file="../home/header.jsp"%> 
 	</header>
 
-	<h2>${diary.writer}의식단일기</h2>
+	<h2>${diary.writer}의 식단일기</h2>
 
 	<div class="img-sum">
 		<img alt="이미지" src="${diary.photo }">
@@ -66,8 +66,33 @@
 			<span> ${diary.recipes}</span>
 		</div>
 	</div>
-
-
+	<p class="selectline"></p>
+	
+	<div class= "comment-content">
+	<span class="comment-title">댓글</span>
+	<form action="/commentwrite" method="post" id="commentForm">
+	<div class="comment-detail">
+	<textarea name="content" class="comment-contents" rows="4" cols="50" placeholder="댓글을 입력하세요."></textarea>
+	<input type="hidden" name="diary_id" value="${diary.id}"/>
+	<input type="hidden" name="writer" value="${sessionScope.nickname}"/>  
+    <input class="comment-button" type="submit" value="확인">
+	</div>
+	</form>
+	</div>
+    <p class="selectline2"></p>	
+    
+    <!-- 댓글 목록 -->
+    <div class="comment-list">
+    <c:forEach var="comment" items="${comments}"> <!-- comments는 서버에서 전달받은 댓글 리스트 -->
+        <div class="comment-item">
+            <span class="comment-writer">${comment.writer}</span>
+            <span class="comment-contents2">${comment.content}</span>
+            <span class="comment-date">${comment.created_at}</span>
+            <button class="delete-comment-btn" data-id="${comment.id}">삭제</button>
+            <input id="edit_BTN" type="button" value="수정">
+        </div>
+    </c:forEach>
+    </div>
 
 	<div class="floating-button-wrapper">
 		<div class="floating-button">

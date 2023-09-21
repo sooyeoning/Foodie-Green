@@ -1,5 +1,5 @@
 @charset "UTF-8";
- 
+
 body {
 	background-color: #FDEEDC;
 }
@@ -54,6 +54,7 @@ h2 {
 	margin-bottom: 5px;
 	font-family: 'GangwonEdu_OTFBoldA';
 }
+
 .detail-title #edit-button {
 	border: none;
 	color: white;
@@ -76,9 +77,92 @@ h2 {
 }
 
 .selectline {
-	border: 8px solid #f9fafb;
+	border: 8px solid lightgray;
 	margin-left: 4%;
 	margin-right: 4%;
+}
+
+.selectline2 {
+	border-bottom: 1px solid lightgray;
+	margin-left: 4%;
+	margin-right: 4%;
+}
+
+.comment-content {
+	margin-left: 4%;
+}
+
+.comment-content .comment-title {
+	font-size: 22px;
+}
+
+.comment-detail {
+	display: flex;
+	flex-direction: column;
+}
+
+.comment-detail .comment-contents {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	resize: none;
+	outline: none;
+	width: 95.5%;
+	height: 80px;
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.comment-detail .comment-button {
+	margin-right: 4%;
+	align-self: flex-end;
+	border: none;
+	color: white;
+	background-color: #FFB3A7;
+	padding: 8px;
+	margin-bottom: 5px;
+	font-size: 18px;
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.comment-item {
+    display: flex;
+    margin: 0 4%; /* 좌우 마진 4% 적용 */
+    align-items: center; /* 세로 중앙 정렬 (필요하다면) */
+}
+
+.comment-writer {
+	font-size: 18px;
+    /* 필요한 스타일 추가 */
+}
+
+.comment-contents2 {
+    flex-grow: 1;  /* content가 가능한 모든 공간을 차지하도록 한다. */
+    margin-left: 10px; /* writer와의 간격 설정 */
+    font-size: 20px;
+    /* 기타 필요한 스타일 추가 */
+}
+
+.comment-date {
+    margin-left: auto;  /* 오른쪽에 배치하기 위해 자동 마진을 사용 */
+    font-size: 12px;
+    /* 필요한 스타일 추가 */
+}
+.comment-item #edit_BTN {
+	border: none;
+	color: white;
+	background-color: #FFB3A7;
+	padding: 5px;
+	margin-bottom: 5px;
+	font-family: 'GangwonEdu_OTFBoldA';
+}
+
+.comment-item .delete-comment-btn {
+	border: none;
+	color: white;
+	background-color: #FFB3A7;
+	padding: 5px;
+	margin-bottom: 5px;
+	font-family: 'GangwonEdu_OTFBoldA';
+	margin-right: 5px;
 }
 
 /*플로팅 버튼 수정X========*/

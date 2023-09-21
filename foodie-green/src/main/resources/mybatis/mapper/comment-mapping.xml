@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="recipes.CommentDAO">
+	   <insert id="insertComment" parameterType="CommentDTO">
+    INSERT INTO comments (writer, content, diary_id) VALUES (#{writer}, #{content}, #{diary_id})
+</insert>
+
+
+    <!-- 특정 일기에 대한 댓글만 가져오는 쿼리 -->
+   <select id="getCommentsByDiaryId" resultType="CommentDTO">
+      SELECT * FROM comments WHERE diary_id = #{diary_id} ORDER BY created_at DESC
+   </select>
+
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM comments WHERE
+		id = #{id}
+	</delete>
+</mapper>
+
