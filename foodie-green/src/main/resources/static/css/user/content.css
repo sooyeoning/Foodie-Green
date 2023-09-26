@@ -233,7 +233,7 @@ header{
 	justify-self: end;
 	margin-right: -1vw;
 }
-.nick_check_r, .editbtn_r, .deletebtn_r{
+.nick_check_r, .editbtn_r, .deletebtn_kakao, .deletebtn_normal{
 	width: 8vw;
 	height: 5vh;
 	border-radius: 10px;

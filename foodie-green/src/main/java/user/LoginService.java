@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -142,52 +143,53 @@ public class LoginService {
 	    //StringBuffer를 String으로 변환해서 return 하려면 toString()을 사용하면 된다.
 	}
 	
-	/*
-	public Long logoutKakao (Long id, String accessToken) {
+	public void logout(String accessToken) {
 	    String requestURL = "https://kapi.kakao.com/v1/user/logout";
-
 	    try {
 	        URL url = new URL(requestURL);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
 	        conn.setRequestMethod("POST");
-	        // setDoOutput()은 OutputStream으로 POST 데이터를 넘겨 주겠다는 옵션이다.
-	        // POST 요청을 수행하려면 setDoOutput()을 true로 설정한다.
-	        conn.setDoOutput(true);
-
 	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-
-	        // POST 요청에서 필요한 파라미터를 OutputStream을 통해 전송
-	        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-	        String sb = "target_id_type=user_id" +
-	                "&target_id=" ; // REST_API_KEY
-	   
-	        bufferedWriter.write(sb);
-	        bufferedWriter.flush();
-
+	        
 	        int responseCode = conn.getResponseCode();
 	        System.out.println("responseCode : " + responseCode);
-
-	        // 요청을 통해 얻은 데이터를 InputStreamReader을 통해 읽어 오기
-	        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        
+	        String result = "";
 	        String line = "";
-	        StringBuilder result = new StringBuilder();
-
-	        while ((line = bufferedReader.readLine()) != null) {
-	            result.append(line);
+	        
+	        while ((line = br.readLine()) != null) {
+	            result += line;
 	        }
-	        System.out.println("response body : " + result);
-
-	        JsonElement element = JsonParser.parseString(result.toString());
-
-	        id = element.getAsJsonObject().get("id").getAsLong();
-
-	        bufferedReader.close();
-	        bufferedWriter.close();
+	        System.out.println(result);
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
-
-	    return id;
-	}*/
+	}
+	
+	public void unlink(String accessToken) {
+		  String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+		    try {
+		        URL url = new URL(reqURL);
+		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		        conn.setRequestMethod("POST");
+		        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+		        
+		        int responseCode = conn.getResponseCode();
+		        System.out.println("responseCode : " + responseCode);
+		        
+		        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        
+		        String result = "";
+		        String line = "";
+		        
+		        while ((line = br.readLine()) != null) {
+		            result += line;
+		        }
+		        System.out.println(result);
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+	}
 }

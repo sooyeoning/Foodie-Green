@@ -37,6 +37,7 @@
 	String email = userdto.getEmail();
 	String phone = userdto.getPhone();
 	String pw = userdto.getPw();
+	String logintypes = userdto.getLogintype();
 	%>
 	<div class="d-flex align-items-start paddingtop120 height70">
 		<!-- 메뉴바 목록 -->
@@ -153,7 +154,12 @@
 						<p class="font20" style="color: red;">2. 탈퇴 후 6개월간 동일한 계정으로
 							재가입이 불가능합니다.</p>
 						<p class="font20">정말 탈퇴를 진행하시겠습니까?</p>
-						<button class="deletebtn_r">탈퇴하기</button>
+						<%if(logintype.equals("kakao")){
+						%>
+						<button class="deletebtn_kakao">탈퇴하기</button>
+						<%} if(logintype.equals("normal")){%>
+						<button class="deletebtn_normal">탈퇴하기</button>
+						<%} %>
 					</div>
 				</div>
 
@@ -163,7 +169,6 @@
 		</div>
 	</div>
 
-	
 
 	<%@ include file="../home/footer.jsp"%>
 </body>

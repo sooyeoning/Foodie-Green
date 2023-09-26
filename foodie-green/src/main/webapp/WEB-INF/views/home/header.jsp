@@ -56,7 +56,7 @@
 			<%
 			} else if (logintype.equals("kakao")) {
 			%>
-			<span style="float: right;"><a href="javascript:kakaoLogout()"
+			<span style="float: right;"><a href="logout_kakao"
 				style="color: black; font-weight: 700;">로그아웃</a></span>
 			<%
 			}
@@ -65,24 +65,6 @@
 		</div>
 	</header>
 
-	<script type="text/javascript">
-	<%-- function kakaoLogin(){
-		Kakao.Auth.setAccessToken(<%=session.getAttribute("kakaoKey")%>);
-	} --%>
-	
-	function kakaoLogout(){
-		Kakao.Auth.logout()
-		  .then(function(response) {
-		    console.log(Kakao.Auth.getAccessToken()); // null
-		  })
-		  .catch(function(error) {
-		    console.log('Not logged in.');
-		  });
-		
-		window.location.href = "/logout";
-	}
-	
-	</script>
 </body>
 
 </html>

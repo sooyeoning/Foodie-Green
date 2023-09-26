@@ -55,11 +55,8 @@
 	      redirectUri: 'http://localhost:8888/login_kakao',
 	      scope: "account_email profile_nickname"
 	    });
-	    
-		Kakao.Auth.setAccessToken(<%=session.getAttribute("accessToken")%>);
 	}
 
-	  
 	</script>
 <%@ include file="../home/footer.jsp"%>
 
