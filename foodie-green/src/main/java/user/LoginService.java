@@ -97,15 +97,15 @@ public class LoginService {
 	        System.out.println("response body : " + result);
 
 	        JsonElement element = JsonParser.parseString(result.toString());
-	        JsonElement jsonkakaoId = element.getAsJsonObject().get("id");
+	       // JsonElement jsonkakaoId = element.getAsJsonObject().get("id");
 	        JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 	        JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 	        
-	        String kakaoId = jsonkakaoId.getAsString();
+	       // String kakaoId = jsonkakaoId.getAsString();
 	        String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
 	        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 
-	        userInfo.put("kakaoId", kakaoId);
+	       // userInfo.put("kakaoId", kakaoId);
 	        userInfo.put("nickname", nickname);
 	        userInfo.put("email", email);
 

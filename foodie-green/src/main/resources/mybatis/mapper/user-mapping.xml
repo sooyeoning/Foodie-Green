@@ -7,8 +7,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="signin" parameterType="UserDTO">
-		INSERT INTO user(name,nickname,email,pw,phone,logintype, kakaoId)
-		values(#{name},#{nickname},#{email},#{pw},#{phone},#{logintype},#{kakaoId})
+		INSERT INTO user(name,nickname,email,pw,phone,logintype)
+		values(#{name},#{nickname},#{email},#{pw},#{phone},#{logintype})
 	</insert>
 	
 	<!-- 로그인 -->

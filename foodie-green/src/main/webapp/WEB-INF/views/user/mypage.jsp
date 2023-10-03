@@ -84,13 +84,13 @@
 							readonly="readonly">
 						<p class="font20 bottom0">닉네임</p>
 						<div class="font15 top1vh pointcolor" id="nickname_msg"></div>
-						<div class="p_relative">
+						<div class="nicknameDiv">
 							<input type="text" class="input" value=<%=nickname%>
-								id="nickname"><br>
+								id="nickname">
+								<div class="nicknameBtn">
 							<button class="nick_check_r" onclick="nick_check();">중복확인</button>
-						</div>
-						<br>
-						<br>
+						</div></div>
+					
 						<p class="font20 bottom0">이메일</p>
 						<input type="email" class="input" value=<%=email%> id="email"
 							readonly="readonly">
@@ -113,7 +113,7 @@
 				<div class="tab-pane fade" id="v-pills-userDiary" role="tabpanel"
 					aria-labelledby="v-pills-userDiary-tab">
 					<p class="menu_title">내가 작성한 식단일기</p>
-					<div class="album py-5 bg-body-tertiary width60">
+					<div class="album py-5 bg-body-tertiary width60 marginb5">
 						<div class="container userdiarycontainer">
 
 							<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
@@ -132,7 +132,7 @@
 				<div class="tab-pane fade" id="v-pills-userLikedPost"
 					role="tabpanel" aria-labelledby="v-pills-userLikedPost-tab">
 					<p class="menu_title">내가 찜한 식단일기</p>
-					<div class="album py-5 bg-body-tertiary width60">
+					<div class="album py-5 bg-body-tertiary width60 marginb5">
 						<div class="container likedPostcontainer">
 
 							<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
@@ -148,10 +148,10 @@
 				<div class="tab-pane fade" id="v-pills-userDelete" role="tabpanel"
 					aria-labelledby="v-pills-userDelete-tab">
 					<p class="menu_title">탈퇴하기</p>
-					<div class="album py-5 bg-body-tertiary width60">
+					<div class="album py-5 bg-body-tertiary width60 marginb5">
 						<p class="font20">1. 탈퇴 시, 구독 정보와 회원 정보, 보유 쿠폰 등 모든 정보가 영구적으로
 							삭제되며 복구가 불가능합니다.</p>
-						<p class="font20" style="color: red;">2. 탈퇴 후 6개월간 동일한 계정으로
+						<p class="font20" style="color: red;">2. (구현예정)탈퇴 후 6개월 동안 동일한 계정으로
 							재가입이 불가능합니다.</p>
 						<p class="font20">정말 탈퇴를 진행하시겠습니까?</p>
 						<%if(logintype.equals("kakao")){

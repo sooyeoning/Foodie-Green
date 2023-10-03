@@ -27,15 +27,23 @@
 
 		<p class="font20 bottom0">이메일</p>
 		<p class="font15 top1vh pointcolor">비밀번호 인증 메일이 가는 주소입니다.</p>
-		<input type="text" placeholder="회원가입시 등록하신 이메일을 입력해주세요" id="email"
-			class="input">
-		<button type="button" class="sendKeyBtn" onclick="sendSecretkey();">인증번호
-			요청</button>
+		<div class="findPwDiv">
+			<input type="text" placeholder="회원가입시 등록하신 이메일을 입력해주세요" id="email"
+				class="input">
+			<div class="findPwBtn">
+				<button type="button" class="sendKeyBtn" onclick="sendSecretkey();">인증번호
+					요청</button>
+			</div>
+		</div>
 
-		<input type="text" placeholder="인증번호를 입력해주세요" id="checkKey"
-			class="input">
-		<button type="button" class="authKeyBtn" onclick="authSecretkey();">인증번호
-			확인</button>
+		<div class="findPwDiv">
+			<input type="text" placeholder="인증번호를 입력해주세요" id="checkKey"
+				class="input">
+			<div class="findPwBtn">
+				<button type="button" class="authKeyBtn" onclick="authSecretkey();">인증번호
+					확인</button>
+			</div>
+		</div>
 
 		<button type="submit" class="findPwbtn">비밀번호 찾기</button>
 	</div>

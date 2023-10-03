@@ -175,11 +175,11 @@ input[class=pwwhite] {
 	margin-right: -1vw;
 }
 
-.emailDiv {
+.emailDiv, .findPwDiv, .nicknameDiv {
   position: relative;
 }
 
-.emailBtn {
+.emailBtn, .findPwBtn {
   position: absolute;
   top: 0;
   bottom: 15px;
@@ -187,6 +187,16 @@ input[class=pwwhite] {
   margin: auto 2px;
   height: 30px;
   font-size: 25px;
+  cursor: pointer;
+  display: flex;
+}
+.nicknameBtn{
+position: absolute;
+  top: 0;
+  bottom: 15px;
+  right: 25vw;
+  margin: auto 2px;
+  height: 30px;
   cursor: pointer;
   display: flex;
 }
@@ -198,6 +208,16 @@ input[class=pwwhite] {
 	color: black;
 	margin-right: 10px;
 	width: 4vw;
+	height: 4vh;
+}
+
+ .sendKeyBtn, .authKeyBtn, .nick_check_r{
+	background-color: white;
+	border: 2px solid #FFB3A7;
+	border-radius: 10px;
+	color: black;
+	margin-right: 10px;
+	width: 6vw;
 	height: 4vh;
 }
 
@@ -218,11 +238,14 @@ input[class=pwwhite] {
 .position_inherit{
 	position: inherit;
 }
+.marginb5{
+	margin-bottom: 5vh;
+}
 /*header top 0px*/
 header{
 	top: 0px;
 }
-.signinbtn, .nick_check, .email_check, .secretkey_check, .editbtn,
+.signinbtn, .nick_check, .secretkey_check, .editbtn,
 	.deletebtn {
 	width: 8vw;
 	height: 5vh;
@@ -233,7 +256,17 @@ header{
 	justify-self: end;
 	margin-right: -1vw;
 }
-.nick_check_r, .editbtn_r, .deletebtn_kakao, .deletebtn_normal{
+.email_check {
+	width: 8vw;
+	height: 5vh;
+	border-radius: 10px;
+	border: 1px solid #FFB3A7;
+	background-color: #FFB3A7;
+	color: white;
+	justify-self: end;
+	margin-right: 0vw;
+}
+.editbtn_r, .deletebtn_kakao, .deletebtn_normal{
 	width: 8vw;
 	height: 5vh;
 	border-radius: 10px;
