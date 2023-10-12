@@ -21,8 +21,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public boolean deleteComment(int id, String loggedInUserNickname) {
-		return false;
+	public int deleteComment(int id, String loggedInUserNickname) {
+		return dao.deleteComment(id, loggedInUserNickname);
 	}
 
 	
