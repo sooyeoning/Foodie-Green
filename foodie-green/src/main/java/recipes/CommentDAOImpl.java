@@ -1,6 +1,8 @@
 package recipes;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,11 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public int deleteComment(int id) {
-		return sqlSession.delete("deletecomment",id);
+	public int deleteComment(int id, String writer) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("id", id);
+		params.put("writer", writer);
+		return sqlSession.delete("deleteComment", params);
 	}
 
 
