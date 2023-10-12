@@ -7,5 +7,5 @@ public interface CommentService {
 
 	List<CommentDTO> getCommentsByDiaryId(int diary_id);
 	
-	int deleteComment(int id, String loggedInUserNickname);
+	boolean deleteComment(int id, String loggedInUserNickname);
 }
