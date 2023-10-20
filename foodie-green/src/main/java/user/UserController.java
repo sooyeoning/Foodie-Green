@@ -70,20 +70,20 @@ public class UserController {
 			if(checkEmail==0) {
 				String pw = "K1" + loginService.tempPassword(10) + "!";
 				//임의 비밀번호 확인: System.out.println(pw);
-				userdto.email = String.valueOf(userInfo.get("email"));
-				userdto.name = String.valueOf(userInfo.get("nickname"));
-				userdto.nickname = String.valueOf(userInfo.get("nickname"));
-				userdto.pw = pw;
-				userdto.logintype = "kakao";
-				userdto.kakaoId = String.valueOf(userInfo.get("kakaoId"));
-				userdto.phone = "010-0000-0000";
+				userdto.setEmail(String.valueOf(userInfo.get("email")));
+				userdto.setName(String.valueOf(userInfo.get("nickname")));
+				userdto.setNickname(String.valueOf(userInfo.get("nickname")));
+				userdto.setPw(pw);
+				userdto.setLogintype("kakao");
+				userdto.setKakaoId(String.valueOf(userInfo.get("kakaoId")));
+				userdto.setPhone("010-0000-0000");
 				userService.signin(userdto);
 			} else {
 				userdto = userService.login_kakao(email);
 			}
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
-			session.setAttribute("nickname", userdto.nickname);
+			session.setAttribute("nickname", userdto.getNickname());
 			session.setAttribute("accessToken", accessToken);
 			System.out.println("accessToken: "+accessToken);
 		} catch (Exception e) {
@@ -138,7 +138,7 @@ public class UserController {
 		if (userdto != null) {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
-			session.setAttribute("nickname", userdto.nickname);
+			session.setAttribute("nickname", userdto.getNickname());
 
 			// alert
 			return "redirect:/";
@@ -326,7 +326,7 @@ public class UserController {
 	@ResponseBody
 	public void editUser(UserDTO userdto, HttpSession session) {
 		userService.editUser(userdto);
-		UserDTO user= userService.getUserInfo(userdto.email);
+		UserDTO user= userService.getUserInfo(userdto.getEmail());
 		session.setAttribute("user", user);
 	}
 	
@@ -334,11 +334,11 @@ public class UserController {
 	@ResponseBody
 	public List<UserDiaryDTO> getUserDiary(HttpSession session) {
 		UserDTO user =(UserDTO)session.getAttribute("user");
-		List<UserDiaryDTO> list=userService.getDiary(user.email);
+		List<UserDiaryDTO> list=userService.getDiary(user.getEmail());
 		for(UserDiaryDTO one:list) {
-			System.out.println(one.contents);
+			System.out.println(one.getContents());
 		}
-		return userService.getDiary(user.email);
+		return userService.getDiary(user.getEmail());
 	}
 	
 	@PostMapping("/mypage/likes")
@@ -346,7 +346,7 @@ public class UserController {
 	public ArrayList<DiaryDTO> getUserLikes(HttpSession session) {
 		//System.out.println("post매핑");		
 		UserDTO user =(UserDTO)session.getAttribute("user");
-		List<Integer> likedlist = userService.getUserLikes(user.id);
+		List<Integer> likedlist = userService.getUserLikes(user.getId());
 		//System.out.println("for문 전");
 		for(int i=0; i<likedlist.size(); i++) {
 			System.out.println(likedlist.get(i));

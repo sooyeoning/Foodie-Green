@@ -1,14 +1,14 @@
 package user;
 
 public class UserDTO {
-	String name;
-	String nickname;
-	String email; 
-	String pw;
-	String phone;
-	int id;
-	String logintype;
-	String kakaoId;
+	private String name;
+	private String nickname;
+	private String email; 
+	private String pw;
+	private String phone;
+	private int id;
+	private String logintype;
+	private String kakaoId;
 	
 	public UserDTO(String name, String nickname, String email, String pw, String phone, int id, String logintype,
 			String kakaoId) {

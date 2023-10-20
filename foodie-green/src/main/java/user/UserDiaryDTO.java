@@ -1,16 +1,12 @@
 package user;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
-
-@Component
 public class UserDiaryDTO {
 
-	int id;
-	String title, contents;
-	String writer,writing,recipes;
-	String photo;
-	int likecnt, count;
+	private int id;
+	private String title, contents;
+	private String writer,writing,recipes;
+	private String photo;
+	private int likecnt, count;
 	
 	public UserDiaryDTO() {
 
