@@ -5,20 +5,19 @@
 
 품질은 똑같지만, 모양이 안 이쁘다는 이유로 판매되지 않는 친환경 농산물을 판매합니다.  
 농산물을 먹기 좋을만큼, 소량으로 포장 후 레시피페이퍼와 함께 신선한 농산물을 배송합니다.  
-푸디앤그린은 버려지는 농산물의 최소화를 지향합니다.
-
- 
+푸디앤그린은 버려지는 농산물의 최소화를 지향합니다.  
 
 ### 🧑‍🤝‍🧑 멤버 구성
 #
 팀장 : [신장훈](https://github.com/gamepro6390) - (제품 리스트,제품 상세) 페이지,결제 서비스  
+**팀원 : [김수연](https://github.com/sooyeoning) - 로그인,회원가입,ID 찾기,PW 찾기,마이페이지**  
 팀원 : [신연균](https://github.com/SHIN-YEONGYUN) - 레시피 게시판(CRUD),식단일기 게시판(CRUD),북마크  
 팀원 : [김수연](https://github.com/sooyeoning) - 로그인,회원가입,ID 찾기,PW 찾기,마이페이지  
 팀원 : [김도현](https://github.com/DoHyunDaniel) - 메인홈페이지,브랜드 소개,고객센터  
 
 ### 🕰️ 개발기간
 #
-23.08.10 ~ ing
+23.08.10 ~ 23.11.27
 
 ### ⚙️ 개발환경 
 #
@@ -30,7 +29,7 @@ BE :
 <img src="https://img.shields.io/badge/java-16A5F3?style=for-the-badge&logo=logoColor=white">
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
 <img src="https://img.shields.io/badge/maven-0C2340?style=for-the-badge&logo=logoColor=white">  
-IDE : <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">  
+IDE : <img src="https://img.shields.io/badge/sts4-6DB33F?style=for-the-badge&logo=spring&logoColor=white">  
 DB : <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">  
 Communication Tools : 
 <img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
@@ -44,8 +43,6 @@ Communication Tools :
 #
 #### 메인페이지 
 ![화면 캡처 2023-08-23 144339](https://github.com/gamepro6390/Foodie-Green/assets/109639714/50bd1c69-a740-40ca-bc1e-aead78c266f0)
-- 패럴랙스, 슬라이더 등의 css 기능들과 포토샵 등을 활용하여 광고 내용과 페이지 정보에 쉽게 접근할 수 있도록 함
-- 화면 하단에 챗봇 표시, 푸터는 자주 묻는 질문(FAQ페이지)와 직접 질문(챗봇으로 연결)이 가능하도록 함
   
 #### 회원가입 & 로그인 & 마이페이지  
   
