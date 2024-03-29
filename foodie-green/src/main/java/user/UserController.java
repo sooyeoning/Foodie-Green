@@ -6,34 +6,32 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import recipes.DiaryDTO;
+import user.model.FindIdReq;
+import user.model.LoginReq;
 
 @Controller
+@RequiredArgsConstructor
+@Slf4j
 public class UserController {
 
-	@Autowired
-	JavaMailSender mailSender;
-
-	@Autowired
-	LoginService loginService;
-
-	@Autowired
-	UserServiceImpl userService;
+	private final JavaMailSender mailSender;
+	private final LoginService loginService;
+	private final UserService userService;
+	private final HttpSession session;
 
 	@GetMapping("/login")
 	public String login() {
@@ -41,24 +39,24 @@ public class UserController {
 	}
 
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {		
+	public String logout() {		
 		session.invalidate();
 		
 		return "redirect:/";
 	}
 	
 	@GetMapping("/login_kakao")
-	public String login_kakao(@RequestParam(required = false) String code,HttpSession session) {
+	public String login_kakao(@RequestParam(required = false) String code) {
 		try {
 			// URL에 포함된 code를 이용하여 액세스 토큰 발급
 			String accessToken = loginService.getKakaoAccessToken(code);
-			System.out.println(accessToken);
+			log.info(accessToken);
 
 			// 액세스 토큰을 이용하여 카카오 서버에서 유저 정보(닉네임, 이메일) 받아오기
 			HashMap<String, Object> userInfo = loginService.getUserInfo(accessToken);
-			System.out.println("login Controller : " + userInfo);
-			System.out.println("login Controller : " + userInfo.get("nickname"));
-			System.out.println("login Controller : " + userInfo.get("email"));
+			log.info("login Controller {} ", userInfo);
+			log.info("login Controller {} ",userInfo.get("nickname"));
+			log.info("login Controller {} ", userInfo.get("email"));
 			
 			//이메일 중복체크
 			int checkEmail = userService.checkEmail(String.valueOf(userInfo.get("email")));
@@ -85,7 +83,7 @@ public class UserController {
 			session.setAttribute("login", "ok");
 			session.setAttribute("nickname", userdto.getNickname());
 			session.setAttribute("accessToken", accessToken);
-			System.out.println("accessToken: "+accessToken);
+			log.info("accessToken {}",accessToken);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -93,13 +91,12 @@ public class UserController {
 	}
 
 	@GetMapping("/logout_kakao")
-	public String logout_kakao(HttpSession session) {	
+	public String logout_kakao() {	
 		loginService.logout((String)session.getAttribute("accessToken"));
 		session.invalidate();
 		
 		return "redirect:/";
 	}
-	
 	
 	@GetMapping("/callback")
 	public String callback() {
@@ -119,28 +116,20 @@ public class UserController {
 	@PostMapping("/signin_request")
 	@ResponseBody
 	public void signin(UserDTO userDTO) {
-		System.out.println(userDTO.toString());
+		log.info(userDTO.toString());
 		userService.signin(userDTO);
 	}
 
-	// @PostMapping에서 @RequestParam을 써서 받을 수 있는 것은 HTML Form 태그에서 method 가 POST 전송일
-	// 때는 @RequestParam으로 값을 받을 수 있다.
-	// https://amagrammer91.tistory.com/106, https://dololak.tistory.com/630
-	// 아이디 중복?
 	@PostMapping("/userlogin")
-	public String userLogin(@Param("email") String email, @Param("pw") String pw, HttpSession session) {
-		//String result = "null";
-		HashMap<String, String> map = new HashMap<>();
-		map.put("email", email);
-		map.put("pw", pw);
+	public String userLogin(@ModelAttribute LoginReq loginReq) {
 		
-		UserDTO userdto = userService.login(map);
+		UserDTO userdto = userService.login(loginReq);
 		if (userdto != null) {
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
 			session.setAttribute("nickname", userdto.getNickname());
 
-			// alert
+			//alert
 			return "redirect:/";
 		} else {
 			// alert
@@ -155,20 +144,13 @@ public class UserController {
 	}
 
 	@PostMapping("/findId")
-	@ResponseBody
-	public String findId(@RequestBody Map<String, String> params) {
-		String phone = params.get("phone");
-		String name = params.get("name");
-		HashMap<String, String> map = new HashMap<>();
-		map.put("phone", phone);
-		map.put("name", name);
-
-		String response = "입력하신 이름, 번호에 해당하는 이메일이 없습니다.";
-		if (userService.findId(map) != null) {
-			response = "해당 이메일 주소: " + userService.findId(map);
-			System.out.println(response);
+	public String findId(@ModelAttribute FindIdReq findIdReq, Model model) {
+		String response = "해당 정보와 맞는 이메일 주소가 없습니다.";
+		if (userService.findId(findIdReq) != null) {
+			response = "아이디: "+userService.findId(findIdReq);
 		}
-		return response;
+		model.addAttribute("response", response);
+		return "/user/findIdResult";
 	}
 
 	@GetMapping("/findPw")
@@ -177,7 +159,7 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	@PostMapping(value = "/findPw")
 	public String findPw(String email, String phone) {
 		String response = "null";
 		HashMap<String, String> map = new HashMap<>();
@@ -189,7 +171,7 @@ public class UserController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/pwAuth", method = RequestMethod.POST)
+	@PostMapping(value = "/pwAuth")
 	public HashMap<String, Object> pwAuth(String email, String phone) {
 		String response = "null";
 		HashMap<String, String> map = new HashMap<>();
@@ -235,7 +217,7 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/emailAuth", method = RequestMethod.POST)
+	@PostMapping(value = "/emailAuth")
 	public String emailAuth(String email) {
 
 		Random random = new Random();
@@ -264,7 +246,7 @@ public class UserController {
 		return Integer.toString(checkNum);
 	}
 	
-	@RequestMapping(value = "/emailCheck", method = RequestMethod.POST)
+	@PostMapping("/emailCheck")
 	@ResponseBody
 	public String emailCheck(String email) {
 		String response = "";
@@ -276,13 +258,12 @@ public class UserController {
 		return response;
 	}
 	
-	@RequestMapping(value = "/nickCheck", method = RequestMethod.POST)
+	@PostMapping("/nickCheck")
 	@ResponseBody
 	public String nickCheck(@RequestParam Map<String, Object> map) {
 		String response = "";
 		String nickname = (String)map.get("nickname");
 		String email = (String)map.get("email");
-		//System.out.println(nickname + ","+email);
 		
 		HashMap<String, String> param = new HashMap<>();
 		param.put("nickname", nickname);
@@ -297,13 +278,13 @@ public class UserController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage(HttpSession session) {		
+	public String mypage() {		
 		return "/user/mypage";
 	}
 	
 	@GetMapping("/mypage/delete")
 	@ResponseBody
-	public void deleteUser(HttpSession session) {
+	public void deleteUser() {
 		UserDTO user =(UserDTO)session.getAttribute("user");
 		String email = user.getEmail();
 		userService.deleteUser(email);
@@ -311,7 +292,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/mypage/kakaounlink")
-	public String unlink(HttpSession session) {	
+	public String unlink() {	
 		loginService.unlink((String)session.getAttribute("accessToken"));
 		session.invalidate();
 		return "redirect:/";
@@ -324,7 +305,7 @@ public class UserController {
 	
 	@PostMapping("/mypage/edit")
 	@ResponseBody
-	public void editUser(UserDTO userdto, HttpSession session) {
+	public void editUser(UserDTO userdto) {
 		userService.editUser(userdto);
 		UserDTO user= userService.getUserInfo(userdto.getEmail());
 		session.setAttribute("user", user);
@@ -332,28 +313,27 @@ public class UserController {
 	
 	@PostMapping("/mypage/userDiary")
 	@ResponseBody
-	public List<UserDiaryDTO> getUserDiary(HttpSession session) {
+	public List<UserDiaryDTO> getUserDiary() {
 		UserDTO user =(UserDTO)session.getAttribute("user");
 		List<UserDiaryDTO> list=userService.getDiary(user.getEmail());
 		for(UserDiaryDTO one:list) {
-			System.out.println(one.getContents());
+			log.info(one.getContents());
 		}
 		return userService.getDiary(user.getEmail());
 	}
 	
 	@PostMapping("/mypage/likes")
 	@ResponseBody
-	public ArrayList<DiaryDTO> getUserLikes(HttpSession session) {
-		//System.out.println("post매핑");		
+	public ArrayList<DiaryDTO> getUserLikes() {
 		UserDTO user =(UserDTO)session.getAttribute("user");
 		List<Integer> likedlist = userService.getUserLikes(user.getId());
-		//System.out.println("for문 전");
+
 		for(int i=0; i<likedlist.size(); i++) {
-			System.out.println(likedlist.get(i));
+			log.info(""+likedlist.get(i));
 		}
 		ArrayList<DiaryDTO> list = new ArrayList<>();
 		for(int id: likedlist) {
-			System.out.println(id);
+			//System.out.println(id);
 			
 			DiaryDTO diarydto = userService.getLikedDiaryInfo(id);
 			list.add(diarydto);

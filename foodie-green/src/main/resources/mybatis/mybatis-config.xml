@@ -8,6 +8,8 @@
 	<typeAliases>
 		<typeAlias type="user.UserDTO" alias="UserDTO" />
 		<typeAlias type="user.UserDiaryDTO" alias="UserDiaryDTO" />
+		<typeAlias type="user.model.LoginReq" alias="loginReq"/>
+		<typeAlias type="user.model.FindIdReq" alias="findIdReq"/>
 		<typeAlias type="recipes.DiaryDTO" alias="DiaryDTO" />
 		<typeAlias type="recipes.CommentDTO" alias="CommentDTO" />
 		<typeAlias type="recipes.RecipesDTO" alias="RecipesDTO" />

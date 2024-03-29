@@ -3,26 +3,75 @@ package user;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
 import recipes.DiaryDTO;
+import user.model.FindIdReq;
+import user.model.LoginReq;
 
+@Service
+@RequiredArgsConstructor
+public class UserService{
 
-public interface UserService {
-	public void signin(UserDTO UserDTO);
-	public UserDTO login(HashMap<String, String> map);
-	public UserDTO login_kakao(String email);
+	private final UserMapper usermapper;
+	
+	public void signin(UserDTO UserDTO) {
+		usermapper.signin(UserDTO);
+	}
 
-	public String findId(HashMap<String, String> map);
-	public String findPw(HashMap<String, String> map);
-	public int checkEmail(String email);
-	public int checkNickname(String nickname);
-	public int checkPrevNickname(HashMap<String, String> map);
+	public int checkEmail(String email) {
+		return usermapper.checkEmail(email);
+	}
 
-	public void editUser(UserDTO userdto);
-	public UserDTO getUserInfo(String email);
+	public UserDTO login_kakao(String email) {
+		return usermapper.login_kakao(email);
+	}
 
-	public void deleteUser(String email);
+	public int checkNickname(String nickname) {
+		return usermapper.checkNickname(nickname);
+	}
 
-	public List<UserDiaryDTO> getDiary(String email);
-	public List<Integer> getUserLikes(int user_id);
-	public DiaryDTO getLikedDiaryInfo(int id);
+	public void editUser(UserDTO userdto) {
+		usermapper.editUser(userdto);
+	}
+
+	public String findId(FindIdReq findIdReq) {
+		return usermapper.findId(findIdReq);
+	}
+
+	public String findPw(HashMap<String, String> map) {
+		return usermapper.findPw(map);
+	}
+
+	public UserDTO login(LoginReq loginReq) {
+		return usermapper.login(loginReq);
+	}
+
+	public void deleteUser(String email) {
+		usermapper.deleteUser(email);
+	}
+
+	public List<UserDiaryDTO> getDiary(String email) {
+		return usermapper.getDiary(email);
+	}
+
+	public List<Integer> getUserLikes(int user_id) {
+		return usermapper.getUserLikes(user_id);
+	}
+
+	public DiaryDTO getLikedDiaryInfo(int id) {
+		return usermapper.getLikedDiaryInfo(id);
+	}
+
+	public int checkPrevNickname(HashMap<String, String> map) {
+		return usermapper.checkPrevNickname(map);
+	}
+
+	public UserDTO getUserInfo(String email) {
+		return usermapper.getUserInfo(email);
+	}
+	
+	
+
 }

@@ -6,17 +6,18 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import recipes.DiaryDAO;
 import recipes.DiaryDTO;
+import user.model.FindIdReq;
+import user.model.LoginReq;
 
 @Mapper // 매퍼 파일이야, @MapperScan 필요
 @Repository // 객체 생성, @ComponentScan 필요
 public interface UserMapper {
 	public void signin(UserDTO UserDTO);
-	public UserDTO login(HashMap<String, String> map);
+	public UserDTO login(LoginReq loginReq);
 	public UserDTO login_kakao(String email);
 
-	public String findId(HashMap<String, String> map);
+	public String findId(FindIdReq findIdReq);
 	public String findPw(HashMap<String, String> map);
 	public int checkEmail(String email);
 	public int checkNickname(String nickname);

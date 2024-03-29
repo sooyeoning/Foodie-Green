@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$(".login_email").click(function() {
 		$(".result").html(`
 	<p class="login_title_email">이메일로 계속하기</p>	
-	<form method="post" id="signinForm" action="/userlogin">
+	<form method="post" model="loginReq" id="signinForm" action="/userlogin">
 	<input type="text" name="email" placeholder="이메일을 입력해주세요" id="loginemail" class="emailwhite">
 	<div class="pw_eyes">
   	<input type="password" name="pw" id="loginpw" class="pwwhite" placeholder="비밀번호를 입력해주세요.">
