@@ -1,75 +1,91 @@
-var sendSecretkeyCheck = false;
-var authSecretkeyCheck = false;
-var secretkey;
 
-$(document).on('click', '.findPwbtn', function() { 
+var secretKey;
+
+$(document).ready(function(){ 
+
+	let hasCheckedEmailAuth = $('#hasCheckedEmailAuth').val();
+  	
+  	$('.sendKeyBtn').click(function(){
+		  let phone = $('#phone').val();
+		  let email = $('#email').val();
+  	 	  let inputKey = $('#inputKey').val();
+
+		  const findPwReq = {
+		   		email: email,
+		 		phone: phone,
+		 		inputKey: inputKey,
+	 	  };
+	 	  
+		  secretKey = sendSecretkeyFunc(findPwReq, secretKey);
+		  
+		  if(secretKey != null){
+			 $(".hasSentEmailAuth").attr("value", true);
+		 }
+	})
 	
-  	 var phone = document.getElementById('phone').value;
-  	 var email = document.getElementById('email').value;
-  	 var inputKey = document.getElementById('checkKey').value;
-
-  	 if(phone===null || $.trim(phone)==""){
-		 alert("휴대폰 번호를 입력해주세요.");
-	 }else if(email===null || $.trim(email)==""){
-		 alert("회원가입시 입력한 이메일 주소를 입력해주세요.")
-	 }else if(sendSecretkeyCheck===false){
-		 alert("인증번호 요청해주세요.")
-	 }else if(inputKey===null || $.trim(inputKey)==""){
-		 alert("입력하신 이메일 주소로 전달된 인증번호를 입력해주세요.")
-	 }else if(authSecretkeyCheck===false){
-		 alert("인증번호 확인버튼을 눌러주세요.")
-	 }else{
-  	  
-  	  $.ajax({
-  	    url: "/findPw", 
-  	    type: "POST",
-  	    data: 
-  	    {"email":  document.getElementById('email').value,
-  	    "phone":document.getElementById('phone').value },
-  	    success: function(response) {
-  	      alert(response);
-  	    },
-  	    error: function(jqXHR, textStatus, errorThrown) {
-  	      alert("아이디 찾기 중 오류가 발생했습니다. 다시 시도해주세요.");
-  	    }
-  	  });
-  	  
-  	  }
+	$('.authKeyBtn').click(function(){
+		  let phone = $('#phone').val();
+		  let email = $('#email').val();
+  	 	  let inputKey = $('#inputKey').val();
+		
+		   const findPwReq = {
+		   		email: email,
+		 		phone: phone,
+		 		inputKey: inputKey,
+		 		secretKey: secretKey
+	 	  };
+	 	  
+		 hasCheckedEmailAuth = authSecretkeyFunc(findPwReq, hasCheckedEmailAuth, secretKey);
+		 
+		 if(hasCheckedEmailAuth){
+			 $(".hasCheckedEmailAuth").attr("value", true);
+		 }
+	})
   	  
  });
  
- function sendSecretkey(){ //인증번호 전달
+ function sendSecretkeyFunc(findPwReq, secretKey){ //인증번호 전달
 	 $.ajax({
   	    url: "/pwAuth", 
   	    type: "POST",
-  	    data: 
-  	    {"email":  document.getElementById('email').value,
-  	    "phone":document.getElementById('phone').value },
+  	    contentType: "application/json; charset=utf-8",
+  	    data:  JSON.stringify(findPwReq),
+  	    async: false,
   	    success: function(result) {
-		  sendSecretkeyCheck = true;
-		  if(result.secretkey!=null){
-		  secretkey = result.secretkey;
+		  if(result.secretkey != null){
+		  	secretKey = result.secretkey;
+		  	//console.log("전송번호: "+result.secretkey);
+		  	//console.log("js 전송번호: "+secretKey);
 		  }
   	      alert(result.response);
   	    },
   	    error: function(jqXHR, textStatus, errorThrown) {
   	      alert("비밀번호 전달 중 오류가 발생했습니다. 다시 시도해주세요.");
   	    }
-  	  });
+  	  })
+  	  return secretKey;
   }
   
-  function authSecretkey(){ //인증번호 확인
-	  if(sendSecretkeyCheck==true){
-		  var inputkey = document.getElementById('checkKey').value;
-		  if(secretkey==inputkey){
-			  authSecretkeyCheck = true;
+ function authSecretkeyFunc(findPwReq, hasCheckedEmailAuth){ //인증번호 확인
+	  console.log("authSecretkeyFunc 시작");
+	  if(findPwReq.secretKey==null){
+		alert("인증번호를 받은 후 클릭해주세요.");
+	  } else {
+		  var inputkey = findPwReq.inputKey;
+		  if(secretKey==inputkey){
+			  //console.log("전송번호: "+inputkey);
+		  	  //console.log("js 전송번호: "+secretKey);
+		  	  hasCheckedEmailAuth = true;
 			  alert("인증번호 확인되었습니다.");
 		  } else{
-			  authSecretkeyCheck = false;
 			  alert("잘못된 인증번호입니다.");
 		  }
 	  }
+	  
+	  return hasCheckedEmailAuth;
   }
+  
+ 
   
   
 

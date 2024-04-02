@@ -7,8 +7,13 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import recipes.DiaryDTO;
+import user.dto.UserDTO;
+import user.dto.UserDiaryDTO;
 import user.model.FindIdReq;
+import user.model.FindPwReq;
 import user.model.LoginReq;
+import user.model.NicknameDuplicateReq;
+import user.model.SignInReq;
 
 @Service
 @RequiredArgsConstructor
@@ -16,8 +21,8 @@ public class UserService{
 
 	private final UserMapper usermapper;
 	
-	public void signin(UserDTO UserDTO) {
-		usermapper.signin(UserDTO);
+	public void signin(SignInReq req) {
+		usermapper.signin(req);
 	}
 
 	public int checkEmail(String email) {
@@ -31,6 +36,14 @@ public class UserService{
 	public int checkNickname(String nickname) {
 		return usermapper.checkNickname(nickname);
 	}
+	
+	public boolean checkPw(String pw, String checkPw) {
+		boolean result = false;
+		if (pw.equals(checkPw)) {
+			result = true;
+		}
+		return result;
+	}
 
 	public void editUser(UserDTO userdto) {
 		usermapper.editUser(userdto);
@@ -40,8 +53,8 @@ public class UserService{
 		return usermapper.findId(findIdReq);
 	}
 
-	public String findPw(HashMap<String, String> map) {
-		return usermapper.findPw(map);
+	public String findPw(FindPwReq findPwReq) {
+		return usermapper.findPw(findPwReq);
 	}
 
 	public UserDTO login(LoginReq loginReq) {
@@ -64,8 +77,8 @@ public class UserService{
 		return usermapper.getLikedDiaryInfo(id);
 	}
 
-	public int checkPrevNickname(HashMap<String, String> map) {
-		return usermapper.checkPrevNickname(map);
+	public int checkPrevNickname(NicknameDuplicateReq req) {
+		return usermapper.checkPrevNickname(req);
 	}
 
 	public UserDTO getUserInfo(String email) {

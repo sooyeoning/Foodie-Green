@@ -6,7 +6,7 @@
 <mapper namespace="user.UserMapper">
 
 	<!-- 회원가입 -->
-	<insert id="signin" parameterType="UserDTO">
+	<insert id="signin" parameterType="signInReq">
 		INSERT INTO user(
 			name,
 			nickname,
@@ -39,7 +39,7 @@
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
-	<select id="findPw" parameterType="HashMap" resultType="String">
+	<select id="findPw" parameterType="findPwReq" resultType="String">
 		select pw 
 		from user
 		where email=#{email} and phone=#{phone}
@@ -65,7 +65,7 @@
 	</select>
 	
 	<!-- 닉네임 중복체크(해당 사용자인 경우) -->
-	<select id="checkPrevNickname" parameterType="HashMap" resultType="int">
+	<select id="checkPrevNickname" parameterType="nicknameDuplicateReq" resultType="int">
 		select exists 
 		(select nickname from user where nickname=#{nickname} and email=#{email})
 	</select>

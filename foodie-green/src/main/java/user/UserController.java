@@ -1,27 +1,33 @@
 package user;
 
-import java.util.ArrayList;
+import java.net.http.HttpRequest;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import recipes.DiaryDTO;
+import user.dto.UserDTO;
 import user.model.FindIdReq;
+import user.model.FindPwReq;
+import user.model.FindPwRes;
 import user.model.LoginReq;
+import user.model.SignInReq;
+import user.model.NicknameDuplicateReq;
 
 @Controller
 @RequiredArgsConstructor
@@ -32,7 +38,8 @@ public class UserController {
 	private final LoginService loginService;
 	private final UserService userService;
 	private final HttpSession session;
-
+	private final HttpServletRequest request;
+	
 	@GetMapping("/login")
 	public String login() {
 		return "/user/login";
@@ -62,20 +69,23 @@ public class UserController {
 			int checkEmail = userService.checkEmail(String.valueOf(userInfo.get("email")));
 			
 			String email = String.valueOf(userInfo.get("email"));
-			
 			UserDTO userdto = new UserDTO();
 			
 			if(checkEmail==0) {
+				SignInReq req = new SignInReq();
+
 				String pw = "K1" + loginService.tempPassword(10) + "!";
 				//임의 비밀번호 확인: System.out.println(pw);
-				userdto.setEmail(String.valueOf(userInfo.get("email")));
-				userdto.setName(String.valueOf(userInfo.get("nickname")));
-				userdto.setNickname(String.valueOf(userInfo.get("nickname")));
-				userdto.setPw(pw);
-				userdto.setLogintype("kakao");
-				userdto.setKakaoId(String.valueOf(userInfo.get("kakaoId")));
-				userdto.setPhone("010-0000-0000");
-				userService.signin(userdto);
+				req.builder()
+					.email(email)
+					.name(String.valueOf(userInfo.get("nickname")))
+					.nickname(String.valueOf(userInfo.get("nickname")))
+					.phone("010-0000-0000")
+					.pw(pw)
+					.logintype("kakao")
+					.kakaoId(String.valueOf(userInfo.get("kakaoId")))
+					.build();
+				userService.signin(req);
 			} else {
 				userdto = userService.login_kakao(email);
 			}
@@ -109,15 +119,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/signin")
-	public String signin(@RequestParam("email") String email) {
+	public String signin(@RequestParam("email") String email, Model model) {
+		SignInReq req = new SignInReq();
+		req.setEmail(email);
+		model.addAttribute("signInReq", req);
 		return "/user/signin";
-	}
-
-	@PostMapping("/signin_request")
-	@ResponseBody
-	public void signin(UserDTO userDTO) {
-		log.info(userDTO.toString());
-		userService.signin(userDTO);
 	}
 
 	@PostMapping("/userlogin")
@@ -154,66 +160,61 @@ public class UserController {
 	}
 
 	@GetMapping("/findPw")
-	public String findPw() {
+	public String findPw(Model model) {
+		model.addAttribute("findPwReq", new FindPwReq());
 		return "/user/findPw";
 	}
 
-	@ResponseBody
 	@PostMapping(value = "/findPw")
-	public String findPw(String email, String phone) {
-		String response = "null";
-		HashMap<String, String> map = new HashMap<>();
-		map.put("email", email);
-		map.put("phone", phone);
+	public String findPw(
+			@ModelAttribute @Validated FindPwReq findPwReq,
+			BindingResult bindingResult) {
+		String pw = "null";
+		
+		//인증번호 전달
+		if(!findPwReq.isHasSentEmailAuth()) {
+			bindingResult.rejectValue("hasSentEmailAuth", "invalid.hasSentEmailAuth", new Object[]{findPwReq.isHasSentEmailAuth()}, "인증번호 전달 버튼 클릭!");
+		}
+		//인증번호 확인
+		if(!findPwReq.isHasCheckedEmailAuth()) {
+			bindingResult.rejectValue("hasCheckedEmailAuth", "invalid.hasCheckedEmailAuth", new Object[]{findPwReq.isHasCheckedEmailAuth()}, "인증번호 확인 버튼 클릭!");
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "user/findPw";
+		}
 
-		response = userService.findPw(map);
-		return response;
+		pw = userService.findPw(findPwReq);
+		
+		//찾은 비밀번호를 이메일 전달?
+		request.setAttribute("pw", pw);
+		return "user/findPwResult";
 	}
 	
 	@ResponseBody
 	@PostMapping(value = "/pwAuth")
-	public HashMap<String, Object> pwAuth(String email, String phone) {
+	public FindPwRes pwAuth(@RequestBody FindPwReq findPwReq) {
+		FindPwRes res = new FindPwRes();
 		String response = "null";
-		HashMap<String, String> map = new HashMap<>();
-		map.put("email", email);
-		map.put("phone", phone);
 
-		HashMap<String, Object> result = new HashMap<>();
-
-		if (userService.findPw(map) == null) {
+		if (userService.findPw(findPwReq) == null) {
 			response = "회원가입시 기입했던 이메일, 핸드폰 번호 다시 한번 확인하여 기입 바랍니다.";
-			result.put("response", response);
 		} else {
 			//String pw = userService.findPw(map);
 			Random random = new Random();
 			int checkNum = random.nextInt(888888) + 111111;
 			
-			result.put("secretkey", checkNum);
+			res.setSecretkey(checkNum);
 
-			String setFrom = "foodiengreen@gmail.com";
-			String toMail = email;
 			String title = "비밀번호 인증 이메일 입니다.";
 			String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증번호는 " + checkNum + "입니다.";
+			sendMail(findPwReq.getEmail(), title, content);
 
-			try {
-
-				jakarta.mail.internet.MimeMessage message = mailSender.createMimeMessage();
-				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-				helper.setFrom(setFrom);
-				helper.setTo(toMail);
-				helper.setSubject(title);
-				helper.setText(content, true);
-				mailSender.send(message);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 			response = "인증번호가 입력하신 이메일 주소로 전달되었습니다.";
-			result.put("response", response);
-
 		}
+		res.setResponse(response);
 
-		return result;
+		return res;
 	}
 
 	@ResponseBody
@@ -223,25 +224,11 @@ public class UserController {
 		Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111;
 
-		String setFrom = "foodiengreen@gmail.com";
-		String toMail = email;
 		String title = "이메일 인증 이메일 입니다.";
 		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
 				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-
-		try {
-
-			jakarta.mail.internet.MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-			helper.setFrom(setFrom);
-			helper.setTo(toMail);
-			helper.setSubject(title);
-			helper.setText(content, true);
-			mailSender.send(message);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		sendMail(email, title, content);
 
 		return Integer.toString(checkNum);
 	}
@@ -258,86 +245,48 @@ public class UserController {
 		return response;
 	}
 	
-	@PostMapping("/nickCheck")
-	@ResponseBody
-	public String nickCheck(@RequestParam Map<String, Object> map) {
-		String response = "";
-		String nickname = (String)map.get("nickname");
-		String email = (String)map.get("email");
+	@PostMapping("/signin")
+	public String signin(@Validated @ModelAttribute SignInReq signInReq,
+			BindingResult bindingResult) {
 		
-		HashMap<String, String> param = new HashMap<>();
-		param.put("nickname", nickname);
-		param.put("email", email);
+		NicknameDuplicateReq req = new NicknameDuplicateReq(signInReq.getNickname(), signInReq.getEmail());
+	
+		if(userService.checkNickname(signInReq.getNickname())==1) {// 다른사람이 사용중
+			bindingResult.rejectValue("nickname", "invalid.nickname", new Object[]{signInReq.getNickname()}, "이미 사용중인 닉네임입니다");
+		}
 		
-		if(userService.checkNickname(nickname)==1 && userService.checkPrevNickname(param)==0) {//닉네임사용중+다른사람이 사용중(0)
-			response = "이미 사용중인 닉네임입니다.";
+		if(!userService.checkPw(signInReq.getPw(), signInReq.getCheckpw())){
+			bindingResult.rejectValue("checkpw", "invalid.checkpw", new Object[] {signInReq.getCheckpw()}, "입력하신 비밀번호가 올바르지 않습니다. 비밀번호 확인 후 다시 입력해주세요.");
+		}
+		
+		if (bindingResult.hasErrors()) {
+			log.info("bindingResult: {}", bindingResult);
 		} else {
-			response = "사용 가능한 닉네임입니다.";
+			log.info(signInReq.toString());
+			userService.signin(signInReq);
+			return "redirect:/login";
 		}
-		return response;
+		
+		return "user/signin";
 	}
 	
-	@GetMapping("/mypage")
-	public String mypage() {		
-		return "/user/mypage";
-	}
-	
-	@GetMapping("/mypage/delete")
-	@ResponseBody
-	public void deleteUser() {
-		UserDTO user =(UserDTO)session.getAttribute("user");
-		String email = user.getEmail();
-		userService.deleteUser(email);
-		session.invalidate();
-	}
-	
-	@GetMapping("/mypage/kakaounlink")
-	public String unlink() {	
-		loginService.unlink((String)session.getAttribute("accessToken"));
-		session.invalidate();
-		return "redirect:/";
-	}
-	
-	@GetMapping("/mypage/edit")
-	public String editUser() {
-		return "/user/mypage";
-	}
-	
-	@PostMapping("/mypage/edit")
-	@ResponseBody
-	public void editUser(UserDTO userdto) {
-		userService.editUser(userdto);
-		UserDTO user= userService.getUserInfo(userdto.getEmail());
-		session.setAttribute("user", user);
-	}
-	
-	@PostMapping("/mypage/userDiary")
-	@ResponseBody
-	public List<UserDiaryDTO> getUserDiary() {
-		UserDTO user =(UserDTO)session.getAttribute("user");
-		List<UserDiaryDTO> list=userService.getDiary(user.getEmail());
-		for(UserDiaryDTO one:list) {
-			log.info(one.getContents());
-		}
-		return userService.getDiary(user.getEmail());
-	}
-	
-	@PostMapping("/mypage/likes")
-	@ResponseBody
-	public ArrayList<DiaryDTO> getUserLikes() {
-		UserDTO user =(UserDTO)session.getAttribute("user");
-		List<Integer> likedlist = userService.getUserLikes(user.getId());
+	public void sendMail(String email, String titleParam, String contentParam) {
+		String setFrom = "foodiengreen@gmail.com";
+		String toMail = email;
+		String title = titleParam;
+		String content = contentParam;
 
-		for(int i=0; i<likedlist.size(); i++) {
-			log.info(""+likedlist.get(i));
+		try {
+			jakarta.mail.internet.MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content, true);
+			mailSender.send(message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		ArrayList<DiaryDTO> list = new ArrayList<>();
-		for(int id: likedlist) {
-			//System.out.println(id);
-			
-			DiaryDTO diarydto = userService.getLikedDiaryInfo(id);
-			list.add(diarydto);
-		}
-		return list;
 	}
 }
