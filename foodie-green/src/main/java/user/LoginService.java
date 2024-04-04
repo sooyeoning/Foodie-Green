@@ -7,113 +7,71 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import lombok.extern.slf4j.Slf4j;
+
+import user.model.GetKakaoUserInfoRes;
+
 @Service
+@Slf4j
 public class LoginService {
-
+	
+	@Value("${oauth.token.url}")
+	private String getTokenURL;
+	
+	@Value("${oauth.getInfo.url}")
+	private String getInfoURL;
+	
+	@Value("${oauth.logout.url}")
+	private String logoutURL;
+	
+	@Value("${oauth.unlink.url}")
+	private String unlinkURL;
+	
+	@Value("${oauth.clientId}")
+	private String clientId;
+	
+	@Value("${oauth.redirect.url}")
+	private String redirectURL;
+	
 	public String getKakaoAccessToken (String code) {
-	    String accessToken = "";
-	    String refreshToken = "";
-	    String requestURL = "https://kauth.kakao.com/oauth/token";
+	    String result = getTokenResult(getTokenURL, code);
+	    
+	    JsonElement element = JsonParser.parseString(result);
+	    String accessToken = element.getAsJsonObject().get("access_token").getAsString();
+	    String refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
 
-	    try {
-	        URL url = new URL(requestURL);
-	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-	        conn.setRequestMethod("POST");
-	        // setDoOutput()은 OutputStream으로 POST 데이터를 넘겨 주겠다는 옵션이다.
-	        // POST 요청을 수행하려면 setDoOutput()을 true로 설정한다.
-	        conn.setDoOutput(true);
-
-	        // POST 요청에서 필요한 파라미터를 OutputStream을 통해 전송
-	        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-	        String sb = "grant_type=authorization_code" +
-	                "&client_id=21d333f51716aa48fde19c2d05a54724" + // REST_API_KEY
-	                "&redirect_uri=http://localhost:8888/login_kakao" + // REDIRECT_URI
-	                "&code=" + code;
-	        bufferedWriter.write(sb);
-	        bufferedWriter.flush();
-
-	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
-
-	        // 요청을 통해 얻은 데이터를 InputStreamReader을 통해 읽어 오기
-	        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	        String line = "";
-	        StringBuilder result = new StringBuilder();
-
-	        while ((line = bufferedReader.readLine()) != null) {
-	            result.append(line);
-	        }
-	        System.out.println("response body : " + result);
-
-	        JsonElement element = JsonParser.parseString(result.toString());
-
-	        accessToken = element.getAsJsonObject().get("access_token").getAsString();
-	        refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
-
-	        System.out.println("accessToken : " + accessToken);
-	        System.out.println("refreshToken : " + refreshToken);
-
-	        bufferedReader.close();
-	        bufferedWriter.close();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+	    log.info("accessToken : " + accessToken);
+	    log.info("refreshToken : " + refreshToken);
 
 	    return accessToken;
 	}
 	
-	public HashMap<String, Object> getUserInfo(String accessToken) {
-	    HashMap<String, Object> userInfo = new HashMap<>();
-	    String postURL = "https://kapi.kakao.com/v2/user/me";
+	public GetKakaoUserInfoRes getUserInfo(String accessToken) {
+	    GetKakaoUserInfoRes res = new GetKakaoUserInfoRes();
+	    
+	    String result = getURLConnectionResult(accessToken,getInfoURL);
+        log.info("response body : " + result);
 
-	    try {
-	        URL url = new URL(postURL);
-	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	        conn.setRequestMethod("POST");
+        JsonElement element = JsonParser.parseString(result);
+        JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+        JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+        
+        String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
+        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 
-	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-
-	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
-
-	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	        String line = "";
-	        StringBuilder result = new StringBuilder();
-
-	        while ((line = br.readLine()) != null) {
-	            result.append(line);
-	        }
-	        System.out.println("response body : " + result);
-
-	        JsonElement element = JsonParser.parseString(result.toString());
-	       // JsonElement jsonkakaoId = element.getAsJsonObject().get("id");
-	        JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-	        JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-	        
-	       // String kakaoId = jsonkakaoId.getAsString();
-	        String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
-	        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-
-	       // userInfo.put("kakaoId", kakaoId);
-	        userInfo.put("nickname", nickname);
-	        userInfo.put("email", email);
-
-
-	    } catch (IOException exception) {
-	        exception.printStackTrace();
-	    }
-
-	    return userInfo;
+        res.setNickname(nickname);
+        res.setEmail(email);
+        
+	    return res;
 	}
 	
 	public String tempPassword(int leng){
@@ -135,7 +93,7 @@ public class LoginService {
 			
 			password.append(charSet[index]);
 			
-			System.out.println("index::" + index + "	charSet::"+ charSet[index]);
+			log.info("index:: {} charSet:: {}", index, charSet[index]);
 		}
 		
 		return password.toString(); 
@@ -143,52 +101,73 @@ public class LoginService {
 	}
 	
 	public void logout(String accessToken) {
-	    String requestURL = "https://kapi.kakao.com/v1/user/logout";
-	    try {
-	        URL url = new URL(requestURL);
-	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	        conn.setRequestMethod("POST");
-	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-	        
-	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
-	        
-	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	        
-	        String result = "";
-	        String line = "";
-	        
-	        while ((line = br.readLine()) != null) {
-	            result += line;
-	        }
-	        System.out.println(result);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+		String result = getURLConnectionResult(accessToken,logoutURL);
+	    log.info(result);   
 	}
 	
 	public void unlink(String accessToken) {
-		  String reqURL = "https://kapi.kakao.com/v1/user/unlink";
-		    try {
-		        URL url = new URL(reqURL);
-		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		        conn.setRequestMethod("POST");
-		        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-		        
-		        int responseCode = conn.getResponseCode();
-		        System.out.println("responseCode : " + responseCode);
-		        
-		        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		        
-		        String result = "";
-		        String line = "";
-		        
-		        while ((line = br.readLine()) != null) {
-		            result += line;
-		        }
-		        System.out.println(result);
-		    } catch (IOException e) {
-		        e.printStackTrace();
+		String result = getURLConnectionResult(accessToken,unlinkURL);
+		log.info(result);    
+	}
+	
+	public String getURLConnectionResult(String accessToken, String reqURL) {
+	    String result = "";
+
+		try { 
+			URL url = new URL(reqURL);
+		    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		    conn.setRequestMethod("POST");
+	
+		    conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+	
+		    int responseCode = conn.getResponseCode();
+		    log.info("responseCode : " + responseCode);
+
+		    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		    String line = "";
+	
+		    while ((line = br.readLine()) != null) {
+		    	result += line;
 		    }
+		} catch (IOException e) {
+	        e.printStackTrace();
+	    }
+		return result; 
+	}
+	
+	public String getTokenResult(String reqURL, String code) {
+		String result = "";
+		try {
+	        URL url = new URL(reqURL);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+	        conn.setRequestMethod("POST");
+	        conn.setDoOutput(true);
+
+	        // POST 요청에서 필요한 파라미터를 OutputStream을 통해 전송
+	        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+	        String sb = "grant_type=authorization_code" +
+	                "&client_id=" + clientId + "&redirect_uri=" + redirectURL + "&code=" + code;
+	        bufferedWriter.write(sb);
+	        bufferedWriter.flush();
+
+	        int responseCode = conn.getResponseCode();
+	        log.info("responseCode : {}", responseCode);
+
+	        // 요청을 통해 얻은 데이터를 InputStreamReader을 통해 읽어 오기
+	        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        String line = "";
+
+	        while ((line = bufferedReader.readLine()) != null) {
+	            result+=line;
+	        }
+	        log.info("response body : {}", result);
+
+	        bufferedReader.close();
+	        bufferedWriter.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	return result;
 	}
 }

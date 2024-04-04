@@ -43,7 +43,7 @@ public class MypageController {
 	@GetMapping("/kakaounlink")
 	public String unlink() {	
 		loginService.unlink((String)session.getAttribute("accessToken"));
-		session.invalidate();
+		deleteUser();
 		return "redirect:/";
 	}
 	
@@ -64,10 +64,11 @@ public class MypageController {
 	@ResponseBody
 	public List<UserDiaryDTO> getUserDiary() {
 		UserDTO user =(UserDTO)session.getAttribute("user");
-		List<UserDiaryDTO> list=userService.getDiary(user.getEmail());
+		List<UserDiaryDTO> list = userService.getDiary(user.getEmail());
 		for(UserDiaryDTO one:list) {
 			log.info(one.getContents());
 		}
+
 		return userService.getDiary(user.getEmail());
 	}
 	
@@ -81,9 +82,7 @@ public class MypageController {
 			log.info(""+likedlist.get(i));
 		}
 		ArrayList<DiaryDTO> list = new ArrayList<>();
-		for(int id: likedlist) {
-			//System.out.println(id);
-			
+		for(int id: likedlist) {			
 			DiaryDTO diarydto = userService.getLikedDiaryInfo(id);
 			list.add(diarydto);
 		}

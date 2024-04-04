@@ -37,7 +37,7 @@
 	<p class="login_subtitle">Foodie&Green</p>
 	<p class="login_subtitle">우리 서비스는 친환경 채소로 당신의 건강을 책임집니다</p><br>
 	<div class="result">
-	<a id="kakao-login-btn" href="javascript:loginWithKakao()"> <img
+	<a id="kakao-login-btn" href="/oauth/authorize"> <img
 		src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
 		width="222px" alt="카카오 로그인 버튼" />
 	</a><br>
@@ -48,14 +48,14 @@
 	</div>
 	</div>
 
-	<!-- 카카오톡 로그인 버튼 노출 영역 -->
+	<!-- 카카오톡 로그인 버튼 노출 영역 
 	<script type="text/javascript">
 	function loginWithKakao() {
 	    Kakao.Auth.authorize({
 	      redirectUri: 'http://localhost:8888/login_kakao',
 	      scope: "account_email profile_nickname"
 	    });
-	}
+	}-->
 
 	</script>
 <%@ include file="../home/footer.jsp"%>

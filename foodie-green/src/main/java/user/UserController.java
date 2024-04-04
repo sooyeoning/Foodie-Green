@@ -1,9 +1,8 @@
 package user;
 
-import java.net.http.HttpRequest;
-import java.util.HashMap;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -25,6 +24,7 @@ import user.dto.UserDTO;
 import user.model.FindIdReq;
 import user.model.FindPwReq;
 import user.model.FindPwRes;
+import user.model.GetKakaoUserInfoRes;
 import user.model.LoginReq;
 import user.model.SignInReq;
 import user.model.NicknameDuplicateReq;
@@ -40,6 +40,12 @@ public class UserController {
 	private final HttpSession session;
 	private final HttpServletRequest request;
 	
+	@Value("${oauth.authorize.url}")
+	private String authorizeURL;
+	
+    @Value("${spring.mail.username}")
+    private String mailSenderName;
+    
 	@GetMapping("/login")
 	public String login() {
 		return "/user/login";
@@ -52,47 +58,51 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/oauth/authorize")
+	public String getKakaoAuthorize() {
+		return "redirect:"+authorizeURL;
+	}
+	
 	@GetMapping("/login_kakao")
-	public String login_kakao(@RequestParam(required = false) String code) {
+	public String login_kakao(@RequestParam String code) {
+		log.info("login_kakao start");
 		try {
 			// URL에 포함된 code를 이용하여 액세스 토큰 발급
 			String accessToken = loginService.getKakaoAccessToken(code);
 			log.info(accessToken);
 
 			// 액세스 토큰을 이용하여 카카오 서버에서 유저 정보(닉네임, 이메일) 받아오기
-			HashMap<String, Object> userInfo = loginService.getUserInfo(accessToken);
+			GetKakaoUserInfoRes userInfo = loginService.getUserInfo(accessToken);
 			log.info("login Controller {} ", userInfo);
-			log.info("login Controller {} ",userInfo.get("nickname"));
-			log.info("login Controller {} ", userInfo.get("email"));
+			log.info("login Controller {} ", userInfo.getNickname());
+			log.info("login Controller {} ", userInfo.getEmail());
 			
 			//이메일 중복체크
-			int checkEmail = userService.checkEmail(String.valueOf(userInfo.get("email")));
+			int checkEmail = userService.checkEmail(userInfo.getEmail());
 			
-			String email = String.valueOf(userInfo.get("email"));
+			String email = userInfo.getEmail();
 			UserDTO userdto = new UserDTO();
 			
 			if(checkEmail==0) {
-				SignInReq req = new SignInReq();
-
 				String pw = "K1" + loginService.tempPassword(10) + "!";
-				//임의 비밀번호 확인: System.out.println(pw);
-				req.builder()
-					.email(email)
-					.name(String.valueOf(userInfo.get("nickname")))
-					.nickname(String.valueOf(userInfo.get("nickname")))
-					.phone("010-0000-0000")
-					.pw(pw)
-					.logintype("kakao")
-					.kakaoId(String.valueOf(userInfo.get("kakaoId")))
-					.build();
-				userService.signin(req);
-			} else {
-				userdto = userService.login_kakao(email);
-			}
+				
+				userService.signin(SignInReq.builder()
+						.email(email)
+						.name(userInfo.getNickname())
+						.nickname(userInfo.getNickname())
+						.phone("010-0000-0000")
+						.pw(pw)
+						.logintype("kakao")
+						.build()
+				);
+			} 
+			userdto = userService.login_kakao(email);
+			
 			session.setAttribute("user", userdto);
 			session.setAttribute("login", "ok");
 			session.setAttribute("nickname", userdto.getNickname());
 			session.setAttribute("accessToken", accessToken);
+			
 			log.info("accessToken {}",accessToken);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -271,7 +281,7 @@ public class UserController {
 	}
 	
 	public void sendMail(String email, String titleParam, String contentParam) {
-		String setFrom = "foodiengreen@gmail.com";
+		String setFrom = mailSenderName;
 		String toMail = email;
 		String title = titleParam;
 		String content = contentParam;

@@ -17,6 +17,5 @@ public class UserDTO {
 	private String phone;
 	private int id;
 	private String logintype;
-	private String kakaoId;
 	
 }

@@ -154,11 +154,10 @@
 						<p class="font20" style="color: red;">2. (구현예정)탈퇴 후 6개월 동안 동일한 계정으로
 							재가입이 불가능합니다.</p>
 						<p class="font20">정말 탈퇴를 진행하시겠습니까?</p>
-						<%if(logintype.equals("kakao")){
-						%>
-						<button class="deletebtn_kakao">탈퇴하기</button>
+						<%if(logintype.equals("kakao")){%>
+							<button class="deletebtn_kakao">탈퇴하기</button>
 						<%} if(logintype.equals("normal")){%>
-						<button class="deletebtn_normal">탈퇴하기</button>
+							<button class="deletebtn_normal">탈퇴하기</button>
 						<%} %>
 					</div>
 				</div>
